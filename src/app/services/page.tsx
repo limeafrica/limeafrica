@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "Services",
 };
 
 const pillars = [

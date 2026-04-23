@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type TouchEvent,
 } from "react";
 import {
   AnimatePresence,
@@ -18,6 +19,9 @@ import {
 import { Container } from "@/components/ui/Container";
 
 const AUTO_MS = 5000;
+
+/** Horizontal swipe distance (px) before changing slide — ignores vertical scroll */
+const SWIPE_THRESHOLD = 52;
 
 /** Snappy editorial spring — lively without feeling chaotic */
 const SPRING_SLIDE: Transition = {
@@ -78,6 +82,7 @@ export function HomeHeroSlider() {
   const [paused, setPaused] = useState(false);
   const reduceMotion = useReducedMotion();
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const go = useCallback((dir: -1 | 1) => {
     setPage(([p]) => {
@@ -112,6 +117,30 @@ export function HomeHeroSlider() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [go]);
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const t = e.targetTouches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+      const start = touchStartRef.current;
+      touchStartRef.current = null;
+
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+
+      if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+      if (Math.abs(dx) <= Math.abs(dy)) return;
+
+      if (dx < 0) go(1);
+      else go(-1);
+    },
+    [go],
+  );
 
   const slideVariants: Variants = useMemo(() => {
     if (reduceMotion) {
@@ -183,7 +212,9 @@ export function HomeHeroSlider() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured stories"
-      className="relative isolate min-h-[calc(100svh-3.5rem)] w-full overflow-hidden bg-[color:var(--ink)]"
+      className="relative isolate min-h-[calc(100svh-3.5rem)] w-full touch-pan-y overflow-hidden bg-[color:var(--ink)]"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

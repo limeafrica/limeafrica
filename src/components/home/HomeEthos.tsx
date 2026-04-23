@@ -16,11 +16,7 @@ export function HomeEthos() {
         <div className="grid gap-20 lg:grid-cols-[minmax(0,467px)_minmax(0,1fr)] lg:items-center lg:gap-24 xl:gap-28">
           <Reveal>
             <div
-              className="relative mx-auto w-full max-w-[var(--editorial-image-w)] overflow-hidden rounded-3xl bg-[color:var(--surface-sand)] lg:mx-0 lg:max-w-none"
-              style={{
-                aspectRatio: "467 / 632",
-                maxHeight: "var(--editorial-image-h)",
-              }}
+              className="relative mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] overflow-hidden rounded-3xl bg-[color:var(--surface-sand)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:max-w-none"
             >
               <Image
                 src={ETHOS_IMAGE}

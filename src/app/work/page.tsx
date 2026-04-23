@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { workItems } from "@/content/work";
 
 export const metadata: Metadata = {
-  title: "Our Work",
+  title: "Works",
 };
 
 export default function WorkIndexPage() {

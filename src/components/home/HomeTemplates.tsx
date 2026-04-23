@@ -140,21 +140,13 @@ export function HomeTemplates() {
           {/* Right: header + checklist */}
           <div className="min-w-0 lg:col-span-7">
             <Reveal>
-              <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
+              <p className="text-center font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
                 Customize it yourself
               </p>
 
-              <div className="mt-5 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-                <h2 className="font-title max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
-                  Website Templates
-                </h2>
-                <Link
-                  href="/templates"
-                  className="inline-flex w-fit shrink-0 items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92"
-                >
-                  View templates
-                </Link>
-              </div>
+              <h2 className="font-title mx-auto mt-5 max-w-xl text-center text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
+                Website Templates
+              </h2>
 
               <div
                 className="mt-10 h-px w-full bg-[color:var(--hairline)]"
@@ -192,6 +184,15 @@ export function HomeTemplates() {
                     </li>
                   ))}
                 </ul>
+              </div>
+
+              <div className="mt-12 flex justify-center sm:mt-14">
+                <Link
+                  href="/templates"
+                  className="inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92"
+                >
+                  View templates
+                </Link>
               </div>
             </Reveal>
           </div>

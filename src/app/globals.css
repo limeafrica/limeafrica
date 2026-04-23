@@ -71,12 +71,16 @@
  * focus style for keyboard users (`:focus-visible`).
  */
 #navigation-2 :is(a, button),
-#mobile-nav :is(a, button) {
+#mobile-nav :is(a, button),
+#staggered-mobile-nav :is(a, button),
+#nav-menu-toggle {
   outline: none;
 }
 
 #navigation-2 :is(a, button):focus-visible,
-#mobile-nav :is(a, button):focus-visible {
+#mobile-nav :is(a, button):focus-visible,
+#staggered-mobile-nav :is(a, button):focus-visible,
+#nav-menu-toggle:focus-visible {
   outline: 2px solid var(--brand-yellow);
   outline-offset: 2px;
 }

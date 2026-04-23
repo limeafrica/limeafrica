@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { HomeWorkPreviewProjects } from "@/components/home/HomeWorkPreviewProjects";
 import { workItems } from "@/content/work";
 
 export function HomeWorkPreview() {
@@ -14,58 +14,29 @@ export function HomeWorkPreview() {
       />
       <Container className="relative">
         <Reveal>
-          <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
-            <div>
+          <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-end sm:justify-between sm:text-left">
+            <div className="w-full max-w-2xl">
               <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--brand-sand)]">
                 Portfolio
               </p>
-              <h2 className="font-title mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--brand-white)]">
-                Our Work
+              <h2 className="font-title mx-auto mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--brand-white)] sm:mx-0">
+                Works
               </h2>
-              <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[color:var(--brand-white)]/72 sm:text-base">
+              <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-[color:var(--brand-white)]/72 sm:mx-0 sm:text-base">
                 Brand identities, websites, and channel strategies—crafted for
                 founders across hospitality, consumer, and digital-first teams.
               </p>
             </div>
             <Link
               href="/work"
-              className="shrink-0 rounded-full border border-[color:var(--brand-white)]/35 px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--brand-white)] transition hover:border-[color:var(--brand-yellow)] hover:bg-[color:var(--brand-yellow)] hover:text-[color:var(--ink)]"
+              className="inline-flex w-fit shrink-0 self-center rounded-full border border-[color:var(--brand-white)]/35 px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--brand-white)] transition hover:border-[color:var(--brand-yellow)] hover:bg-[color:var(--brand-yellow)] hover:text-[color:var(--ink)] sm:self-auto"
             >
               View all work
             </Link>
           </div>
         </Reveal>
-        <div className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
-          {preview.map((project, i) => (
-            <Reveal key={project.slug} delay={0.07 * i}>
-              <Link href={`/work/${project.slug}`} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.imageAlt}
-                    fill
-                    unoptimized
-                    className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
-                  <p className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-sand)]">
-                    {project.category}
-                  </p>
-                </div>
-                <p className="font-title mt-5 text-2xl text-[color:var(--brand-white)]">
-                  {project.title}
-                </p>
-                <span className="mt-3 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
-                  View case study
-                  <span aria-hidden className="transition group-hover:translate-x-1">
-                    →
-                  </span>
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
+
+        <HomeWorkPreviewProjects projects={preview} />
       </Container>
     </section>
   );

@@ -6,7 +6,7 @@ export function Container({
 }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={`site-shell px-4 sm:px-6 ${className}`}
+      className={`site-shell px-6 ${className}`}
       {...props}
     />
   );

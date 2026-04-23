@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState, type TouchEvent } from "react";
 import { Container } from "@/components/ui/Container";
+
+const SWIPE_THRESHOLD = 52;
 
 const slides = [
   {
@@ -71,6 +73,7 @@ function ChevronRight({ className }: { className?: string }) {
 export function HomeServices() {
   const [page, setPage] = useState(0);
   const n = slides.length;
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const go = useCallback(
     (dir: -1 | 1) => {
@@ -79,19 +82,45 @@ export function HomeServices() {
     [n],
   );
 
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const t = e.targetTouches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+      const start = touchStartRef.current;
+      touchStartRef.current = null;
+
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+
+      if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+      if (Math.abs(dx) <= Math.abs(dy)) return;
+
+      if (dx < 0) go(1);
+      else go(-1);
+    },
+    [go],
+  );
+
   const active = slides[page];
   const progressPct = ((page + 1) / n) * 100;
 
   return (
     <section
       id="our-services"
-      className="relative bg-[color:var(--surface-subtle)] pb-20 pt-0 sm:pb-28"
+      className="relative touch-pan-y bg-[color:var(--surface-subtle)] pb-20 pt-0 sm:pb-28"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <Container className="relative pt-16 sm:pt-20">
         <div className="flex flex-col gap-20 lg:flex-row lg:items-center lg:justify-end lg:gap-24 xl:gap-28">
           <div className="min-w-0 max-w-xl">
             <h2 className="font-title text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-[color:var(--ink)]">
-              Our Services
+              Services
             </h2>
 
             <p className="mt-4 font-sans text-[11px] font-bold uppercase tracking-[0.28em] text-[color:var(--ink)]">
@@ -114,8 +143,34 @@ export function HomeServices() {
               </span>
               <span className="uppercase">{active.label}</span>
             </Link>
+          </div>
 
-            <div className="mt-12 flex gap-4">
+          <div className="flex w-full max-w-[var(--editorial-image-w)] shrink-0 flex-col gap-6 lg:w-[min(100%,var(--editorial-image-w))] lg:gap-8">
+            <div
+              className="relative isolate z-30 aspect-[467/316] w-full overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.14)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:max-h-[min(520px,68vh)] lg:rounded-2xl"
+              aria-roledescription="carousel"
+              aria-label="Service highlights"
+            >
+              {slides.map((s, i) => (
+                <Image
+                  key={s.image}
+                  src={s.image}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), min(50vw - 3rem, 520px)"
+                  className={`absolute inset-0 object-cover object-center ${
+                    i === page ? "z-10 opacity-100" : "z-0 opacity-0"
+                  }`}
+                  priority={false}
+                />
+              ))}
+            </div>
+
+            <nav
+              className="flex w-full justify-end gap-4"
+              aria-label="Browse services"
+            >
               <button
                 type="button"
                 aria-label="Previous slide"
@@ -132,32 +187,7 @@ export function HomeServices() {
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
-            </div>
-          </div>
-
-          <div
-            className="relative isolate z-30 w-full max-w-[var(--editorial-image-w)] shrink-0 overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.14)] ring-1 ring-[color:var(--hairline)] lg:w-[min(100%,var(--editorial-image-w))] lg:rounded-2xl"
-            style={{
-              aspectRatio: "467 / 632",
-              maxHeight: "min(520px, 68vh)",
-            }}
-            aria-roledescription="carousel"
-            aria-label="Service highlights"
-          >
-            {slides.map((s, i) => (
-              <Image
-                key={s.image}
-                src={s.image}
-                alt=""
-                fill
-                unoptimized
-                sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), min(50vw - 3rem, 520px)"
-                className={`absolute inset-0 object-cover object-center ${
-                  i === page ? "z-10 opacity-100" : "z-0 opacity-0"
-                }`}
-                priority={false}
-              />
-            ))}
+            </nav>
           </div>
         </div>
 

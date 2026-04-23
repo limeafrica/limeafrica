@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
 import { useReducedMotion } from "framer-motion";
 
 const slides = [
@@ -12,9 +12,17 @@ const slides = [
 
 const INTERVAL_MS = 4000;
 
+const SWIPE_THRESHOLD = 52;
+
 export function HomeApproachSlider() {
   const [page, setPage] = useState(0);
   const reduceMotion = useReducedMotion();
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const n = slides.length;
+
+  const go = useCallback((dir: -1 | 1) => {
+    setPage((p) => (p + dir + n) % n);
+  }, [n]);
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -24,15 +32,37 @@ export function HomeApproachSlider() {
     return () => window.clearInterval(id);
   }, [reduceMotion]);
 
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const t = e.targetTouches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+      const start = touchStartRef.current;
+      touchStartRef.current = null;
+
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+
+      if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+      if (Math.abs(dx) <= Math.abs(dy)) return;
+
+      if (dx < 0) go(1);
+      else go(-1);
+    },
+    [go],
+  );
+
   return (
     <div
-      className="relative isolate mx-auto w-full max-w-[var(--editorial-image-w)] overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.18)] ring-1 ring-[color:var(--hairline)] lg:mx-0 lg:rounded-2xl"
-      style={{
-        aspectRatio: "467 / 632",
-        maxHeight: "var(--editorial-image-h)",
-      }}
+      className="relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] touch-pan-y overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.18)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
       aria-roledescription="carousel"
       aria-label="Approach highlights"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {slides.map((src, i) => (
         <Image
@@ -49,7 +79,7 @@ export function HomeApproachSlider() {
         />
       ))}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] h-28 bg-gradient-to-t from-[color:var(--ink)]/35 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] h-16 bg-gradient-to-t from-[color:var(--ink)]/35 to-transparent lg:h-28"
         aria-hidden
       />
       <div

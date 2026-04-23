@@ -21,19 +21,31 @@ export const site = {
   worldwide: "Serving clients worldwide",
   established: "2020",
   email: "hello@limeafrica.com",
+  /** Handle @limeafrica across networks (URLs use the same slug where supported). */
   social: {
     instagram: "@limeafrica",
-    instagramUrl: "https://www.instagram.com/",
+    instagramUrl: "https://www.instagram.com/limeafrica/",
+    linkedinUrl: "https://www.linkedin.com/company/limeafrica",
+    facebookUrl: "https://www.facebook.com/limeafrica",
+    tiktokUrl: "https://www.tiktok.com/@limeafrica",
   },
 };
+
+/** Staggered menu + shared outbound social rows — same handle, platform-specific URLs */
+export const menuSocialLinks = [
+  { label: "Instagram", link: site.social.instagramUrl },
+  { label: "LinkedIn", link: site.social.linkedinUrl },
+  { label: "Facebook", link: site.social.facebookUrl },
+  { label: "TikTok", link: site.social.tiktokUrl },
+] as const;
 
 export type NavItem = { label: string; href: string };
 
 /** Inline links in the header (HOME … ABOUT); CTA is separate in `headerCta`. */
 export const headerNavLinks: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Our Services", href: "/services" },
-  { label: "Our Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "Works", href: "/work" },
   { label: "Template Shop", href: "/templates" },
   { label: "About", href: "/about" },
 ];
@@ -47,8 +59,8 @@ export const headerCta: NavItem = {
 export const mainNav: NavItem[] = [...headerNavLinks, headerCta];
 
 export const footerExplore: NavItem[] = [
-  { label: "Our Work", href: "/work" },
-  { label: "Our Services", href: "/services" },
+  { label: "Works", href: "/work" },
+  { label: "Services", href: "/services" },
   { label: "template shop", href: "/templates" },
 ];
 
@@ -56,8 +68,7 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string;
-  /** Multiple portraits per person — home section crossfades between these. */
-  slides: readonly string[];
+  portrait: string;
 };
 
 export const team: TeamMember[] = [
@@ -65,31 +76,22 @@ export const team: TeamMember[] = [
     name: "Nicole",
     role: "CEO / Social Media Manager",
     bio: "Builds narrative systems that convert—specializing in platform strategy, editorial calendars, and growth experiments for founder-led brands.",
-    slides: [
+    portrait:
       "https://images.unsplash.com/photo-1573497019236-17bfcbacbe58?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&w=1600&q=90",
-    ],
   },
   {
     name: "Casey",
     role: "Brand Design Specialist",
     bio: "Translates positioning into visual language: marks, typography systems, and guidelines that stay coherent from pitch deck to packaging.",
-    slides: [
+    portrait:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&w=1600&q=90",
-    ],
   },
   {
     name: "Emily",
     role: "Website Design Lead",
     bio: "Ships fast, refined web experiences—information architecture, UI craft, and launch support so your digital home feels effortless to run.",
-    slides: [
+    portrait:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&w=1600&q=90",
-      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&w=1600&q=90",
-    ],
   },
 ];
 
