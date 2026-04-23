@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { brandLogo, site } from "@/content/site";
+import { brandLogo, brandLogoFooter, site } from "@/content/site";
 
 type SiteLogoProps = {
   variant?: "header" | "footer" | "mobile";
@@ -13,7 +13,8 @@ const variantStyles: Record<NonNullable<SiteLogoProps["variant"]>, string> = {
   header:
     "h-[30px] w-auto max-w-[min(46vw,168px)] sm:h-[34px] sm:max-w-[190px]",
   mobile: "h-[30px] w-auto max-w-[168px]",
-  footer: "h-9 w-auto max-w-[200px] sm:h-10 sm:max-w-[220px]",
+  footer:
+    "h-[52px] w-auto max-w-[min(94vw,420px)] sm:h-[72px] sm:max-w-[min(92vw,520px)] lg:h-[96px] lg:max-w-[620px]",
 };
 
 export function SiteLogo({
@@ -21,16 +22,21 @@ export function SiteLogo({
   className = "",
   link = true,
 }: SiteLogoProps) {
+  const mark = variant === "footer" ? brandLogoFooter : brandLogo;
   const img = (
     <Image
-      src={brandLogo.src}
+      src={mark.src}
       alt=""
-      width={brandLogo.width}
-      height={brandLogo.height}
+      width={mark.width}
+      height={mark.height}
       unoptimized
       className={`${variantStyles[variant]} object-contain object-left ${className}`}
       priority={variant === "header"}
-      sizes="(max-width: 640px) 46vw, 200px"
+      sizes={
+        variant === "footer"
+          ? "(max-width: 640px) 94vw, (max-width: 1024px) 520px, 620px"
+          : "(max-width: 640px) 46vw, 200px"
+      }
     />
   );
 

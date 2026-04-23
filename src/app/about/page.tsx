@@ -43,7 +43,7 @@ export default function AboutPage() {
                 <Reveal key={member.name} delay={0.05 * i}>
                   <div>
                     <h3 className="font-title text-3xl">{member.name}</h3>
-                    <p className="mt-2 text-sm italic text-[color:var(--ink-muted)]">
+                    <p className="font-sans mt-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
                       {member.role}
                     </p>
                     <p className="font-sans mt-6 text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">

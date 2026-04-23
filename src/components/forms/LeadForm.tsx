@@ -31,7 +31,7 @@ export function LeadForm({
     "font-sans w-full border-b border-[color:var(--hairline)] bg-transparent py-3 text-sm text-[color:var(--ink)] outline-none transition placeholder:text-[color:var(--ink-muted)] focus:border-[color:var(--brand-yellow)]";
 
   const btnPrimary =
-    "inline-flex items-center justify-center rounded-full border-2 border-[color:var(--ink)] bg-[color:var(--brand-yellow)] px-10 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ink)] transition hover:brightness-95";
+    "inline-flex cursor-pointer items-center justify-center rounded-full bg-[color:var(--brand-yellow)] px-10 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ink)] transition hover:brightness-95";
 
   if (variant === "hero") {
     return (

@@ -1,6 +1,13 @@
-/** Navbar / footer logo (`public/` path). Intrinsics used by `next/image`. */
+/** Navbar logo (`public/` path). Intrinsics used by `next/image`. */
 export const brandLogo = {
   src: "/lime-logo-2024-1-png.avif",
+  width: 1108,
+  height: 340,
+} as const;
+
+/** Light mark for dark or yellow footer bands (`public/` path). */
+export const brandLogoFooter = {
+  src: "/Lime-WHITE-Logo-2024-png.avif",
   width: 1108,
   height: 340,
 } as const;
@@ -45,21 +52,44 @@ export const footerExplore: NavItem[] = [
   { label: "template shop", href: "/templates" },
 ];
 
-export const team = [
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  /** Multiple portraits per person — home section crossfades between these. */
+  slides: readonly string[];
+};
+
+export const team: TeamMember[] = [
   {
-    name: "Amara Okonkwo",
-    role: "CEO · Social & Content Lead",
+    name: "Nicole",
+    role: "CEO / Social Media Manager",
     bio: "Builds narrative systems that convert—specializing in platform strategy, editorial calendars, and growth experiments for founder-led brands.",
+    slides: [
+      "https://images.unsplash.com/photo-1573497019236-17bfcbacbe58?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&w=1600&q=90",
+    ],
   },
   {
-    name: "Kwame Mensah",
-    role: "Brand Design Director",
+    name: "Casey",
+    role: "Brand Design Specialist",
     bio: "Translates positioning into visual language: marks, typography systems, and guidelines that stay coherent from pitch deck to packaging.",
+    slides: [
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&w=1600&q=90",
+    ],
   },
   {
-    name: "Zara Benali",
+    name: "Emily",
     role: "Website Design Lead",
     bio: "Ships fast, refined web experiences—information architecture, UI craft, and launch support so your digital home feels effortless to run.",
+    slides: [
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&w=1600&q=90",
+      "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&w=1600&q=90",
+    ],
   },
 ];
 

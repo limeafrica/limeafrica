@@ -16,11 +16,11 @@ export function HomeWorkPreview() {
         <Reveal>
           <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--brand-sand)]">
+              <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--brand-sand)]">
                 Portfolio
               </p>
-              <h2 className="font-title mt-3 text-3xl text-[color:var(--brand-white)] sm:text-5xl">
-                Our work
+              <h2 className="font-title mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--brand-white)]">
+                Our Work
               </h2>
               <p className="mt-6 max-w-2xl text-sm leading-relaxed text-[color:var(--brand-white)]/72 sm:text-base">
                 Brand identities, websites, and channel strategies—crafted for

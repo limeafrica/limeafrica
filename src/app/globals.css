@@ -17,6 +17,8 @@
   --surface-sand: color-mix(in srgb, var(--brand-sand) 35%, var(--brand-white));
   /** Our Approach section band */
   --surface-light-brown: #d8bda0;
+  /** Very light section wash (e.g. Our Services) */
+  --surface-subtle: #f6f5f4;
   /** Main content width (header, footer, `Container`) — single source of truth */
   --layout-max: 1280px;
   /** Ethos + Approach portrait frames */

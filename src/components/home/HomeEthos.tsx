@@ -13,7 +13,7 @@ export function HomeEthos() {
       className="relative z-0 bg-[color:var(--brand-white)] pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-36 lg:pt-28"
     >
       <Container>
-        <div className="grid gap-16 lg:grid-cols-[minmax(0,467px)_minmax(0,1fr)] lg:items-center lg:gap-16 xl:gap-20">
+        <div className="grid gap-20 lg:grid-cols-[minmax(0,467px)_minmax(0,1fr)] lg:items-center lg:gap-24 xl:gap-28">
           <Reveal>
             <div
               className="relative mx-auto w-full max-w-[var(--editorial-image-w)] overflow-hidden rounded-3xl bg-[color:var(--surface-sand)] lg:mx-0 lg:max-w-none"

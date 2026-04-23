@@ -18,8 +18,8 @@ export default function Home() {
       <HomeTemplates />
       <HomeWorkPreview />
       <HomeTeam />
-      <HomeTestimonials />
       <HomeFinalCta />
+      <HomeTestimonials />
     </main>
   );
 }

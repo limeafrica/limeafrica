@@ -69,9 +69,12 @@ export function SiteHeader() {
 
       const hr = header.getBoundingClientRect();
       const lr = link.getBoundingClientRect();
+      /** Narrower bar (~55% of label), centered under the link */
+      const barW = lr.width * 0.55;
+      const barLeft = lr.left - hr.left + (lr.width - barW) / 2;
       setIndicator({
-        left: lr.left - hr.left,
-        width: lr.width,
+        left: barLeft,
+        width: barW,
       });
     }
 

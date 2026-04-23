@@ -10,9 +10,9 @@ export function HomeApproach() {
       className="relative z-10 overflow-visible bg-[color:var(--surface-light-brown)] pb-20 pt-10 sm:pb-24 sm:pt-12 lg:pb-28 lg:pt-14"
     >
       <Container className="relative">
-        <div className="flex flex-col gap-16 lg:flex-row lg:items-start lg:justify-end lg:gap-16 xl:gap-20">
+        <div className="flex flex-col gap-20 lg:flex-row lg:items-center lg:justify-end lg:gap-24 xl:gap-28">
           <Reveal>
-            <div className="min-w-0 max-w-xl lg:pt-4">
+            <div className="min-w-0 max-w-xl">
               <h2 className="font-title text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-[color:var(--ink)]">
                 Our Approach
               </h2>
@@ -49,10 +49,8 @@ export function HomeApproach() {
             </div>
           </Reveal>
 
-          <div className="relative z-30 w-full max-w-[var(--editorial-image-w)] shrink-0 lg:-mt-[min(7.5rem,12vh)] lg:w-[min(100%,var(--editorial-image-w))]">
-            <div className="relative -mt-6 sm:-mt-10">
-              <HomeApproachSlider />
-            </div>
+          <div className="relative z-30 w-full max-w-[var(--editorial-image-w)] shrink-0 lg:w-[min(100%,var(--editorial-image-w))]">
+            <HomeApproachSlider />
           </div>
         </div>
       </Container>
