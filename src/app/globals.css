@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-yellow: #ebbd45;
+  --brand-sand: #d7bd9f;
+  --brand-white: #ffffff;
+  --paper: var(--brand-white);
+  /** Darkest UI / body text (use instead of black / #000) */
+  --ink: #1a1612;
+  --ink-muted: rgba(26, 22, 18, 0.66);
+  --hairline: rgba(26, 22, 18, 0.14);
+  --accent: var(--brand-yellow);
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --nav-bar-bg: var(--brand-white);
+  --nav-ink: var(--ink);
+  --surface-sand: color-mix(in srgb, var(--brand-sand) 35%, var(--brand-white));
+  /** Our Approach section band */
+  --surface-light-brown: #d8bda0;
+  /** Main content width (header, footer, `Container`) — single source of truth */
+  --layout-max: 1280px;
+  /** Ethos + Approach portrait frames */
+  --editorial-image-w: 467px;
+  --editorial-image-h: 632px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  /** Display titles — Sansation */
+  --font-title: var(--font-title-face), ui-sans-serif, system-ui, sans-serif;
+  /** Cursive accents — Mrs Saint Delafield */
+  --font-script: var(--font-script-face), "Brush Script MT", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.site-shell {
+  width: 100%;
+  max-width: var(--layout-max);
+  margin-inline: auto;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: var(--ink);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  ::placeholder {
+    color: var(--ink-muted);
+  }
+
+  input,
+  textarea,
+  select {
+    color: var(--ink);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/**
+ * Navbar / overlay menu: drop the default blue focus ring on click; keep a clear
+ * focus style for keyboard users (`:focus-visible`).
+ */
+#navigation-2 :is(a, button),
+#mobile-nav :is(a, button) {
+  outline: none;
+}
+
+#navigation-2 :is(a, button):focus-visible,
+#mobile-nav :is(a, button):focus-visible {
+  outline: 2px solid var(--brand-yellow);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-yellow) 45%, transparent);
 }
