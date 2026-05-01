@@ -12,19 +12,18 @@ const slides = [
   {
     kicker: "Digital marketing services",
     body:
-      "Integrated paid and organic campaigns—targeting and reporting anchored to pipeline and revenue, not vanity metrics.",
+      "We provide end-to-end digital marketing support, from strategy to execution and everything in between.",
     image: "/Slider1.avif",
   },
   {
     kicker: "Consulting",
-    body:
-      "Strategy workshops on positioning and channel mix—with practical priorities and next steps your team can run.",
+    body: "Personalized consultations focused on helping you understand your brand, refine your strategy, and move forward with clarity.",
     image: "/slider2.avif",
   },
   {
     kicker: "Resources",
     body:
-      "Templates and playbooks that shorten rollout time—and keep execution consistent across your team.",
+      "Access our curated collection of templates, guides, and resources designed to streamline your marketing, improve your execution.",
     image: "/slider3B.webp",
   },
 ] as const;

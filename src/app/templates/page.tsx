@@ -30,8 +30,7 @@ export default function TemplatesPage() {
   return (
     <main className="flex-1">
       <PageIntro
-        eyebrow="Templates"
-        title="Website templates"
+        title="Templates"
         subtitle="Elevated foundations you can tailor—ideal for founders who want speed without sacrificing polish."
       />
       <section className="border-b border-[color:var(--hairline)] py-16 sm:py-24">

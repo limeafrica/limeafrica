@@ -38,27 +38,27 @@ function CheckIcon({ className }: { className?: string }) {
 
 const templateFeaturesLeft = [
   {
-    title: "Instant access",
+    title: "Profile and Feed Mockup",
     body:
-      "Launch-ready layouts with homepage, story-led services, portfolio, inquiries, journal, and utility pages.",
+      "Visual layout preview showing profile structure grid balance and content hierarchy before publishing.",
   },
   {
-    title: "Essential pages included",
+    title: "​Carousel",
     body:
-      "Home, About, Services, Portfolio, Testimonials, Inquiry, Blog, Coming Soon, and polished 404 experiences.",
+      "Pre designed templates created for consistent visual identity across feed.",
   },
 ] as const;
 
 const templateFeaturesRight = [
   {
-    title: "Responsive by default",
+    title: "Content Calendars",
     body:
-      "Designed for phones first. Stunning on tablets and desktops without surprise breakpoints.",
+      "Planned monthly content schedule aligned with campaign goals, key dates, content pillars, content type, captions, posting frequency and much more.",
   },
   {
-    title: "Customize to your brand",
+    title: "​Company Pack",
     body:
-      "Swap colors, type, imagery, and copy—built for clarity so updates never feel chaotic.",
+      "A structured document outlining brand positioning, objectives, target audience, messaging and tone of voice. It also includes logos, brand guidelines and everything to know about the company.",
   },
 ] as const;
 
@@ -135,7 +135,7 @@ export function HomeTemplates() {
               </p>
 
               <h2 className="font-title mt-5 max-w-xl text-left text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
-                Website Templates
+                Templates
               </h2>
 
               <div
