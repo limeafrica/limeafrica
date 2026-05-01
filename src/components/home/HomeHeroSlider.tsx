@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   useCallback,
   useEffect,
@@ -21,7 +22,7 @@ import { Container } from "@/components/ui/Container";
 const AUTO_MS = 5000;
 
 /** Horizontal swipe distance (px) before changing slide — ignores vertical scroll */
-const SWIPE_THRESHOLD = 52;
+const SWIPE_THRESHOLD = 44;
 
 /** Snappy editorial spring — lively without feeling chaotic */
 const SPRING_SLIDE: Transition = {
@@ -40,27 +41,36 @@ const SPRING_SNAPPY: Transition = {
 
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+const heroCtaClassName =
+  "mt-6 inline-flex min-h-11 w-fit min-w-0 max-w-full items-center justify-center rounded-full border border-[color:var(--brand-white)]/35 px-5 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-[color:var(--brand-white)] transition hover:border-[color:var(--brand-yellow)] hover:bg-[color:var(--brand-yellow)] hover:text-[color:var(--ink)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--ink)] sm:mt-8 sm:px-6 sm:tracking-[0.22em]";
+
 const slides = [
   {
     src: "/Slider1.avif",
-    title: "Strategy tuned to how your audience thinks",
+    title: "You've Found Lime",
     subtitle:
-      "Positioning, narrative, and channel thinking—so every touchpoint feels intentional, not improvised.",
+      "We’re not just a digital marketing agency; we’re your partner in growth.",
     kicker: "Brand & narrative",
+    ctaLabel: "View Full Story",
+    ctaHref: "/about",
   },
   {
     src: "/slider2.avif",
-    title: "Campaigns and sites built to perform",
+    title: "Struggling To Keep Up?",
     subtitle:
-      "From scroll-stopping social to polished web journeys—we design systems you can run with confidence.",
-    kicker: "Creative & digital",
+      "Let’s take social media off your to-do list.",
+    kicker: "Built for your brand",
+    ctaLabel: "Book a Consultation",
+    ctaHref: "https://paystack.shop/pay/discoverycalls",
   },
   {
     src: "/slider3B.webp",
-    title: "Templates and toolkits for momentum",
+    title: "We Turn Content Into Revenue",
     subtitle:
-      "Launch faster with frameworks shaped by real client work—structured enough to scale, flexible enough to own.",
-    kicker: "Products & scale",
+      "With over ₦300M in profit generated for 16 brands.",
+    kicker: "Results that speak",
+    ctaLabel: "Showcase your work with Lime",
+    ctaHref: "/templates",
   },
 ] as const;
 
@@ -212,7 +222,7 @@ export function HomeHeroSlider() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured stories"
-      className="relative isolate min-h-[calc(100svh-3.5rem)] w-full touch-pan-y overflow-hidden bg-[color:var(--ink)]"
+      className="relative isolate min-h-[calc(100svh-3.5rem)] w-full touch-manipulation overflow-hidden bg-[color:var(--ink)] sm:touch-auto"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       onMouseEnter={() => setPaused(true)}
@@ -269,7 +279,7 @@ export function HomeHeroSlider() {
         )}
       </AnimatePresence>
 
-      <div className="relative z-10 flex min-h-[calc(100svh-3.5rem)] flex-col justify-end pb-10 pt-24 sm:pb-14 sm:pt-28">
+      <div className="relative z-10 flex min-h-[calc(100svh-3.5rem)] flex-col justify-center py-8 sm:py-12 lg:py-14">
         <Container className="relative">
           <div className="max-w-2xl overflow-hidden [perspective:1200px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -290,12 +300,18 @@ export function HomeHeroSlider() {
                   />
                   {slides[page].kicker}
                 </p>
-                <h2 className="font-title mt-5 text-[clamp(1.85rem,5.5vw,3.25rem)] font-medium leading-[1.12] tracking-tight text-[color:var(--brand-white)]">
+                <h2 className="font-title mt-4 text-balance text-[clamp(2.125rem,5.2vw+0.65rem,4.5rem)] font-medium leading-[1.07] tracking-[-0.02em] text-[color:var(--brand-white)] sm:mt-5 sm:leading-[1.1] lg:leading-[1.12]">
                   {slides[page].title}
                 </h2>
-                <p className="mt-5 max-w-xl text-sm leading-relaxed text-[color:var(--brand-white)]/82 sm:text-base">
+                <p className="mt-4 max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-[color:var(--brand-white)]/85 sm:mt-5 sm:text-base md:mt-6 md:text-lg md:leading-relaxed">
                   {slides[page].subtitle}
                 </p>
+                <Link
+                  href={slides[page].ctaHref}
+                  className={heroCtaClassName}
+                >
+                  {slides[page].ctaLabel}
+                </Link>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -338,7 +354,7 @@ export function HomeHeroSlider() {
       <button
         type="button"
         aria-label="Previous slide"
-        className="pointer-events-auto absolute left-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:left-6 sm:h-12 sm:w-12"
+        className="pointer-events-auto absolute left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:left-6 sm:flex sm:h-12 sm:w-12"
         onClick={() => go(-1)}
       >
         <svg
@@ -360,7 +376,7 @@ export function HomeHeroSlider() {
       <button
         type="button"
         aria-label="Next slide"
-        className="pointer-events-auto absolute right-3 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:right-6 sm:h-12 sm:w-12"
+        className="pointer-events-auto absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:right-6 sm:flex sm:h-12 sm:w-12"
         onClick={() => go(1)}
       >
         <svg

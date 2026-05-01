@@ -11,7 +11,6 @@ import {
   headerNavLinks,
   mainNav,
   menuSocialLinks,
-  site,
 } from "@/content/site";
 
 /**

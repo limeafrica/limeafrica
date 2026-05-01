@@ -41,13 +41,14 @@ export const menuSocialLinks = [
 
 export type NavItem = { label: string; href: string };
 
-/** Inline links in the header (HOME … ABOUT); CTA is separate in `headerCta`. */
+/** Inline links in the header; `headerCta` is the separate Work With Us control. */
 export const headerNavLinks: NavItem[] = [
-  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Resources", href: "/resources" },
   { label: "Services", href: "/services" },
-  { label: "Works", href: "/work" },
-  { label: "Template Shop", href: "/templates" },
-  { label: "About", href: "/about" },
+  { label: "Portfolio", href: "/work" },
+  { label: "Community", href: "/community" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const headerCta: NavItem = {
@@ -59,9 +60,9 @@ export const headerCta: NavItem = {
 export const mainNav: NavItem[] = [...headerNavLinks, headerCta];
 
 export const footerExplore: NavItem[] = [
-  { label: "Works", href: "/work" },
+  { label: "Portfolio", href: "/work" },
   { label: "Services", href: "/services" },
-  { label: "template shop", href: "/templates" },
+  { label: "Resources", href: "/resources" },
 ];
 
 export type TeamMember = {

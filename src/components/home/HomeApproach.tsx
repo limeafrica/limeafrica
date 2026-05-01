@@ -19,19 +19,18 @@ export function HomeApproach() {
 
               <div className="mt-8 space-y-6 font-sans text-[1rem] leading-[1.75] text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
                 <p>
-                  Strategy first, creativity second—always anchored to your goals.
-                  We begin by understanding your business, audience, and the vision
-                  behind your brand, then align every creative decision to measurable
-                  growth.
+                  At Lime, we believe that creativity alone isn&apos;t enough. We
+                  combine strategy, storytelling, and refined execution to create
+                  digital solutions that are both impactful and effective.
                 </p>
                 <p>
-                  The process is transparent and collaborative: clear milestones,
-                  candid feedback, and deliverables you can actually run with.
+                  Our work is guided by a clear, structured process designed to
+                  deliver consistent and measurable growth.
                 </p>
               </div>
 
-              <p className="font-script mt-10 text-[clamp(1.12rem,2.5vw,1.52rem)] leading-snug text-[color:var(--ink)]">
-                Precision, clarity, and strategy—every step of the way.
+              <p className="font-script mt-10 text-[clamp(1.38rem,3.2vw,2rem)] leading-snug text-[color:var(--ink)]">
+                Strategy, story, execution—growth you can measure.
               </p>
 
               <Link

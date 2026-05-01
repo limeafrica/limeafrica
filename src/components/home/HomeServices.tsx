@@ -4,32 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useRef, useState, type TouchEvent } from "react";
 import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/motion/Reveal";
 
 const SWIPE_THRESHOLD = 52;
 
 const slides = [
   {
-    kicker: "Social media management",
+    kicker: "Digital marketing services",
     body:
-      "Intentional strategies and visually cohesive content that strengthens your presence—structured testing across Instagram, TikTok, Pinterest, and more.",
-    href: "/services#social",
-    label: "Learn more",
+      "Integrated paid and organic campaigns—targeting and reporting anchored to pipeline and revenue, not vanity metrics.",
     image: "/Slider1.avif",
   },
   {
-    kicker: "Branding",
+    kicker: "Consulting",
     body:
-      "Strategic, enduring identities built to connect and convert—visual direction, voice, and systems that scale with you.",
-    href: "/services#branding",
-    label: "Learn more",
+      "Strategy workshops on positioning and channel mix—with practical priorities and next steps your team can run.",
     image: "/slider2.avif",
   },
   {
-    kicker: "Website design",
+    kicker: "Resources",
     body:
-      "Beautiful, maintainable sites—semi-custom or fully custom—so your digital home feels elevated and effortless to operate.",
-    href: "/services#web",
-    label: "Learn more",
+      "Templates and playbooks that shorten rollout time—and keep execution consistent across your team.",
     image: "/slider3B.webp",
   },
 ] as const;
@@ -119,33 +114,64 @@ export function HomeServices() {
       <Container className="relative pt-16 sm:pt-20">
         <div className="flex flex-col gap-20 lg:flex-row lg:items-center lg:justify-end lg:gap-24 xl:gap-28">
           <div className="min-w-0 max-w-xl">
-            <h2 className="font-title text-[clamp(2rem,4.5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-[color:var(--ink)]">
-              Services
-            </h2>
+            <Reveal>
+              <div>
+                <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
+                  Our Services
+                </p>
+                <h2 className="font-title mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
+                  What&apos;s In Our Bag?
+                </h2>
+              </div>
+            </Reveal>
 
-            <p className="mt-4 font-sans text-[11px] font-bold uppercase tracking-[0.28em] text-[color:var(--ink)]">
-              {active.kicker}
-            </p>
+            <div className="mt-12 sm:mt-14">
+              <p className="font-sans text-[0.9375rem] font-bold uppercase leading-snug text-[color:var(--ink)] sm:text-[1.0625rem]">
+                {active.kicker}
+              </p>
 
-            <p className="mt-8 font-sans text-[1rem] leading-[1.75] text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
-              {active.body}
-            </p>
+              <p className="mt-8 line-clamp-2 font-sans text-[1rem] leading-snug text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
+                {active.body}
+              </p>
 
-            <Link
-              href={active.href}
-              className="group mt-10 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)]"
-            >
-              <span
-                className="font-sans text-xl font-light leading-none text-[color:var(--ink)]"
-                aria-hidden
+              <Link
+                href="/services"
+                className="group mt-10 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)]"
               >
-                →
-              </span>
-              <span className="uppercase">{active.label}</span>
-            </Link>
+                <span
+                  className="font-sans text-xl font-light leading-none text-[color:var(--ink)]"
+                  aria-hidden
+                >
+                  →
+                </span>
+                <span>View full Services</span>
+              </Link>
+
+              <nav
+                className="mt-8 flex gap-4 sm:mt-10"
+                aria-label="Browse services"
+              >
+                <button
+                  type="button"
+                  aria-label="Previous slide"
+                  onClick={() => go(-1)}
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next slide"
+                  onClick={() => go(1)}
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </nav>
+            </div>
           </div>
 
-          <div className="flex w-full max-w-[var(--editorial-image-w)] shrink-0 flex-col gap-6 lg:w-[min(100%,var(--editorial-image-w))] lg:gap-8">
+          <div className="flex w-full max-w-[var(--editorial-image-w)] shrink-0 flex-col lg:w-[min(100%,var(--editorial-image-w))]">
             <div
               className="relative isolate z-30 aspect-[467/316] w-full overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.14)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:max-h-[min(520px,68vh)] lg:rounded-2xl"
               aria-roledescription="carousel"
@@ -166,28 +192,6 @@ export function HomeServices() {
                 />
               ))}
             </div>
-
-            <nav
-              className="flex w-full justify-end gap-4"
-              aria-label="Browse services"
-            >
-              <button
-                type="button"
-                aria-label="Previous slide"
-                onClick={() => go(-1)}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                aria-label="Next slide"
-                onClick={() => go(1)}
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </nav>
           </div>
         </div>
 

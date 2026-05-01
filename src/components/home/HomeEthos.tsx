@@ -48,15 +48,16 @@ export function HomeEthos() {
 
               <div className="mt-8 max-w-xl space-y-6 font-sans text-[1rem] leading-[1.75] text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
                 <p>
-                  Social media and branding perform best when they&apos;re built
-                  with intention. Design isn&apos;t decoration—it&apos;s strategic
-                  direction, storytelling, and a seamless digital presence your
-                  audience feels connected to.
+                  We are a digital marketing company built to help premium brands
+                  grow with clear strategy, content, and performance-driven
+                  marketing. Rather than chasing visibility alone, we focus on
+                  positioning brands to attract the right audience, build trust,
+                  and convert attention into measurable income.
                 </p>
                 <p>
-                  Our work blends elevated creative direction with disciplined
-                  channel management—so your brand reads cohesive, compelling, and
-                  ready to scale.
+                  We adapt strategies used by some of the world&apos;s top brands
+                  and replicate them for businesses, keeping growth simple,
+                  strategic, and effective.
                 </p>
               </div>
 

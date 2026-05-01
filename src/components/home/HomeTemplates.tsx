@@ -36,7 +36,7 @@ function CheckIcon({ className }: { className?: string }) {
   );
 }
 
-const featureColLeft = [
+const templateFeaturesLeft = [
   {
     title: "Instant access",
     body:
@@ -47,23 +47,13 @@ const featureColLeft = [
     body:
       "Home, About, Services, Portfolio, Testimonials, Inquiry, Blog, Coming Soon, and polished 404 experiences.",
   },
-  {
-    title: "Guaranteed to sell your story",
-    body:
-      "Layouts guide visitors from first impression to inquiry—with emphasis on clarity, proof, and confidence.",
-  },
 ] as const;
 
-const featureColRight = [
+const templateFeaturesRight = [
   {
     title: "Responsive by default",
     body:
       "Designed for phones first. Stunning on tablets and desktops without surprise breakpoints.",
-  },
-  {
-    title: "Launch support",
-    body:
-      "Connect your domain, publish, and share—without wrestling the tech. Includes guidance for analytics basics.",
   },
   {
     title: "Customize to your brand",
@@ -140,11 +130,11 @@ export function HomeTemplates() {
           {/* Right: header + checklist */}
           <div className="min-w-0 lg:col-span-7">
             <Reveal>
-              <p className="text-center font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
+              <p className="text-left font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
                 Customize it yourself
               </p>
 
-              <h2 className="font-title mx-auto mt-5 max-w-xl text-center text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
+              <h2 className="font-title mt-5 max-w-xl text-left text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
                 Website Templates
               </h2>
 
@@ -155,7 +145,7 @@ export function HomeTemplates() {
 
               <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-10 lg:gap-x-12 xl:gap-x-16">
                 <ul className="flex flex-col gap-10">
-                  {featureColLeft.map((item) => (
+                  {templateFeaturesLeft.map((item) => (
                     <li key={item.title} className="flex gap-4">
                       <CheckIcon className="mt-0.5 h-5 w-5 shrink-0" />
                       <div>
@@ -170,7 +160,7 @@ export function HomeTemplates() {
                   ))}
                 </ul>
                 <ul className="flex flex-col gap-10">
-                  {featureColRight.map((item) => (
+                  {templateFeaturesRight.map((item) => (
                     <li key={item.title} className="flex gap-4">
                       <CheckIcon className="mt-0.5 h-5 w-5 shrink-0" />
                       <div>
@@ -186,7 +176,7 @@ export function HomeTemplates() {
                 </ul>
               </div>
 
-              <div className="mt-12 flex justify-center sm:mt-14">
+              <div className="mt-12 flex justify-start sm:mt-14">
                 <Link
                   href="/templates"
                   className="inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92"

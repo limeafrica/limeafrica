@@ -9,22 +9,22 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    id: "social",
-    title: "Social media management",
+    id: "digital-marketing",
+    title: "Digital marketing services",
     body:
-      "Editorial calendars, creative direction, community care, and reporting that connects dots between content and revenue. We specialize in Instagram, TikTok, and Pinterest—with testing frameworks that respect your brand voice.",
+      "Integrated paid and organic campaigns—targeting and reporting anchored to pipeline and revenue, not vanity metrics.",
   },
   {
-    id: "branding",
-    title: "Branding",
+    id: "consulting",
+    title: "Consulting",
     body:
-      "Positioning, visual identity, messaging, and guidelines your team can actually use. Built for consistency across pitch decks, packaging, campaigns, and digital touchpoints.",
+      "Strategy workshops on positioning and channel mix—with practical priorities and next steps your team can run.",
   },
   {
-    id: "web",
-    title: "Website design",
+    id: "resources",
+    title: "Resources",
     body:
-      "Semi-custom and fully custom builds—strategy, UX, UI, and launch support. Fast performance, accessible layouts, and CMS workflows that don’t require a developer for every edit.",
+      "Templates and playbooks that shorten rollout time—and keep execution consistent across your team.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function ServicesPage() {
                 <h2 className="font-title text-3xl text-[color:var(--ink)] sm:text-4xl">
                   {p.title}
                 </h2>
-                <p className="font-sans mt-6 max-w-3xl text-base leading-relaxed text-[color:var(--ink-muted)]">
+                <p className="font-sans mt-6 max-w-3xl text-base leading-snug text-[color:var(--ink-muted)] line-clamp-2">
                   {p.body}
                 </p>
               </article>
