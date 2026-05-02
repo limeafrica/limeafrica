@@ -20,7 +20,7 @@ export const site = {
   location: "Pan-African studio",
   established: "2020",
   email: "hello@limeafrica.com",
-  /** Footer Connect — one line per row (edit here or add lines). */
+  /** Footer Connect - one line per row (edit here or add lines). */
   officeAddressLines: ["Lagos, Nigeria"] as const,
   /** Handle @limeafrica across networks (URLs use the same slug where supported). */
   social: {
@@ -32,7 +32,7 @@ export const site = {
   },
 };
 
-/** Staggered menu + shared outbound social rows — same handle, platform-specific URLs */
+/** Staggered menu + shared outbound social rows - same handle, platform-specific URLs */
 export const menuSocialLinks = [
   { label: "Instagram", link: site.social.instagramUrl },
   { label: "LinkedIn", link: site.social.linkedinUrl },
@@ -45,8 +45,8 @@ export type NavItem = { label: string; href: string };
 /** Inline links in the header; `headerCta` is the separate Work With Us control. */
 export const headerNavLinks: NavItem[] = [
   { label: "About Us", href: "/about" },
-  { label: "Resources", href: "/resources" },
   { label: "Services", href: "/services" },
+  { label: "Resources", href: "/resources" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Community", href: "/community" },
   { label: "Blog", href: "/blog" },
@@ -77,30 +77,26 @@ export const team: TeamMember[] = [
   {
     name: "Lisa Numa",
     role: "Founder/ Creative Director",
-    bio: "Builds narrative systems that convert—specializing in platform strategy, editorial calendars, and growth experiments for founder-led brands.",
-    portrait:
-      "https://images.unsplash.com/photo-1573497019236-17bfcbacbe58?auto=format&w=1600&q=90",
+    bio: "Steers the studio’s creative vision end to end: brand narrative, campaign coherence, and the standards that keep client work sharp, consistent, and aligned with growth goals.",
+    portrait: "/Lisa Numa.webp",
   },
   {
     name: "Lisa Udumorugbo",
     role: "Lead Community Manager",
-    bio: "Translates positioning into visual language: marks, typography systems, and guidelines that stay coherent from pitch deck to packaging.",
-    portrait:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&w=1600&q=90",
+    bio: "Shapes how audiences experience LimeAfrica day to day through programs, conversations, and partnerships that deepen trust and keep the community active, informed, and connected.",
+    portrait: "/Lisa Numa.webp",
   },
   {
     name: "Chibuzo Etozuo",
     role: "Email Marketing Specialist",
-    bio: "Ships fast, refined web experiences—information architecture, UI craft, and launch support so your digital home feels effortless to run.",
-    portrait:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=1600&q=90",
+    bio: "Builds email programs that earn opens and clicks: segmentation, storytelling in the inbox, automation where it helps, and reporting so every send ties back to engagement and revenue.",
+    portrait: "/Chibuzo Etozuo.webp",
   },
   {
     name: "Nkechinyere Juliet Ikeyi",
     role: "Lead Creative Designer",
-    bio: "Turns performance data into clear next steps—pipelines, attribution, and reporting that keep spend accountable and creative decisions grounded in outcomes.",
-    portrait:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&w=1600&q=90",
+    bio: "Owns the visual layer of campaigns and identities: layout, typography, color, and craft details that make strategy easy to see and remember across every asset.",
+    portrait: "/Nkechinyere Juliet Ikeyi.webp",
   },
 ];
 
@@ -119,7 +115,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Organic Pinterest became a real channel—not vanity metrics. Traffic to recipes and email sign-ups finally moved in parallel.",
+      "Organic Pinterest became a real channel, not vanity metrics. Traffic to recipes and email sign-ups finally moved in parallel.",
     attribution: "Renée M.",
     company: "YMI Jeans contributor network",
   },

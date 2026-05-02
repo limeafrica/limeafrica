@@ -84,8 +84,11 @@ export function AboutValues() {
               <ul className="mt-8 space-y-7 sm:mt-10 sm:space-y-8 lg:mt-10 lg:space-y-9">
                 {values.map((item, i) => (
                   <Reveal key={item.n} delay={0.05 * i}>
-                    <li>
-                      <h3 className="font-title text-lg font-bold leading-tight tracking-tight text-[color:var(--ink)] sm:text-xl">
+                    <li className="border-l-[3px] border-[color:var(--brand-yellow)] pl-5 sm:pl-6">
+                      <p className="font-sans text-[11px] font-bold tabular-nums text-[color:var(--brand-yellow)]">
+                        {item.n}
+                      </p>
+                      <h3 className="font-title mt-1 text-lg font-bold leading-tight tracking-tight text-[color:var(--ink)] sm:text-xl">
                         {item.title}
                       </h3>
                       <p className="font-sans mt-2.5 text-[0.9375rem] leading-snug text-[color:var(--ink-muted)] sm:mt-3 sm:text-base">
