@@ -1,8 +1,13 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useRef, useState, type TouchEvent } from "react";
+import { useCallback, useMemo, useRef, useState, type TouchEvent } from "react";
+import {
+  getCarouselSlideTransition,
+  getCarouselSlideVariants,
+} from "@/components/motion/carouselSlide";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -65,13 +70,24 @@ function ChevronRight({ className }: { className?: string }) {
 }
 
 export function HomeServices() {
-  const [page, setPage] = useState(0);
   const n = slides.length;
+  const [[page, direction], setCarousel] = useState<[number, number]>([0, 0]);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const slideVariants = useMemo(
+    () => getCarouselSlideVariants(!!reduceMotion),
+    [reduceMotion],
+  );
+
+  const slideTransition = useMemo(
+    () => getCarouselSlideTransition(!!reduceMotion),
+    [reduceMotion],
+  );
 
   const go = useCallback(
     (dir: -1 | 1) => {
-      setPage((p) => (p + dir + n) % n);
+      setCarousel(([p]) => [(p + dir + n) % n, dir]);
     },
     [n],
   );
@@ -124,14 +140,26 @@ export function HomeServices() {
               </div>
             </Reveal>
 
-            <div className="mt-12 sm:mt-14">
-              <p className="font-sans text-[0.9375rem] font-bold uppercase leading-snug text-[color:var(--ink)] sm:text-[1.0625rem]">
-                {active.kicker}
-              </p>
+            <div className="mt-12 overflow-hidden sm:mt-14">
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={page}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                >
+                  <p className="font-sans text-[0.9375rem] font-bold uppercase leading-snug text-[color:var(--ink)] sm:text-[1.0625rem]">
+                    {active.kicker}
+                  </p>
 
-              <p className="mt-8 line-clamp-2 font-sans text-[1rem] leading-snug text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
-                {active.body}
-              </p>
+                  <p className="mt-8 line-clamp-2 font-sans text-[1rem] leading-snug text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
+                    {active.body}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
 
               <Link
                 href="/services"
@@ -172,24 +200,32 @@ export function HomeServices() {
 
           <div className="flex w-full max-w-[var(--editorial-image-w)] shrink-0 flex-col lg:w-[min(100%,var(--editorial-image-w))]">
             <div
-              className="relative isolate z-30 aspect-[467/316] w-full overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.14)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:max-h-[min(520px,68vh)] lg:rounded-2xl"
+              className="relative isolate z-30 aspect-[467/316] w-full overflow-hidden rounded-xl bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:max-h-[min(520px,68vh)] lg:rounded-2xl"
               aria-roledescription="carousel"
               aria-label="Service highlights"
             >
-              {slides.map((s, i) => (
-                <Image
-                  key={s.image}
-                  src={s.image}
-                  alt=""
-                  fill
-                  unoptimized
-                  sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), min(50vw - 3rem, 520px)"
-                  className={`absolute inset-0 object-cover object-center ${
-                    i === page ? "z-10 opacity-100" : "z-0 opacity-0"
-                  }`}
-                  priority={false}
-                />
-              ))}
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={page}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={slideTransition}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={active.image}
+                    alt=""
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), min(50vw - 3rem, 520px)"
+                    className="object-cover object-center"
+                    priority={false}
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

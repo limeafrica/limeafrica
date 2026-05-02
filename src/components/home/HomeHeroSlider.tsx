@@ -18,6 +18,7 @@ import {
   type Variants,
 } from "framer-motion";
 import { Container } from "@/components/ui/Container";
+import { heroOutlineCtaClassName } from "@/components/ui/heroOutlineCta";
 
 const AUTO_MS = 5000;
 
@@ -42,7 +43,9 @@ const SPRING_SNAPPY: Transition = {
 const EASE_OUT: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const heroCtaClassName =
-  "mt-6 inline-flex min-h-11 w-fit min-w-0 max-w-full items-center justify-center rounded-full border border-[color:var(--brand-white)]/35 px-5 py-2.5 text-center text-[11px] font-semibold uppercase leading-snug tracking-[0.18em] text-[color:var(--brand-white)] transition hover:border-[color:var(--brand-yellow)] hover:bg-[color:var(--brand-yellow)] hover:text-[color:var(--ink)] outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--ink)] sm:mt-8 sm:px-6 sm:tracking-[0.22em]";
+  "mt-6 " +
+  heroOutlineCtaClassName +
+  " sm:mt-8";
 
 const slides = [
   {

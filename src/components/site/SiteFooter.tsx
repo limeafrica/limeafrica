@@ -1,6 +1,25 @@
+import type { ComponentType } from "react";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedinIn,
+  FaTiktok,
+} from "react-icons/fa";
 import Link from "next/link";
 import { SiteLogo } from "@/components/site/SiteLogo";
 import { mainNav, menuSocialLinks, site } from "@/content/site";
+
+type SocialLabel = (typeof menuSocialLinks)[number]["label"];
+
+const socialIconByLabel: Record<
+  SocialLabel,
+  ComponentType<{ className?: string }>
+> = {
+  Instagram: FaInstagram,
+  LinkedIn: FaLinkedinIn,
+  Facebook: FaFacebook,
+  TikTok: FaTiktok,
+};
 
 function IconMail({ className }: { className?: string }) {
   return (
@@ -21,17 +40,42 @@ function IconMail({ className }: { className?: string }) {
   );
 }
 
+function IconArrowUpRight({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden
+      className={className}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.5 13.5L19 6M19 6H12.5M19 6v6.5"
+      />
+    </svg>
+  );
+}
+
 const footerLink =
   "font-sans text-[0.9375rem] font-medium text-[color:var(--ink)]/85 transition-colors hover:text-[color:var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]";
 
 const eyebrow =
   "font-sans text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--ink)]/55";
 
+const socialIconLink =
+  "inline-flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--ink)]/22 text-[color:var(--ink)]/85 transition-colors hover:border-[color:var(--ink)]/45 hover:text-[color:var(--ink)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]";
+
+const footerBarLink =
+  "font-sans text-xs text-[color:var(--ink)]/62 underline-offset-2 transition-colors hover:text-[color:var(--ink)]/85 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]";
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[color:var(--brand-yellow)] text-[color:var(--ink)]">
+    <footer className="relative z-10 bg-[color:var(--brand-yellow)] text-[color:var(--ink)]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[color:var(--ink)]/10" aria-hidden />
 
       <div className="site-shell px-6 pb-14 pt-16 sm:pb-16 sm:pt-20 lg:pb-20 lg:pt-24">
@@ -42,18 +86,43 @@ export function SiteFooter() {
             <p className="font-sans mt-6 max-w-md text-[0.9375rem] leading-[1.65] text-[color:var(--ink)]/88">
               {site.tagline}
             </p>
+            <ul
+              className="mt-6 flex flex-wrap gap-3"
+              aria-label="Social profiles"
+            >
+              {menuSocialLinks.map((item) => {
+                const Icon = socialIconByLabel[item.label];
+                return (
+                  <li key={item.label}>
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={socialIconLink}
+                      aria-label={`${site.name} on ${item.label}`}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
           {/* Navigation */}
           <nav
-            className="lg:col-span-4 xl:col-span-4"
+            className="lg:col-span-4 xl:col-span-4 lg:w-fit lg:max-w-full lg:justify-self-center"
             aria-label="Footer navigation"
           >
             <p className={eyebrow}>Navigate</p>
-            <ul className="mt-6 space-y-3.5">
+            <ul className="mt-6 space-y-1">
               {mainNav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className={footerLink}>
+                  <Link
+                    href={item.href}
+                    className={`group inline-flex items-center gap-2 leading-snug ${footerLink}`}
+                  >
+                    <IconArrowUpRight className="h-5 w-5 shrink-0 text-[color:var(--ink)]/55 transition-colors group-hover:text-[color:var(--ink)]/85" />
                     {item.label}
                   </Link>
                 </li>
@@ -64,7 +133,7 @@ export function SiteFooter() {
           {/* Connect */}
           <div className="lg:col-span-3 xl:col-span-4">
             <p className={eyebrow}>Connect</p>
-            <div className="mt-6 space-y-6">
+            <div className="mt-6">
               <a
                 href={`mailto:${site.email}`}
                 className={`group inline-flex items-start gap-3 ${footerLink}`}
@@ -74,50 +143,64 @@ export function SiteFooter() {
                   {site.email}
                 </span>
               </a>
+            </div>
 
-              <div>
-                <p className="font-sans text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--ink)]/70">
-                  {site.social.instagram}
-                </p>
-                <ul
-                  className="mt-3 flex flex-wrap gap-x-5 gap-y-2"
-                  aria-label="Social profiles"
-                >
-                  {menuSocialLinks.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`${footerLink} text-[0.875rem]`}
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <p className="font-sans max-w-xs text-sm leading-relaxed text-[color:var(--ink)]/78">
-                {site.worldwide}.
-              </p>
-
-              <Link
-                href="/work-with-us"
-                className="inline-flex cursor-pointer items-center justify-center rounded-full bg-[color:var(--ink)] px-8 py-3.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--brand-yellow)] transition hover:opacity-92 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]"
-              >
-                Work With Us
-              </Link>
+            <p className={`${eyebrow} mt-10`}>Company address</p>
+            <div className="mt-6">
+              <address className="font-sans not-italic text-[0.9375rem] leading-relaxed text-[color:var(--ink)]/78">
+                {site.officeAddressLines.map((line, i) => (
+                  <span key={i} className="block">
+                    {line}
+                  </span>
+                ))}
+              </address>
             </div>
           </div>
         </div>
       </div>
 
       <div className="border-t border-[color:var(--ink)]/12">
-        <div className="site-shell px-6 py-8 text-center">
-          <p className="font-sans text-xs text-[color:var(--ink)]/62">
-            © {year} {site.name}. All rights reserved.
-          </p>
+        <div className="site-shell px-6 py-8">
+          <div className="grid grid-cols-1 gap-6 text-center sm:grid-cols-3 sm:items-center sm:gap-8 sm:text-left">
+            <p className="font-sans text-xs text-[color:var(--ink)]/62 sm:text-left">
+              © {year}{" "}
+              <strong className="font-bold text-[color:var(--ink)]/78">
+                {site.name}
+              </strong>
+              . All rights reserved.
+            </p>
+            <nav
+              className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs sm:justify-center"
+              aria-label="Legal"
+            >
+              <Link href="/cookies" className={footerBarLink}>
+                Cookies policy
+              </Link>
+              <span className="text-[color:var(--ink)]/35" aria-hidden>
+                ·
+              </span>
+              <Link href="/privacy" className={footerBarLink}>
+                Privacy policy
+              </Link>
+              <span className="text-[color:var(--ink)]/35" aria-hidden>
+                ·
+              </span>
+              <Link href="/terms" className={footerBarLink}>
+                Terms and conditions
+              </Link>
+            </nav>
+            <p className="font-sans text-xs text-[color:var(--ink)]/62 sm:text-right">
+              Design &amp; Dev By:{" "}
+              <a
+                href="https://expresscreo.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[color:var(--ink)]/75 underline-offset-2 transition-colors hover:text-[color:var(--ink)] hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]"
+              >
+                Express<strong className="font-bold text-[color:var(--ink)]">Creo</strong>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

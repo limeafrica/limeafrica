@@ -1,6 +1,11 @@
 "use client";
 
-import { useCallback, useRef, useState, type TouchEvent } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useCallback, useMemo, useRef, useState, type TouchEvent } from "react";
+import {
+  getCarouselSlideTransition,
+  getCarouselSlideVariants,
+} from "@/components/motion/carouselSlide";
 import { Reveal } from "@/components/motion/Reveal";
 import { TeamMemberPortrait } from "@/components/home/TeamMemberPortrait";
 import { team } from "@/content/site";
@@ -46,15 +51,28 @@ function ChevronRight({ className }: { className?: string }) {
 
 export function HomeTeamMembers() {
   const n = team.length;
-  const [memberIdx, setMemberIdx] = useState(0);
+  const [[memberIdx, direction], setCarousel] = useState<[number, number]>([
+    0, 0,
+  ]);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const memberVariants = useMemo(
+    () => getCarouselSlideVariants(!!reduceMotion),
+    [reduceMotion],
+  );
+
+  const memberTransition = useMemo(
+    () => getCarouselSlideTransition(!!reduceMotion),
+    [reduceMotion],
+  );
 
   const nextMember = useCallback(() => {
-    setMemberIdx((i) => (i + 1) % n);
+    setCarousel(([i]) => [(i + 1) % n, 1]);
   }, [n]);
 
   const prevMember = useCallback(() => {
-    setMemberIdx((i) => (i - 1 + n) % n);
+    setCarousel(([i]) => [(i - 1 + n) % n, -1]);
   }, [n]);
 
   const active = team[memberIdx];
@@ -89,21 +107,35 @@ export function HomeTeamMembers() {
       <div className="mx-auto mt-14 max-w-[320px] lg:hidden">
         <Reveal>
           <article
-            className="flex touch-pan-y flex-col items-center text-center"
+            className="touch-pan-y overflow-hidden text-center"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <TeamMemberPortrait
-              key={active.name}
-              name={active.name}
-              src={active.portrait}
-            />
-            <h3 className="font-title mt-8 text-xl font-bold text-[color:var(--ink)]">
-              {active.name}
-            </h3>
-            <p className="font-sans mt-3 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
-              {active.role}
-            </p>
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={memberIdx}
+                custom={direction}
+                variants={memberVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={memberTransition}
+                className="flex flex-col items-center"
+              >
+                <TeamMemberPortrait
+                  name={active.name}
+                  src={active.portrait}
+                  role={active.role}
+                  bio={active.bio}
+                />
+                <h3 className="font-title mt-8 text-xl font-bold text-[color:var(--ink)]">
+                  {active.name}
+                </h3>
+                <p className="font-sans mt-3 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
+                  {active.role}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </article>
         </Reveal>
 
@@ -130,13 +162,18 @@ export function HomeTeamMembers() {
         </nav>
       </div>
 
-      {/* Desktop: all members */}
-      <div className="mx-auto mt-14 hidden max-w-5xl gap-12 lg:mt-16 lg:grid lg:grid-cols-3 lg:gap-12">
+      {/* Desktop: all members in one row */}
+      <div className="mx-auto mt-14 hidden max-w-7xl gap-6 sm:gap-8 lg:mt-16 lg:grid lg:grid-cols-4 lg:gap-8 xl:gap-10">
         {team.map((member, i) => (
           <Reveal key={member.name} delay={0.06 * i}>
             <article className="flex flex-col items-center text-center">
               <div className="w-full max-w-[320px] sm:max-w-none">
-                <TeamMemberPortrait name={member.name} src={member.portrait} />
+                <TeamMemberPortrait
+                  name={member.name}
+                  src={member.portrait}
+                  role={member.role}
+                  bio={member.bio}
+                />
               </div>
               <h3 className="font-title mt-8 text-xl font-bold text-[color:var(--ink)] sm:text-[1.35rem]">
                 {member.name}

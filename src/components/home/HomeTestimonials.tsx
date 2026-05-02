@@ -17,7 +17,7 @@ export function HomeTestimonials() {
         <div className="mt-14 grid gap-8 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.company} delay={0.06 * i}>
-              <blockquote className="flex h-full flex-col rounded-2xl border border-[color:var(--hairline)] bg-[color:var(--surface-subtle)] p-8 shadow-[0_20px_60px_-28px_rgba(26,22,18,0.12)]">
+              <blockquote className="flex h-full flex-col rounded-2xl border border-[color:var(--hairline)] bg-[color:var(--surface-subtle)] p-8">
                 <p className="font-sans text-lg leading-snug text-[color:var(--ink)] sm:text-xl">
                   &ldquo;{t.quote}&rdquo;
                 </p>

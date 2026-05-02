@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { workItems } from "@/content/work";
 
 export const metadata: Metadata = {
-  title: "Works",
+  title: "Portfolio",
 };
 
 export default function WorkIndexPage() {
@@ -23,7 +23,7 @@ export default function WorkIndexPage() {
           <div className="grid gap-14 md:grid-cols-2">
             {workItems.map((project, i) => (
               <Reveal key={project.slug} delay={0.05 * i}>
-                <Link href={`/work/${project.slug}`} className="group block">
+                <Link href={`/portfolio/${project.slug}`} className="group block">
                   <div className="relative aspect-[16/11] overflow-hidden bg-[color:var(--hairline)]">
                     <Image
                       src={project.imageSrc}

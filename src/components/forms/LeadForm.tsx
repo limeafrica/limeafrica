@@ -81,9 +81,9 @@ export function LeadForm({
       </div>
       <div>
         <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--ink-muted)]">
-          Company Instagram (optional)
+          Company Name
         </label>
-        <input name="instagram" className={inputClass} />
+        <input name="company" className={inputClass} />
       </div>
       <div>
         <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--ink-muted)]">

@@ -1,9 +1,13 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import {
+  getCarouselSlideTransition,
+  getCarouselSlideVariants,
+} from "@/components/motion/carouselSlide";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -53,12 +57,12 @@ const templateFeaturesRight = [
   {
     title: "Content Calendars",
     body:
-      "Planned monthly content schedule aligned with campaign goals, key dates, content pillars, content type, captions, posting frequency and much more.",
+      "Planned monthly content schedule aligned with campaign goals, key dates, content pillars and much more.",
   },
   {
     title: "​Company Pack",
     body:
-      "A structured document outlining brand positioning, objectives, target audience, messaging and tone of voice. It also includes logos, brand guidelines and everything to know about the company.",
+      "A structured document outlining brand positioning, objectives, target audience and lots more.",
   },
 ] as const;
 
@@ -71,13 +75,23 @@ const TEMPLATE_SLIDES = [
 const SLIDE_INTERVAL_MS = 4500;
 
 export function HomeTemplates() {
-  const [page, setPage] = useState(0);
+  const [[page, direction], setCarousel] = useState<[number, number]>([0, 1]);
   const reduceMotion = useReducedMotion();
+
+  const slideVariants = useMemo(
+    () => getCarouselSlideVariants(!!reduceMotion),
+    [reduceMotion],
+  );
+
+  const slideTransition = useMemo(
+    () => getCarouselSlideTransition(!!reduceMotion),
+    [reduceMotion],
+  );
 
   useEffect(() => {
     if (reduceMotion) return;
     const id = window.setInterval(() => {
-      setPage((p) => (p + 1) % TEMPLATE_SLIDES.length);
+      setCarousel(([p]) => [(p + 1) % TEMPLATE_SLIDES.length, 1]);
     }, SLIDE_INTERVAL_MS);
     return () => window.clearInterval(id);
   }, [reduceMotion]);
@@ -92,20 +106,28 @@ export function HomeTemplates() {
             aria-roledescription="carousel"
             aria-label="Template previews"
           >
-            {TEMPLATE_SLIDES.map((src, i) => (
-              <Image
-                key={src}
-                src={src}
-                alt=""
-                fill
-                unoptimized
-                sizes="(max-width: 1023px) min(calc(100vw - 2rem), 100vw), 40vw"
-                className={`absolute inset-0 object-cover object-center transition-opacity duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  i === page ? "z-10 opacity-100" : "z-0 opacity-0"
-                }`}
-                priority={false}
-              />
-            ))}
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={page}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
+                className="absolute inset-0 z-10"
+              >
+                <Image
+                  src={TEMPLATE_SLIDES[page]}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(max-width: 1023px) min(calc(100vw - 2rem), 100vw), 40vw"
+                  className="object-cover object-center"
+                  priority={false}
+                />
+              </motion.div>
+            </AnimatePresence>
             <div
               className="pointer-events-none absolute inset-0 z-[12] bg-gradient-to-t from-[color:var(--ink)]/50 to-transparent"
               aria-hidden
@@ -181,7 +203,7 @@ export function HomeTemplates() {
                   href="/templates"
                   className="inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92"
                 >
-                  View templates
+                  View all templates
                 </Link>
               </div>
             </Reveal>

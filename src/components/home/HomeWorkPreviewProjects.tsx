@@ -1,13 +1,19 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
   useCallback,
+  useMemo,
   useRef,
   useState,
   type TouchEvent,
 } from "react";
+import {
+  getCarouselSlideTransition,
+  getCarouselSlideVariants,
+} from "@/components/motion/carouselSlide";
 import { Reveal } from "@/components/motion/Reveal";
 import type { WorkItem } from "@/content/work";
 
@@ -57,15 +63,26 @@ export function HomeWorkPreviewProjects({
   projects,
 }: HomeWorkPreviewProjectsProps) {
   const n = projects.length;
-  const [idx, setIdx] = useState(0);
+  const [[idx, direction], setCarousel] = useState<[number, number]>([0, 0]);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const reduceMotion = useReducedMotion();
+
+  const slideVariants = useMemo(
+    () => getCarouselSlideVariants(!!reduceMotion),
+    [reduceMotion],
+  );
+
+  const slideTransition = useMemo(
+    () => getCarouselSlideTransition(!!reduceMotion),
+    [reduceMotion],
+  );
 
   const next = useCallback(() => {
-    setIdx((i) => (i + 1) % n);
+    setCarousel(([i]) => [(i + 1) % n, 1]);
   }, [n]);
 
   const prev = useCallback(() => {
-    setIdx((i) => (i - 1 + n) % n);
+    setCarousel(([i]) => [(i - 1 + n) % n, -1]);
   }, [n]);
 
   const active = projects[idx];
@@ -102,39 +119,54 @@ export function HomeWorkPreviewProjects({
       <div className="mt-14 md:hidden">
         <Reveal>
           <article
-            className="flex touch-pan-y flex-col items-center text-center"
+            className="touch-pan-y overflow-hidden text-center"
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <Link
-              key={active.slug}
-              href={`/work/${active.slug}`}
-              className="group block w-full text-center"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
-                <Image
-                  src={active.imageSrc}
-                  alt={active.imageAlt}
-                  fill
-                  unoptimized
-                  className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
-                <p className="absolute bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-sand)]">
-                  {active.category}
-                </p>
-              </div>
-              <p className="font-title mt-5 text-2xl text-[color:var(--brand-white)]">
-                {active.title}
-              </p>
-              <span className="mt-3 flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
-                View case study
-                <span aria-hidden className="transition group-hover:translate-x-1">
-                  →
-                </span>
-              </span>
-            </Link>
+            <AnimatePresence initial={false} custom={direction} mode="wait">
+              <motion.div
+                key={idx}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={slideTransition}
+                className="flex flex-col items-center"
+              >
+                <Link
+                  href={`/portfolio/${active.slug}`}
+                  className="group block w-full text-center"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
+                    <Image
+                      src={active.imageSrc}
+                      alt={active.imageAlt}
+                      fill
+                      unoptimized
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
+                    <p className="absolute bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-sand)]">
+                      {active.category}
+                    </p>
+                  </div>
+                  <p className="font-title mt-5 text-2xl text-[color:var(--brand-white)]">
+                    {active.title}
+                  </p>
+                  <span className="mt-3 flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
+                    See more
+                    <span
+                      aria-hidden
+                      className="transition group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </span>
+                </Link>
+              </motion.div>
+            </AnimatePresence>
           </article>
         </Reveal>
 
@@ -154,7 +186,7 @@ export function HomeWorkPreviewProjects({
       <div className="mt-14 hidden gap-10 md:grid md:grid-cols-3 md:gap-8">
         {projects.map((project, i) => (
           <Reveal key={project.slug} delay={0.07 * i}>
-            <Link href={`/work/${project.slug}`} className="group block">
+            <Link href={`/portfolio/${project.slug}`} className="group block">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
                 <Image
                   src={project.imageSrc}
@@ -173,7 +205,7 @@ export function HomeWorkPreviewProjects({
                 {project.title}
               </p>
               <span className="mt-3 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
-                View case study
+                See more
                 <span aria-hidden className="transition group-hover:translate-x-1">
                   →
                 </span>

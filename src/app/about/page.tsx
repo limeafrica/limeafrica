@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { AboutClosingCta } from "@/components/about/AboutClosingCta";
-import { AboutIntro } from "@/components/about/AboutIntro";
+import { AboutHero } from "@/components/about/AboutHero";
 import { AboutTeamSection } from "@/components/about/AboutTeamSection";
 import { AboutValues } from "@/components/about/AboutValues";
-import { AboutVisionBlock } from "@/components/about/AboutVisionBlock";
+import { AboutValuesFixedBackdrop } from "@/components/about/AboutValuesFixedBackdrop";
 import { AboutWhatWeDo } from "@/components/about/AboutWhatWeDo";
-import { PageIntro } from "@/components/site/PageIntro";
+import { HomeFinalCta } from "@/components/home/HomeFinalCta";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -15,18 +15,14 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="flex-1">
-      <PageIntro
-        eyebrow="About"
-        title="Who we are"
-        subtitle={site.tagline}
-      />
-      <AboutIntro />
+    <main className="relative flex-1">
+      <AboutValuesFixedBackdrop />
+      <AboutHero />
       <AboutWhatWeDo />
       <AboutValues />
-      <AboutVisionBlock />
       <AboutTeamSection />
       <AboutClosingCta />
+      <HomeFinalCta />
     </main>
   );
 }

@@ -11,8 +11,8 @@ export type WorkItem = {
 export const workItems: WorkItem[] = [
   {
     slug: "lagoon-retreat",
-    title: "Lagoon Retreat",
-    category: "BRAND DESIGN",
+    title: "The Designers Framework by Anita Vwede",
+    category: "2026",
     packageLabel: "VISUAL IDENTITY",
     excerpt:
       "A hospitality concept needed a calm, elevated identity across web, social, and signage. We delivered a mark, palette, and pattern language that feels sun-warmed and intentional—extended into launch campaigns and on-property touchpoints.",
@@ -22,8 +22,8 @@ export const workItems: WorkItem[] = [
   },
   {
     slug: "farm-folio-kitchen",
-    title: "Farm & Folio Kitchen",
-    category: "WEBSITE DESIGN",
+    title: "Design Week Lagos",
+    category: "2025",
     packageLabel: "FULLY-CUSTOM WEBSITE DESIGN",
     excerpt:
       "A weekly micro-bakery and supper club wanted ordering to feel as considered as the food. We structured a mobile-first journey with preorder windows, rotating menus, and email capture that keeps the community loop tight.",
@@ -33,8 +33,8 @@ export const workItems: WorkItem[] = [
   },
   {
     slug: "meridian-apparel",
-    title: "Meridian Apparel",
-    category: "SOCIAL MEDIA MANAGEMENT",
+    title: "Raise The Spirits Campaign",
+    category: "2026",
     packageLabel: "INSTAGRAM + TIKTOK",
     excerpt:
       "Organic growth through narrative: founder story, product drops, and UGC—in a testing cadence that turned reach into repeat buyers without diluting brand heat.",

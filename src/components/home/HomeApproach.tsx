@@ -34,7 +34,7 @@ export function HomeApproach() {
               </p>
 
               <Link
-                href="/work"
+                href="/portfolio"
                 className="group mt-10 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)] transition"
               >
                 <span

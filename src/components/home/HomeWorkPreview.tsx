@@ -20,18 +20,17 @@ export function HomeWorkPreview() {
                 Portfolio
               </p>
               <h2 className="font-title mx-auto mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--brand-white)] sm:mx-0">
-                Works
+                Our Work Speaks
               </h2>
               <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-[color:var(--brand-white)]/72 sm:mx-0 sm:text-base">
-                Brand identities, websites, and channel strategies—crafted for
-                founders across hospitality, consumer, and digital-first teams.
+              A look into how we’ve helped brands show up, stand out and grow through thoughtful strategy, refined content, and intentional digital execution.
               </p>
             </div>
             <Link
-              href="/work"
+              href="/portfolio"
               className="inline-flex w-fit shrink-0 self-center rounded-full border border-[color:var(--brand-white)]/35 px-6 py-2.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--brand-white)] transition hover:border-[color:var(--brand-yellow)] hover:bg-[color:var(--brand-yellow)] hover:text-[color:var(--ink)] sm:self-auto"
             >
-              View all work
+              View our Portfolio
             </Link>
           </div>
         </Reveal>

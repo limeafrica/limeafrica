@@ -29,7 +29,7 @@ export default async function WorkCasePage({ params }: Props) {
       <section className="border-b border-[color:var(--hairline)]">
         <Container className="py-12 sm:py-16">
           <Link
-            href="/work"
+            href="/portfolio"
             className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink-muted)] hover:text-[color:var(--ink)]"
           >
             ← Back to projects

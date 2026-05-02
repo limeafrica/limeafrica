@@ -18,9 +18,10 @@ export const site = {
   headerTagline: "Pan-African studio",
   tagline: "Strategic media for brands built to lead across the continent and beyond.",
   location: "Pan-African studio",
-  worldwide: "Serving clients worldwide",
   established: "2020",
   email: "hello@limeafrica.com",
+  /** Footer Connect — one line per row (edit here or add lines). */
+  officeAddressLines: ["Lagos, Nigeria"] as const,
   /** Handle @limeafrica across networks (URLs use the same slug where supported). */
   social: {
     instagram: "@limeafrica",
@@ -46,7 +47,7 @@ export const headerNavLinks: NavItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Resources", href: "/resources" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/work" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Community", href: "/community" },
   { label: "Blog", href: "/blog" },
 ];
@@ -60,7 +61,7 @@ export const headerCta: NavItem = {
 export const mainNav: NavItem[] = [...headerNavLinks, headerCta];
 
 export const footerExplore: NavItem[] = [
-  { label: "Portfolio", href: "/work" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "Services", href: "/services" },
   { label: "Resources", href: "/resources" },
 ];
@@ -74,25 +75,32 @@ export type TeamMember = {
 
 export const team: TeamMember[] = [
   {
-    name: "Nicole",
-    role: "CEO / Social Media Manager",
+    name: "Lisa Numa",
+    role: "Founder/ Creative Director",
     bio: "Builds narrative systems that convert—specializing in platform strategy, editorial calendars, and growth experiments for founder-led brands.",
     portrait:
       "https://images.unsplash.com/photo-1573497019236-17bfcbacbe58?auto=format&w=1600&q=90",
   },
   {
-    name: "Casey",
-    role: "Brand Design Specialist",
+    name: "Lisa Udumorugbo",
+    role: "Lead Community Manager",
     bio: "Translates positioning into visual language: marks, typography systems, and guidelines that stay coherent from pitch deck to packaging.",
     portrait:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&w=1600&q=90",
   },
   {
-    name: "Emily",
-    role: "Website Design Lead",
+    name: "Chibuzo Etozuo",
+    role: "Email Marketing Specialist",
     bio: "Ships fast, refined web experiences—information architecture, UI craft, and launch support so your digital home feels effortless to run.",
     portrait:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=1600&q=90",
+  },
+  {
+    name: "Nkechinyere Juliet Ikeyi",
+    role: "Lead Creative Designer",
+    bio: "Turns performance data into clear next steps—pipelines, attribution, and reporting that keep spend accountable and creative decisions grounded in outcomes.",
+    portrait:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&w=1600&q=90",
   },
 ];
 

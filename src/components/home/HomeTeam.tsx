@@ -4,7 +4,12 @@ import { HomeTeamMembers } from "@/components/home/HomeTeamMembers";
 
 export function HomeTeam() {
   return (
-    <section className="bg-[color:var(--brand-yellow)] py-20 sm:py-24 lg:py-28">
+    <section
+      className={
+        "flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center bg-[color:var(--brand-yellow)] " +
+        "py-12 sm:py-14 lg:min-h-0 lg:py-28"
+      }
+    >
       <Container>
         <Reveal>
           <p className="font-sans text-center text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">

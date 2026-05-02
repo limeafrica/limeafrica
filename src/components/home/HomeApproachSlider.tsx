@@ -1,8 +1,23 @@
 "use client";
 
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+} from "framer-motion";
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
-import { useReducedMotion } from "framer-motion";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type TouchEvent,
+} from "react";
+import {
+  getCarouselSlideTransition,
+  getCarouselSlideVariants,
+} from "@/components/motion/carouselSlide";
 
 const slides = [
   "/Slider1.avif",
@@ -15,19 +30,29 @@ const INTERVAL_MS = 4000;
 const SWIPE_THRESHOLD = 52;
 
 export function HomeApproachSlider() {
-  const [page, setPage] = useState(0);
+  const [[page, direction], setCarousel] = useState<[number, number]>([0, 1]);
   const reduceMotion = useReducedMotion();
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const n = slides.length;
 
+  const slideVariants = useMemo(
+    () => getCarouselSlideVariants(!!reduceMotion),
+    [reduceMotion],
+  );
+
+  const slideTransition = useMemo(
+    () => getCarouselSlideTransition(!!reduceMotion),
+    [reduceMotion],
+  );
+
   const go = useCallback((dir: -1 | 1) => {
-    setPage((p) => (p + dir + n) % n);
+    setCarousel(([p]) => [(p + dir + n) % n, dir]);
   }, [n]);
 
   useEffect(() => {
     if (reduceMotion) return;
     const id = window.setInterval(() => {
-      setPage((p) => (p + 1) % slides.length);
+      setCarousel(([p]) => [(p + 1) % slides.length, 1]);
     }, INTERVAL_MS);
     return () => window.clearInterval(id);
   }, [reduceMotion]);
@@ -58,26 +83,34 @@ export function HomeApproachSlider() {
 
   return (
     <div
-      className="relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] touch-pan-y overflow-hidden rounded-xl bg-[color:var(--hairline)] shadow-[0_24px_56px_-24px_rgba(26,22,18,0.18)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
+      className="relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] touch-pan-y overflow-hidden rounded-xl bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
       aria-roledescription="carousel"
       aria-label="Approach highlights"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {slides.map((src, i) => (
-        <Image
-          key={src}
-          src={src}
-          alt=""
-          fill
-          unoptimized
-          sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), 467px"
-          className={`absolute inset-0 object-cover object-center transition-opacity duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-            i === page ? "z-10 opacity-100" : "z-0 opacity-0"
-          }`}
-          priority={false}
-        />
-      ))}
+      <AnimatePresence initial={false} custom={direction} mode="wait">
+        <motion.div
+          key={page}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={slideTransition}
+          className="absolute inset-0 z-10"
+        >
+          <Image
+            src={slides[page]}
+            alt=""
+            fill
+            unoptimized
+            sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), 467px"
+            className="object-cover object-center"
+            priority={false}
+          />
+        </motion.div>
+      </AnimatePresence>
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[15] h-16 bg-gradient-to-t from-[color:var(--ink)]/35 to-transparent lg:h-28"
         aria-hidden

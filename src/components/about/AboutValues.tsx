@@ -1,66 +1,116 @@
-import { Container } from "@/components/ui/Container";
+import Image from "next/image";
+import { AboutVisionLayout } from "@/components/about/AboutVisionBlock";
 import { Reveal } from "@/components/motion/Reveal";
+import { Container } from "@/components/ui/Container";
+
+/** In-flow image (mobile). Desktop uses `AboutValuesFixedBackdrop`. */
+const VALUES_IMAGE = "/slider3B.webp";
 
 const values = [
   {
     n: "01",
-    title: "Strategy before aesthetics",
+    title: "Strategic Direction",
     body:
-      "We don't create just to look good. Every piece of content, every campaign, and every decision is intentional and built to perform. At LimeAfrica, clarity always comes before creativity.",
+      'Every decision is grounded in clear thinking. We define the "why" before the "what," ensuring every campaign and asset serves a specific purpose.',
   },
   {
     n: "02",
-    title: "Execution is everything",
+    title: "Creative and Performance Alignment",
     body:
-      "Ideas are everywhere—but the quality of execution is what sets brands apart. We focus on delivering work that doesn't just sit pretty, but performs consistently and at a high standard.",
+      "We design with intention, balancing visual appeal with functionality so content not only looks right but delivers results.",
   },
   {
     n: "03",
-    title: "Premium over popular",
+    title: "Execution Excellence",
     body:
-      "We don't chase trends or vanity metrics. We position brands to attract the right audience, build trust, and convert attention into real, lasting value.",
+      "From concept to rollout, we prioritize structure, detail, and consistency to ensure every output meets a high standard.",
   },
   {
     n: "04",
-    title: "Intentional growth",
+    title: "Scalable Systems",
     body:
-      "Growth isn't something we leave to chance. Every move we make is deliberate—guided by strategy, data, and a clear understanding of where your brand is going. We build systems that support growth you can measure and sustain.",
+      "We build processes and frameworks that support consistent delivery, measurable progress, and long term growth.",
   },
 ] as const;
 
 export function AboutValues() {
   return (
-    <section className="border-t border-[color:var(--hairline)] bg-[color:var(--brand-white)] py-16 sm:py-24 lg:py-28">
-      <Container>
-        <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ink-muted)]">
-              Our vision and values
-            </p>
-            <h2 className="font-title mt-5 text-[clamp(2rem,4.5vw,3.15rem)] font-bold leading-[1.08] tracking-tight text-[color:var(--ink)]">
-              What we stand for
-            </h2>
-          </Reveal>
+    <section
+      id="about-values"
+      className="relative z-10 overflow-x-clip border-t border-[color:var(--hairline)]"
+    >
+      {/*
+        Desktop: left column is empty — `AboutValuesFixedBackdrop` is fixed; vision band
+        stays above it via z-10. Mobile: in-flow image below md.
+      */}
+      <div className="flex flex-col lg:flex-row lg:items-stretch">
+        <div className="relative order-1 min-h-[min(42vh,380px)] w-full shrink-0 lg:hidden">
+          <Image
+            src={VALUES_IMAGE}
+            alt=""
+            fill
+            unoptimized
+            className="object-cover object-center"
+            sizes="(max-width: 1023px) 100vw, 54vw"
+            priority={false}
+          />
         </div>
+        <div
+          className="order-1 hidden shrink-0 lg:block lg:w-[54%]"
+          aria-hidden
+        />
 
-        <ul className="mt-16 grid gap-6 sm:gap-8 lg:mt-20 lg:grid-cols-2">
-          {values.map((item, i) => (
-            <Reveal key={item.n} delay={0.05 * i}>
-              <li className="flex h-full flex-col rounded-2xl border border-[color:var(--hairline)] bg-[color:var(--paper)] p-8 shadow-[0_18px_48px_-28px_rgba(26,22,18,0.12)] transition hover:border-[color:var(--ink)]/12 sm:p-10">
-                <span className="font-title text-4xl tabular-nums leading-none text-[color:var(--brand-yellow)] sm:text-5xl">
-                  {item.n}
-                </span>
-                <h3 className="font-title mt-6 text-xl font-bold leading-snug tracking-tight text-[color:var(--ink)] sm:text-2xl">
-                  {item.title}
-                </h3>
-                <p className="font-sans mt-4 flex-1 text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">
-                  {item.body}
+        <div
+          className={
+            "order-2 flex min-w-0 flex-col bg-[color:var(--brand-white)] lg:w-[46%] lg:shrink-0 " +
+            "pl-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] pr-6 lg:pl-12 lg:pr-12 xl:pl-16 xl:pr-16"
+          }
+        >
+          <div className="flex w-full flex-col justify-center py-12 sm:py-14 lg:min-h-[calc(100dvh-3.5rem)] lg:py-14 xl:py-16 2xl:py-20">
+            <div className="max-w-xl lg:max-w-lg xl:max-w-xl">
+              <Reveal>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--ink-muted)]">
+                  Our vision and values
                 </p>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
-      </Container>
+                <h2 className="font-title mt-4 text-[clamp(2rem,4.5vw,3.15rem)] font-bold leading-[1.08] tracking-tight text-[color:var(--ink)] sm:mt-5">
+                  What we stand for
+                </h2>
+                <div
+                  className="mt-4 h-px w-full bg-[color:var(--hairline)]"
+                  aria-hidden
+                />
+              </Reveal>
+
+              <ul className="mt-8 space-y-7 sm:mt-10 sm:space-y-8 lg:mt-10 lg:space-y-9">
+                {values.map((item, i) => (
+                  <Reveal key={item.n} delay={0.05 * i}>
+                    <li>
+                      <h3 className="font-title text-lg font-bold leading-tight tracking-tight text-[color:var(--ink)] sm:text-xl">
+                        {item.title}
+                      </h3>
+                      <p className="font-sans mt-2.5 text-[0.9375rem] leading-snug text-[color:var(--ink-muted)] sm:mt-3 sm:text-base">
+                        {item.body}
+                      </p>
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={
+          "relative z-10 mt-12 flex w-full flex-col justify-center border-t border-[color:var(--hairline)] bg-[color:var(--ink)] " +
+          "min-h-[calc(100dvh-3.5rem)] px-0 py-12 sm:mt-16 sm:py-16 " +
+          "lg:mt-16 lg:min-h-0 lg:border-t-0 lg:py-24"
+        }
+      >
+        <Container className="relative flex flex-1 flex-col justify-center lg:block lg:min-h-0">
+          <AboutVisionLayout />
+        </Container>
+      </div>
     </section>
   );
 }
