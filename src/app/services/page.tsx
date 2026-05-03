@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HomeFinalCta } from "@/components/home/HomeFinalCta";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ServicesPageContent } from "@/components/services/ServicesPageContent";
+import { servicesEyebrows } from "@/content/services";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function ServicesPage() {
       <PageIntro
         fullHeight
         backgroundImage="/Slider1.avif"
-        eyebrow="Services"
+        eyebrow={servicesEyebrows.hero}
         title="Strategy, content, and bundles—built to scale with you"
         subtitle="End-to-end digital marketing, one-on-one consulting, curated resources, and The Lime Edit packages when you need strong content without full social management."
       />

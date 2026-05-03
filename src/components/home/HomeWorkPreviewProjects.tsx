@@ -148,7 +148,7 @@ export function HomeWorkPreviewProjects({
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
-                    <p className="absolute bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-sand)]">
+                    <p className="absolute bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-yellow)]">
                       {active.category}
                     </p>
                   </div>
@@ -197,7 +197,7 @@ export function HomeWorkPreviewProjects({
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
-                <p className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-sand)]">
+                <p className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-yellow)]">
                   {project.category}
                 </p>
               </div>

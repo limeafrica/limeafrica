@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { LegalDocument } from "@/components/legal/LegalDocument";
 import { Container } from "@/components/ui/Container";
+import { termsSections } from "@/content/legal";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -11,12 +13,12 @@ export default function TermsPage() {
   return (
     <main className="relative flex-1 py-16 sm:py-24">
       <Container>
-        <h1 className="font-title text-3xl font-bold tracking-tight text-[color:var(--ink)]">
+        <h1 className="font-title text-3xl font-bold tracking-tight text-[color:var(--ink)] sm:text-4xl">
           Terms and conditions
         </h1>
-        <p className="font-sans mt-6 max-w-2xl text-[color:var(--ink)]/78">
-          Content for this page will be added soon.
-        </p>
+        <div className="mt-10">
+          <LegalDocument sections={termsSections} />
+        </div>
       </Container>
     </main>
   );

@@ -1,5 +1,15 @@
 /** Site copy for the services page — single source for bundles and lists. */
 
+/** Small caps labels above section titles — scoped to each block’s topic. */
+export const servicesEyebrows = {
+  hero: "What we offer",
+  digitalMarketing: "Channels & execution",
+  consulting: "Guided strategy",
+  resources: "Guides & templates",
+  bundles: "Content shoot packages",
+  extras: "À la carte",
+} as const;
+
 /** Layered collage (left column): ink panel + framed photo — change `foreground` to swap the image. */
 export const digitalSectionCollage = {
   foreground: "/slider2.avif",

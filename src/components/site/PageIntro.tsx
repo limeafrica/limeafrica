@@ -10,6 +10,8 @@ type PageIntroProps = {
   fullHeight?: boolean;
   /** Full-bleed photo; dark scrim + white type (for legibility on full-color imagery). */
   backgroundImage?: string;
+  /** Solid `--ink` band + light type (no photo). */
+  variant?: "default" | "dark";
 };
 
 export function PageIntro({
@@ -18,8 +20,11 @@ export function PageIntro({
   subtitle,
   fullHeight = false,
   backgroundImage,
+  variant = "default",
 }: PageIntroProps) {
   const onPhoto = Boolean(backgroundImage);
+  const solidDark = variant === "dark" && !onPhoto;
+  const lightOnDark = onPhoto || solidDark;
 
   return (
     <div
@@ -27,7 +32,9 @@ export function PageIntro({
         "relative overflow-hidden border-b " +
         (onPhoto
           ? "border-white/15 bg-[color:var(--ink)]"
-          : "border-[color:var(--hairline)] bg-[color:var(--paper)]") +
+          : solidDark
+            ? "border-white/15 bg-[color:var(--ink)]"
+            : "border-[color:var(--hairline)] bg-[color:var(--paper)]") +
         " " +
         (fullHeight
           ? "flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center py-16 sm:py-24"
@@ -59,7 +66,11 @@ export function PageIntro({
             <p
               className={
                 "text-[11px] font-semibold uppercase tracking-[0.25em] " +
-                (onPhoto ? "text-white/80" : "text-[color:var(--ink-muted)]")
+                (solidDark
+                  ? "text-[color:var(--brand-yellow)]"
+                  : lightOnDark
+                    ? "text-white/80"
+                    : "text-[color:var(--ink-muted)]")
               }
             >
               {eyebrow}
@@ -68,7 +79,7 @@ export function PageIntro({
           <h1
             className={
               "font-title mt-4 max-w-4xl text-4xl tracking-tight sm:text-6xl " +
-              (onPhoto ? "text-white" : "text-[color:var(--ink)]")
+              (lightOnDark ? "text-white" : "text-[color:var(--ink)]")
             }
           >
             {title}
@@ -77,7 +88,7 @@ export function PageIntro({
             <p
               className={
                 "font-sans mt-8 max-w-2xl text-base leading-relaxed " +
-                (onPhoto ? "text-white/88" : "text-[color:var(--ink-muted)]")
+                (lightOnDark ? "text-white/88" : "text-[color:var(--ink-muted)]")
               }
             >
               {subtitle}

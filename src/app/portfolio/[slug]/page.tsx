@@ -35,7 +35,7 @@ export default async function WorkCasePage({ params }: Props) {
             ← Back to projects
           </Link>
           <Reveal>
-            <p className="mt-8 text-[10px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink-muted)]">
+            <p className="mt-8 text-[10px] font-semibold uppercase tracking-[0.25em] text-[color:var(--brand-yellow)]">
               {project.category}
             </p>
             <h1 className="font-title mt-4 text-4xl tracking-tight sm:text-6xl">
@@ -62,15 +62,34 @@ export default async function WorkCasePage({ params }: Props) {
         <Container>
           <Reveal>
             <div className="font-sans mx-auto max-w-3xl space-y-8 text-base leading-relaxed text-[color:var(--ink-muted)]">
-              <p>{project.excerpt}</p>
-              <p>
-                Outcomes are tracked against the goals we set together—whether
-                that&apos;s conversion, consistency, reach, or operational ease.
-                Every engagement ends with assets and rituals your team can run
-                without friction.
-              </p>
+              {project.storyParagraphs.map((p, i) => (
+                <p
+                  key={i}
+                  className={i === 0 ? "text-[color:var(--ink)]" : undefined}
+                >
+                  {p}
+                </p>
+              ))}
             </div>
           </Reveal>
+          {project.gallerySrcs.length > 0 ? (
+            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {project.gallerySrcs.map((src, i) => (
+                <Reveal key={`${src}-${i}`}>
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[color:var(--hairline)]">
+                    <Image
+                      src={src}
+                      alt=""
+                      fill
+                      unoptimized
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          ) : null}
         </Container>
       </section>
     </main>

@@ -11,6 +11,7 @@ import {
   consultingSectionCollage,
   digitalMarketingItems,
   digitalSectionCollage,
+  servicesEyebrows,
   extrasDisclaimer,
   extrasItems,
   bundlesIntro,
@@ -36,7 +37,7 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--ink)]"
           eyebrowTextClassName="text-white/75"
           titleTextClassName="text-white"
-          eyebrow="Digital marketing"
+          eyebrow={servicesEyebrows.digitalMarketing}
           title="Digital Marketing Services"
           foregroundSrc={digitalSectionCollage.foreground}
         >
@@ -69,7 +70,7 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>Digital marketing</p>
+                <p className={eyebrow}>{servicesEyebrows.digitalMarketing}</p>
                 <h2 className="font-title mt-4 max-w-3xl text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Digital Marketing Services
                 </h2>
@@ -100,7 +101,7 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--surface-light-brown)]"
           eyebrowTextClassName="text-[color:var(--ink)]/65"
           titleTextClassName="text-[color:var(--ink)]"
-          eyebrow="Consulting"
+          eyebrow={servicesEyebrows.consulting}
           title="Consulting"
           foregroundSrc={consultingSectionCollage.foreground}
         >
@@ -150,7 +151,7 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>Consulting</p>
+                <p className={eyebrow}>{servicesEyebrows.consulting}</p>
                 <h2 className="font-title mt-4 text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Consulting
                 </h2>
@@ -199,7 +200,7 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--brand-yellow)]"
           eyebrowTextClassName="text-[color:var(--ink)]/65"
           titleTextClassName="text-[color:var(--ink)]"
-          eyebrow="Resources"
+          eyebrow={servicesEyebrows.resources}
           title="Resources"
           foregroundSrc={resourcesSectionCollage.foreground}
         >
@@ -239,7 +240,7 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>Resources</p>
+                <p className={eyebrow}>{servicesEyebrows.resources}</p>
                 <h2 className="font-title mt-4 max-w-3xl text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Resources
                 </h2>
@@ -276,7 +277,7 @@ export function ServicesPageContent() {
       >
         <Container>
           <Reveal>
-            <p className={eyebrow}>Our bundles</p>
+            <p className={eyebrow}>{servicesEyebrows.bundles}</p>
             <h2 className="font-title mt-4 text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
               The Lime Edit
             </h2>
@@ -325,7 +326,7 @@ export function ServicesPageContent() {
       >
         <Container>
           <Reveal>
-            <p className={eyebrow}>Add-ons</p>
+            <p className={eyebrow}>{servicesEyebrows.extras}</p>
             <h2 className="font-title mt-4 text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
               Extras
             </h2>

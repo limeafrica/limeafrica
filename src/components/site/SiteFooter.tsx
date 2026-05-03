@@ -173,6 +173,12 @@ export function SiteFooter() {
               className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs sm:justify-center"
               aria-label="Legal"
             >
+              <Link href="/faq" className={footerBarLink}>
+                FAQ
+              </Link>
+              <span className="text-[color:var(--ink)]/35" aria-hidden>
+                ·
+              </span>
               <Link href="/cookies" className={footerBarLink}>
                 Cookies policy
               </Link>
