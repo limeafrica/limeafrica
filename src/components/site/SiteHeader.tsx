@@ -206,7 +206,7 @@ export function SiteHeader() {
         />
       </header>
 
-      {/* Above navbar (z-40): dim layer only while open — separate from the sliding panel */}
+      {/* Above navbar (z-40): dim layer only while open, separate from the sliding panel */}
       {staggeredOpen ? (
         <div
           className="fixed inset-0 z-[44] bg-[color:var(--ink)]/60 backdrop-blur-[2px]"
@@ -214,7 +214,7 @@ export function SiteHeader() {
         />
       ) : null}
 
-      {/* Sliding panel + stripes — above navbar & backdrop; pointer-events-none wrapper passes clicks except on the panel */}
+      {/* Sliding panel + stripes above navbar & backdrop; pointer-events-none wrapper passes clicks except on the panel */}
       <div id="staggered-mobile-nav" className="pointer-events-none fixed inset-0 z-[45]">
         <StaggeredMenu
           ref={staggeredMenuRef}

@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Terms and conditions",
-  description: `Terms and conditions — ${site.name}`,
+  description: `Terms and conditions | ${site.name}`,
 };
 
 export default function TermsPage() {

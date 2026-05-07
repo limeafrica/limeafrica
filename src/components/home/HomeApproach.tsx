@@ -30,7 +30,7 @@ export function HomeApproach() {
               </div>
 
               <p className="font-script mt-10 text-[clamp(1.38rem,3.2vw,2rem)] leading-snug text-[color:var(--ink)]">
-                Strategy, story, execution—growth you can measure.
+                Strategy, story, execution: growth you can measure.
               </p>
 
               <Link

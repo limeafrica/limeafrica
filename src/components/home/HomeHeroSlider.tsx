@@ -22,10 +22,10 @@ import { heroOutlineCtaClassName } from "@/components/ui/heroOutlineCta";
 
 const AUTO_MS = 5000;
 
-/** Horizontal swipe distance (px) before changing slide — ignores vertical scroll */
+/** Horizontal swipe distance (px) before changing slide; ignores vertical scroll */
 const SWIPE_THRESHOLD = 44;
 
-/** Snappy editorial spring — lively without feeling chaotic */
+/** Snappy editorial spring: lively without feeling chaotic */
 const SPRING_SLIDE: Transition = {
   type: "spring",
   stiffness: 210,
@@ -164,7 +164,7 @@ export function HomeHeroSlider() {
       };
     }
     return {
-      /** Incoming: “lands” from the side with a slight zoom & tilt — reads like a magazine spread */
+      /** Incoming: “lands” from the side with a slight zoom & tilt; reads like a magazine spread */
       enter: (dir: number) => ({
         opacity: 0,
         scale: 1.16,
@@ -177,7 +177,7 @@ export function HomeHeroSlider() {
         x: "0%",
         rotateZ: 0,
       },
-      /** Outgoing: scooped away opposite direction — feels hands-on, not a dissolve */
+      /** Outgoing: scooped away opposite direction; feels hands-on, not a dissolve */
       exit: (dir: number) => ({
         opacity: 0,
         scale: 0.88,
@@ -354,50 +354,52 @@ export function HomeHeroSlider() {
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-[color:var(--brand-yellow)]/40 to-transparent" />
 
-      <button
-        type="button"
-        aria-label="Previous slide"
-        className="pointer-events-auto absolute left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:left-6 sm:flex sm:h-12 sm:w-12"
-        onClick={() => go(-1)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          className="h-5 w-5"
-          aria-hidden
+      <div className="pointer-events-auto absolute bottom-0 right-0 z-20 flex h-40 w-20 flex-col sm:h-48 sm:w-24">
+        <button
+          type="button"
+          aria-label="Previous slide"
+          className="flex h-1/2 w-full items-center justify-center bg-[rgba(216,189,160,0.82)] text-[color:var(--brand-white)] transition hover:bg-[color:var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-white)] focus-visible:ring-inset"
+          onClick={() => go(-1)}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 19.5 8.25 12l7.5-7.5"
-          />
-        </svg>
-      </button>
-      <button
-        type="button"
-        aria-label="Next slide"
-        className="pointer-events-auto absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-[color:var(--brand-white)]/15 bg-[color:var(--brand-white)]/10 text-[color:var(--brand-white)] backdrop-blur-md transition hover:bg-[color:var(--brand-white)]/20 sm:right-6 sm:flex sm:h-12 sm:w-12"
-        onClick={() => go(1)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.75"
-          className="h-5 w-5"
-          aria-hidden
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            className="h-6 w-6 sm:h-7 sm:w-7"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 15.75 7.5-7.5 7.5 7.5"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          aria-label="Next slide"
+          className="flex h-1/2 w-full items-center justify-center bg-[rgb(216,189,160)] text-[color:var(--brand-white)] transition hover:bg-[color:var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-white)] focus-visible:ring-inset"
+          onClick={() => go(1)}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m8.25 4.5 7.5 7.5-7.5 7.5"
-          />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            className="h-6 w-6 sm:h-7 sm:w-7"
+            aria-hidden
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="m4.5 8.25 7.5 7.5 7.5-7.5"
+            />
+          </svg>
+        </button>
+      </div>
     </section>
   );
 }

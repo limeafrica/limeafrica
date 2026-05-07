@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Resources",
-  description: `${site.name} — Tools, templates, and guides to streamline your marketing and execution.`,
+  description: `${site.name}: tools, templates, and guides to streamline your marketing and execution.`,
 };
 
 export default function ResourcesPage() {

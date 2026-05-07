@@ -22,22 +22,25 @@ export const site = {
   email: "hello@limeafrica.com",
   /** Footer Connect - one line per row (edit here or add lines). */
   officeAddressLines: ["Lagos, Nigeria"] as const,
-  /** Handle @limeafrica across networks (URLs use the same slug where supported). */
+  /** Public handles (URLs may use different slug per platform). */
   social: {
-    instagram: "@limeafrica",
-    instagramUrl: "https://www.instagram.com/limeafrica/",
-    linkedinUrl: "https://www.linkedin.com/company/limeafrica",
-    facebookUrl: "https://www.facebook.com/limeafrica",
-    tiktokUrl: "https://www.tiktok.com/@limeafrica",
+    instagram: "@lime.africa",
+    instagramUrl: "https://www.instagram.com/lime.africa",
+    linkedinUrl: "https://www.linkedin.com/company/103660466/",
+    tiktokUrl:
+      "https://www.tiktok.com/@lime.africa?_r=1&_t=ZS-93mLVWu6YKb",
+    xUrl: "https://x.com/lime_africa",
+    pinterestUrl: "https://www.pinterest.com/limeafrica",
   },
 };
 
-/** Staggered menu + shared outbound social rows - same handle, platform-specific URLs */
+/** Staggered menu + shared outbound social rows (order matches footer icons) */
 export const menuSocialLinks = [
   { label: "Instagram", link: site.social.instagramUrl },
   { label: "LinkedIn", link: site.social.linkedinUrl },
-  { label: "Facebook", link: site.social.facebookUrl },
   { label: "TikTok", link: site.social.tiktokUrl },
+  { label: "X", link: site.social.xUrl },
+  { label: "Pinterest", link: site.social.pinterestUrl },
 ] as const;
 
 export type NavItem = { label: string; href: string };
@@ -84,7 +87,7 @@ export const team: TeamMember[] = [
     name: "Lisa Udumorugbo",
     role: "Lead Community Manager",
     bio: "Shapes how audiences experience LimeAfrica day to day through programs, conversations, and partnerships that deepen trust and keep the community active, informed, and connected.",
-    portrait: "/Lisa Numa.webp",
+    portrait: "/Lisa Udumorugbo.webp",
   },
   {
     name: "Chibuzo Etozuo",

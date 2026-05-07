@@ -1,5 +1,5 @@
 /**
- * Outline pill used on the home hero CTA. No outer margins — add `mt-*` in place.
+ * Outline pill used on the home hero CTA. No outer margins; add `mt-*` in place.
  * Border: white /35; hover: yellow fill + ink text (matches HomeHeroSlider).
  */
 export const heroOutlineCtaClassName =

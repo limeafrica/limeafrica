@@ -40,7 +40,7 @@ export function AboutValues() {
       className="relative z-10 overflow-x-clip border-t border-[color:var(--hairline)]"
     >
       {/*
-        Desktop: left column is empty — `AboutValuesFixedBackdrop` is fixed; vision band
+        Desktop: left column is empty; `AboutValuesFixedBackdrop` is fixed; vision band
         stays above it via z-10. Mobile: in-flow image below md.
       */}
       <div className="flex flex-col lg:flex-row lg:items-stretch">

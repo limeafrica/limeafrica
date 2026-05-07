@@ -21,7 +21,7 @@ export function LeadForm({
   if (sent) {
     return (
       <p className="font-title text-2xl leading-snug text-[color:var(--ink)]">
-        Thank you — we&apos;ll be in touch{" "}
+        Thank you. We&apos;ll be in touch{" "}
         <span className="text-[color:var(--brand-yellow)]">soon.</span>
       </p>
     );

@@ -1,4 +1,4 @@
-/** Structured copy for Terms, Privacy, and Cookies pages — align with site marketing copy in `site.ts` and `services.ts`. */
+/** Structured copy for Terms, Privacy, and Cookies pages. Align with site marketing copy in `site.ts` and `services.ts`. */
 
 export type LegalSection = {
   title: string;
@@ -19,14 +19,14 @@ export const termsSections: readonly LegalSection[] = [
   {
     title: "Services and website information",
     paragraphs: [
-      "Our site describes strategic media services—including digital marketing execution, brand and campaign consulting, content creation, templates and educational resources, portfolio case references, and community programming. Package examples (such as content shoot bundles) illustrate typical offerings; final scope, fees, deliverables, and timelines are confirmed in a separate proposal, statement of work, or contract.",
+      "Our site describes strategic media services, including digital marketing execution, brand and campaign consulting, content creation, templates and educational resources, portfolio case references, and community programming. Package examples (such as content shoot bundles) illustrate typical offerings; final scope, fees, deliverables, and timelines are confirmed in a separate proposal, statement of work, or contract.",
       "Nothing on this website constitutes a binding offer. Availability, pricing, and package composition may change without notice until confirmed in writing between you and LimeAfrica.",
     ],
   },
   {
     title: "Intellectual property",
     paragraphs: [
-      "Unless otherwise stated, all content on this site—including text, visuals, logos, layout, and downloadable assets made available through our channels—is owned by LimeAfrica or used under licence. You may not copy, scrape, redistribute, or commercially exploit site materials without our prior written consent.",
+      "Unless otherwise stated, all content on this site, including text, visuals, logos, layout, and downloadable assets made available through our channels, is owned by LimeAfrica or used under licence. You may not copy, scrape, redistribute, or commercially exploit site materials without our prior written consent.",
       "Client work shown in our portfolio remains subject to agreements with those clients; names and assets are displayed for illustration and may not be reproduced without permission from the rights holder.",
     ],
   },
@@ -48,7 +48,7 @@ export const termsSections: readonly LegalSection[] = [
     title: "Disclaimer and limitation of liability",
     paragraphs: [
       "The site and its content are provided on an “as is” basis. To the fullest extent permitted by applicable law, we disclaim warranties of any kind, whether express or implied, including fitness for a particular purpose and non-infringement.",
-      "To the extent permitted by law, LimeAfrica shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of profits, data, or goodwill, arising from your use of the site or reliance on information published here. Our total liability for any claim relating to the site shall not exceed the amount you paid us specifically for access to the same content or service giving rise to the claim in the twelve (12) months preceding the claim, or one hundred US dollars (USD 100), whichever is greater—except where such limitation is prohibited by law.",
+      "To the extent permitted by law, LimeAfrica shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or for loss of profits, data, or goodwill, arising from your use of the site or reliance on information published here. Our total liability for any claim relating to the site shall not exceed the amount you paid us specifically for access to the same content or service giving rise to the claim in the twelve (12) months preceding the claim, or one hundred US dollars (USD 100), whichever is greater, except where such limitation is prohibited by law.",
     ],
   },
   {
@@ -88,9 +88,9 @@ export const privacySections: readonly LegalSection[] = [
   {
     title: "What we collect",
     bullets: [
-      "Identity and contact details you provide—such as name, email address, company or brand name, role, and message content—when you use “Work With Us”, subscribe to updates, or email us directly.",
+      "Identity and contact details you provide (such as name, email address, company or brand name, role, and message content) when you use “Work With Us”, subscribe to updates, or email us directly.",
       "Technical data from your visit, which may include IP address, browser type, device type, approximate region, and pages viewed, collected through cookies and similar technologies (see our Cookies policy).",
-      "Engagement data relating to campaigns, deliverables, or programmes we run with you under contract—handled according to the relevant agreement.",
+      "Engagement data relating to campaigns, deliverables, or programmes we run with you under contract, handled according to the relevant agreement.",
     ],
   },
   {
@@ -111,7 +111,7 @@ export const privacySections: readonly LegalSection[] = [
   {
     title: "Sharing and processors",
     paragraphs: [
-      "We do not sell your personal information. We may share data with trusted service providers who host our site, deliver email, or provide analytics—only as needed for those purposes and under appropriate safeguards. We may also disclose information if required by law or to protect our legal rights.",
+      "We do not sell your personal information. We may share data with trusted service providers who host our site, deliver email, or provide analytics, only as needed for those purposes and under appropriate safeguards. We may also disclose information if required by law or to protect our legal rights.",
     ],
   },
   {
@@ -163,7 +163,7 @@ export const cookiesSections: readonly LegalSection[] = [
   {
     title: "What are cookies?",
     paragraphs: [
-      "Cookies are small text files stored on your device when you visit a website. They help the site remember preferences, understand how pages are used, and—in some cases—support marketing measurement.",
+      "Cookies are small text files stored on your device when you visit a website. They help the site remember preferences, understand how pages are used, and in some cases support marketing measurement.",
     ],
   },
   {
@@ -178,7 +178,7 @@ export const cookiesSections: readonly LegalSection[] = [
   {
     title: "Your choices",
     paragraphs: [
-      "You can control cookies through your browser settings—blocking or deleting cookies may affect how certain parts of our site work.",
+      "You can control cookies through your browser settings; blocking or deleting cookies may affect how certain parts of our site work.",
       "Where we deploy a consent banner or preference centre, you can adjust non-essential categories there. Essential cookies may remain active regardless, as they are necessary to deliver the service.",
     ],
   },

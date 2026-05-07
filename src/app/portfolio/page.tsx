@@ -27,8 +27,8 @@ export default function WorkIndexPage() {
               Our Most Recent Digital and Strategy Projects
             </h2>
             <p className="font-sans mt-8 max-w-2xl text-base leading-relaxed text-[color:var(--brand-white)]/85">
-              Strategy, storytelling, and campaigns—from flagship events to
-              ongoing digital presence—that help brands show up clearly where it
+              Strategy, storytelling, and campaigns from flagship events to
+              ongoing digital presence that help brands show up clearly where it
               counts.
             </p>
           </Reveal>

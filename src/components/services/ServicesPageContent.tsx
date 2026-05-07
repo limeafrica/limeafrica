@@ -28,7 +28,7 @@ const sectionShell = "py-16 sm:py-24";
 export function ServicesPageContent() {
   return (
     <>
-      {/* Digital marketing — mobile: full-bleed ink + title + overlap image; lg: collage + copy */}
+      {/* Digital marketing: mobile full-bleed ink + title + overlap image; lg: collage + copy */}
       <section
         id="digital-marketing"
         className="scroll-mt-28 overflow-x-hidden border-b border-[color:var(--hairline)] bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
@@ -92,7 +92,7 @@ export function ServicesPageContent() {
         </div>
       </section>
 
-      {/* Consulting — light brown band (mobile) + desktop collage */}
+      {/* Consulting: light brown band (mobile) + desktop collage */}
       <section
         id="consulting"
         className="scroll-mt-28 overflow-x-hidden border-b border-[color:var(--hairline)] bg-[color:var(--surface-subtle)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
@@ -191,7 +191,7 @@ export function ServicesPageContent() {
         </div>
       </section>
 
-      {/* Resources — brand yellow band (mobile) + desktop collage */}
+      {/* Resources: brand yellow band (mobile) + desktop collage */}
       <section
         id="resources"
         className="scroll-mt-28 overflow-x-hidden border-b border-[color:var(--hairline)] bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"

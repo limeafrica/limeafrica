@@ -6,7 +6,7 @@ import {
   communityWhatsAppUrl,
 } from "@/content/community";
 
-/** Globe loop — `mix-blend-screen` keeps blacks sunk into `--ink`, highlights read luminous */
+/** Globe loop: `mix-blend-screen` keeps blacks sunk into `--ink`, highlights read luminous */
 const HERO_GLOBE_VIDEO =
   "/World%20Video%202.mp4";
 
@@ -37,7 +37,7 @@ export function CommunityHero() {
         />
       </div>
 
-      {/* Ambient glow + texture — above video */}
+      {/* Ambient glow + texture above video */}
       <div className="pointer-events-none absolute inset-0 z-[1]">
         <div
           className="absolute inset-0 bg-[radial-gradient(ellipse_90%_55%_at_50%_-15%,rgba(235,189,69,0.22),transparent_55%)]"

@@ -25,7 +25,7 @@ export function AboutWhatWeDo() {
           />
         </div>
 
-        {/* Desktop: flush editorial strip — full section height */}
+        {/* Desktop: flush editorial strip, full section height */}
         <div className="relative hidden min-h-[280px] w-full lg:block lg:min-h-0 lg:h-full">
           <Image
             src={SECTION_IMAGE}
@@ -64,7 +64,7 @@ export function AboutWhatWeDo() {
                   At LimeAfrica, we operate as a full digital marketing team under one
                   roof. That means branding and strategy, content creation, social media
                   management, graphic design, copywriting, and campaign execution all
-                  working together—not in silos—so our clients don&apos;t have to juggle
+                  working together (not in silos), so our clients don&apos;t have to juggle
                   multiple vendors or spend extra on disconnected services.
                 </p>
               </Reveal>
@@ -72,7 +72,7 @@ export function AboutWhatWeDo() {
                 <p>
                   Our team brings over 15 years of combined hands-on marketing
                   experience, and we&apos;ve built systems that consistently attract,
-                  convert, and retain the right customers—especially for brands that
+                  convert, and retain the right customers, especially for brands that
                   value quality, detail, and long-term growth.
                 </p>
               </Reveal>

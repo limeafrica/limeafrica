@@ -12,7 +12,7 @@ const perks = [
   {
     title: "Guaranteed to sell your story",
     body:
-      "Layouts guide visitors from first impression to inquiry—with emphasis on clarity, proof, and confidence.",
+      "Layouts guide visitors from first impression to inquiry, with emphasis on clarity, proof, and confidence.",
   },
   {
     title: "Responsive by default",
@@ -22,7 +22,7 @@ const perks = [
   {
     title: "Launch support",
     body:
-      "Connect your domain, publish, and share—without wrestling the tech. Includes guidance for analytics basics.",
+      "Connect your domain, publish, and share without wrestling the tech. Includes guidance for analytics basics.",
   },
 ];
 
@@ -31,7 +31,7 @@ export default function TemplatesPage() {
     <main className="flex-1">
       <PageIntro
         title="Templates"
-        subtitle="Elevated foundations you can tailor—ideal for founders who want speed without sacrificing polish."
+        subtitle="Elevated foundations you can tailor, ideal for founders who want speed without sacrificing polish."
       />
       <section className="border-b border-[color:var(--hairline)] py-16 sm:py-24">
         <Container>
@@ -52,7 +52,7 @@ export default function TemplatesPage() {
           <Reveal delay={0.12}>
             <p className="font-sans mt-14 max-w-2xl text-base text-[color:var(--ink-muted)]">
               Templates ship with homepage, about, services, portfolio, testimonials,
-              inquiry, journal, coming soon, and a refined 404—structured so you can
+              inquiry, journal, coming soon, and a refined 404, structured so you can
               swap copy, imagery, and palette with confidence.
             </p>
             <Link

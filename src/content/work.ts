@@ -19,7 +19,7 @@ export const workItems: WorkItem[] = [
     category: "2026",
     packageLabel: "DIGITAL ROLLOUT & COMMUNITY",
     excerpt:
-      "A six-week masterclass by Anita Vwede for designers refining their craft. We built the digital presence end to end—creative direction, branding, content, social, filmed lessons, and community care—so the launch felt as elevated as the program. Over 350 students joined the inaugural class.",
+      "A six-week masterclass by Anita Vwede for designers refining their craft. We built the digital presence end to end: creative direction, branding, content, social, filmed lessons, and community care, so the launch felt as elevated as the program. Over 350 students joined the inaugural class.",
     imageSrc:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=2400&q=95",
     imageAlt: "Interior design mood board and materials",
@@ -39,7 +39,7 @@ export const workItems: WorkItem[] = [
     category: "2025",
     packageLabel: "EVENT & SOCIAL STRATEGY",
     excerpt:
-      "A milestone year at Lime: three clients at Design Week Lagos 2025—two exhibitors and one panelist—with tailored strategies, content, collaborations, and paid campaigns so each brand showed up with clarity before, during, and after the event. Strategy, storytelling, and a returning client who trusted us again.",
+      "A milestone year at Lime: three clients at Design Week Lagos 2025 (two exhibitors and one panelist), with tailored strategies, content, collaborations, and paid campaigns so each brand showed up with clarity before, during, and after the event. Strategy, storytelling, and a returning client who trusted us again.",
     imageSrc:
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&w=2400&q=95",
     imageAlt: "Conference hall with stage lighting",
@@ -59,7 +59,7 @@ export const workItems: WorkItem[] = [
     category: "2025",
     packageLabel: "END-TO-END CAMPAIGN",
     excerpt:
-      "Raise The Spirits for Quench Beverages: awareness, visibility, and engagement built from planning and creative direction through full event coordination, influencers, email, and content—plus sustained engagement after launch. Clear lift in brand awareness and sales.",
+      "Raise The Spirits for Quench Beverages: awareness, visibility, and engagement built from planning and creative direction through full event coordination, influencers, email, and content, plus sustained engagement after launch. Clear lift in brand awareness and sales.",
     imageSrc:
       "https://images.unsplash.com/photo-1514362548157-3e27bf68a6dd?auto=format&w=2400&q=95",
     imageAlt: "Evening social gathering with drinks",
@@ -77,7 +77,7 @@ export const workItems: WorkItem[] = [
     category: "2024",
     packageLabel: "SPONSORSHIP & SOCIAL",
     excerpt:
-      "We supported our client as a proud sponsor of Design Week Lagos 2024 with a digital marketing strategy that started weeks before the event—targeted content, collaborations, and paid ads—until attendees were finding the booth entirely through social.",
+      "We supported our client as a proud sponsor of Design Week Lagos 2024 with a digital marketing strategy that started weeks before the event: targeted content, collaborations, and paid ads, until attendees were finding the booth entirely through social.",
     imageSrc:
       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&w=2400&q=95",
     imageAlt: "Design exhibition booth and signage",

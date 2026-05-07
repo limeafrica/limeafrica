@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Cookies policy",
-  description: `Cookies policy — ${site.name}`,
+  description: `Cookies policy | ${site.name}`,
 };
 
 export default function CookiesPolicyPage() {

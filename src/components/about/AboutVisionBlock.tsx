@@ -2,10 +2,10 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 
-/** Editorial photo — matches studio imagery used elsewhere on About. */
+/** Editorial photo: matches studio imagery used elsewhere on About. */
 const VISION_IMAGE = "/slider2.avif";
 
-/** Vision copy — rendered inside `Reveal` + `max-w-xl` like Home Approach text column. */
+/** Vision copy: rendered inside `Reveal` + `max-w-xl` like Home Approach text column. */
 export function AboutVisionContent() {
   return (
     <>
@@ -20,7 +20,7 @@ export function AboutVisionContent() {
           digital platforms through strategic thinking and structured execution.
         </p>
         <p>
-          We exist to be the idea bank brands can rely on—turning opportunities into
+          We exist to be the idea bank brands can rely on, turning opportunities into
           clear plans and clear plans into measurable results and profit.
         </p>
       </div>

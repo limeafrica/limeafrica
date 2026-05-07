@@ -14,7 +14,7 @@ export default function WorkWithUsPage() {
       <PageIntro
         eyebrow="Contact"
         title="Let’s build with intention"
-        subtitle="Share a bit about your brand, timeline, and goals—we’ll reply with next steps."
+        subtitle="Share a bit about your brand, timeline, and goals; we’ll reply with next steps."
       />
       <section className="py-16 sm:pb-28">
         <Container>
@@ -28,7 +28,7 @@ export default function WorkWithUsPage() {
                   <li>Ideal launch window or milestone dates</li>
                   <li>Platforms you want to prioritize</li>
                   <li>Links to current brand touchpoints</li>
-                  <li>Budget range—so we can propose the right engagement</li>
+                  <li>Budget range, so we can propose the right engagement</li>
                 </ul>
               </div>
               <LeadForm variant="full" submitLabel="Send form" />

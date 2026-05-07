@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { site } from "@/content/site";
 
-/** Display titles — Sansation (Google Fonts). */
+/** Display titles: Sansation (Google Fonts). */
 const titleFace = Sansation({
   variable: "--font-title-face",
   subsets: ["latin"],

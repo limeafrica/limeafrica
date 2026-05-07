@@ -28,7 +28,7 @@ export function DigitalMarketingCollage({
         }
       />
 
-      {/* Framed overlap — bottom-right */}
+      {/* Framed overlap, bottom-right */}
       <div
         className={
           "absolute bottom-[9%] right-0 z-[1] w-[min(76%,500px)] max-w-[500px] xl:bottom-[10%]"

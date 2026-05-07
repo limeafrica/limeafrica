@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Community",
-  description: `${site.name} — Join the Lime Townhall: webinars, mentorship, and a community for digital marketing creatives.`,
+  description: `${site.name}. Join the Lime Townhall: webinars, mentorship, and a community for digital marketing creatives.`,
 };
 
 export default function CommunityPage() {

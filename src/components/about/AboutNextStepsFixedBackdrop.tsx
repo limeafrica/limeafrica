@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useState } from "react";
 
-/** Same asset as before — only mounted while `#about-next-steps` intersects the viewport. */
+/** Same asset as before; only mounted while `#about-next-steps` intersects the viewport. */
 const CTA_BG_IMAGE = "/Slider1.avif";
 
 /**

@@ -1,4 +1,4 @@
-/** FAQ page — all user-facing copy (hero, items, closing, SEO). */
+/** FAQ page: all user-facing copy (hero, items, closing, SEO). */
 
 import { site } from "@/content/site";
 
@@ -7,10 +7,10 @@ export type FaqItem = {
   answer: string;
 };
 
-/** Next.js `metadata` — title & description. */
+/** Next.js `metadata`: title & description. */
 export const faqPageMeta = {
   title: "FAQ",
-  description: `Answers about working with ${site.name} — services, bundles, resources, and policies.`,
+  description: `Answers about working with ${site.name}: services, bundles, resources, and policies.`,
 } as const;
 
 /** `PageIntro` fields. */
@@ -18,19 +18,19 @@ export const faqHero = {
   eyebrow: "Help",
   title: "Frequently asked questions",
   subtitle:
-    "Quick answers about how LimeAfrica works with brands—strategy, campaigns, content, and community. For a tailored conversation, use Work With Us.",
+    "Quick answers about how LimeAfrica works with brands: strategy, campaigns, content, and community. For a tailored conversation, use Work With Us.",
 } as const;
 
 export const faqItems: readonly FaqItem[] = [
   {
     question: "What does LimeAfrica do?",
     answer:
-      "We are a Pan-African strategic media studio. We help brands clarify narrative and execute across digital channels—social, content, email, design, and campaign consulting—so marketing feels coherent and outcomes are measurable.",
+      "We are a Pan-African strategic media studio. We help brands clarify narrative and execute across digital channels (social, content, email, design, and campaign consulting) so marketing feels coherent and outcomes are measurable.",
   },
   {
     question: "Where are you based, and who do you work with?",
     answer:
-      "Our studio is referenced from Lagos, Nigeria; we partner with brands across the continent and beyond. Geography matters less than fit—we look for teams that want thoughtful creative and disciplined execution.",
+      "Our studio is referenced from Lagos, Nigeria; we partner with brands across the continent and beyond. Geography matters less than fit: we look for teams that want thoughtful creative and disciplined execution.",
   },
   {
     question: "How do I start a project?",
@@ -45,22 +45,22 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "What are content bundles (e.g. Snap)?",
     answer:
-      "Bundles are structured shoots for brands that want strong reusable assets without full ongoing social management. Each tier lists what is included—such as session length, creative direction on set, and delivery format. Posting to your accounts is not included unless explicitly contracted.",
+      "Bundles are structured shoots for brands that want strong reusable assets without full ongoing social management. Each tier lists what is included, such as session length, creative direction on set, and delivery format. Posting to your accounts is not included unless explicitly contracted.",
   },
   {
     question: "Do you handle social media accounts for clients?",
     answer:
-      "Yes, where scope includes management packages—access, scheduling, and channel stewardship are agreed upfront. For bundle-only or production-only work, we typically deliver assets for your team to publish unless we add management separately.",
+      "Yes, where scope includes management packages: access, scheduling, and channel stewardship are agreed upfront. For bundle-only or production-only work, we typically deliver assets for your team to publish unless we add management separately.",
   },
   {
     question: "What is the Community section about?",
     answer:
-      "Community is where we highlight programmes, conversations, and partnerships that keep audiences connected to our work and to each other—aligned with how we build trust and long-term relationships beyond single campaigns.",
+      "Community is where we highlight programmes, conversations, and partnerships that keep audiences connected to our work and to each other, aligned with how we build trust and long-term relationships beyond single campaigns.",
   },
   {
     question: "Are Resources and templates free?",
     answer:
-      "Our Resources area gathers guides, templates, ebooks, courses, and webinars in one place. Some materials may be free and others paid or gated—we label access clearly on each asset or journey. When in doubt, ask via hello@limeafrica.com.",
+      "Our Resources area gathers guides, templates, ebooks, courses, and webinars in one place. Some materials may be free and others paid or gated; we label access clearly on each asset or journey. When in doubt, ask via hello@limeafrica.com.",
   },
   {
     question: "How does pricing work?",
@@ -70,7 +70,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "Who owns the creative work?",
     answer:
-      "Ownership and licensing of deliverables are defined in your contract—typically clients receive usage rights appropriate to the engagement once fees are settled. Portfolio use is covered separately so we can showcase work unless agreed otherwise.",
+      "Ownership and licensing of deliverables are defined in your contract. Typically clients receive usage rights appropriate to the engagement once fees are settled. Portfolio use is covered separately so we can showcase work unless agreed otherwise.",
   },
   {
     question: "How long does a typical engagement take?",

@@ -15,7 +15,7 @@ import "./StaggeredMenu.css";
 
 export type StaggeredMenuHandle = {
   toggle: () => void;
-  /** Idempotent — only runs close animation when open. */
+  /** Idempotent: only runs close animation when open. */
   close: () => void;
 };
 
@@ -47,7 +47,7 @@ type StaggeredMenuProps = {
   closeOnClickAway?: boolean;
   /** When true, omit the built-in logo + Menu/Close toggle (use an external button via ref). */
   hideHeader?: boolean;
-  /** Toggle element outside this component — excluded from click-away closing. */
+  /** Toggle element outside this component; excluded from click-away closing. */
   externalToggleRef?: React.RefObject<HTMLElement | null>;
   onMenuOpen?: () => void;
   onMenuClose?: () => void;

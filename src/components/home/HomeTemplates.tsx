@@ -100,7 +100,7 @@ export function HomeTemplates() {
     <section className="relative bg-[color:var(--brand-white)] py-20 sm:py-24 lg:py-28">
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14 xl:gap-20">
-          {/* Left: visual — crossfading slideshow */}
+          {/* Left: visual, crossfading slideshow */}
           <div
             className="relative isolate min-h-[280px] w-full overflow-hidden rounded-2xl bg-[color:var(--ink)] lg:col-span-5 lg:min-h-[min(520px,58vh)]"
             aria-roledescription="carousel"

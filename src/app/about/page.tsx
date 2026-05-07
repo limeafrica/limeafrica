@@ -10,7 +10,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${site.name} — ${site.tagline} Learn how we work, what we stand for, and who’s on the team.`,
+  description: `${site.name}. ${site.tagline} Learn how we work, what we stand for, and who’s on the team.`,
 };
 
 export default function AboutPage() {

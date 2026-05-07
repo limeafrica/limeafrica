@@ -1,6 +1,6 @@
-/** Site copy for the services page — single source for bundles and lists. */
+/** Site copy for the services page: single source for bundles and lists. */
 
-/** Small caps labels above section titles — scoped to each block’s topic. */
+/** Small caps labels above section titles, scoped to each block’s topic. */
 export const servicesEyebrows = {
   hero: "What we offer",
   digitalMarketing: "Channels & execution",
@@ -10,7 +10,7 @@ export const servicesEyebrows = {
   extras: "À la carte",
 } as const;
 
-/** Layered collage (left column): ink panel + framed photo — change `foreground` to swap the image. */
+/** Layered collage (left column): ink panel + framed photo. Change `foreground` to swap the image. */
 export const digitalSectionCollage = {
   foreground: "/slider2.avif",
 } as const;

@@ -13,7 +13,7 @@ export default function BlogPage() {
       <PageIntro
         eyebrow="Blog"
         title="Ideas at the intersection of brand and performance"
-        subtitle="Notes on positioning, channels, and creative ops—published as we ship them."
+        subtitle="Notes on positioning, channels, and creative ops, published as we ship them."
       />
       <section className="py-16 sm:py-24">
         <Container>

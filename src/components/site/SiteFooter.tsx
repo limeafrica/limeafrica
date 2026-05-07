@@ -1,10 +1,6 @@
 import type { ComponentType } from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTiktok,
-} from "react-icons/fa";
+import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
+import { FaSquarePinterest, FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { SiteLogo } from "@/components/site/SiteLogo";
 import { mainNav, menuSocialLinks, site } from "@/content/site";
@@ -17,8 +13,9 @@ const socialIconByLabel: Record<
 > = {
   Instagram: FaInstagram,
   LinkedIn: FaLinkedinIn,
-  Facebook: FaFacebook,
   TikTok: FaTiktok,
+  X: FaXTwitter,
+  Pinterest: FaSquarePinterest,
 };
 
 function IconMail({ className }: { className?: string }) {

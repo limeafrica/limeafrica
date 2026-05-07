@@ -19,7 +19,7 @@
   --surface-light-brown: #d8bda0;
   /** Very light section wash (e.g. Our Services) */
   --surface-subtle: #f6f5f4;
-  /** Main content width (header, footer, `Container`) — single source of truth */
+  /** Main content width (header, footer, `Container`): single source of truth */
   --layout-max: 1280px;
   /** Ethos + Approach portrait frames */
   --editorial-image-w: 467px;
@@ -31,9 +31,9 @@
   --color-foreground: var(--foreground);
   --color-ink: var(--ink);
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  /** Display titles — Sansation */
+  /** Display titles: Sansation */
   --font-title: var(--font-title-face), ui-sans-serif, system-ui, sans-serif;
-  /** Cursive accents — Mrs Saint Delafield */
+  /** Cursive accents: Mrs Saint Delafield */
   --font-script: var(--font-script-face), "Brush Script MT", cursive;
 }
 
