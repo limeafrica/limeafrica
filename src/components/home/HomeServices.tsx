@@ -1,245 +1,361 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useMemo, useRef, useState, type TouchEvent } from "react";
-import {
-  getCarouselSlideTransition,
-  getCarouselSlideVariants,
-} from "@/components/motion/carouselSlide";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/motion/Reveal";
+import {
+  consultingBullets,
+  consultingIntro,
+  consultingSectionCollage,
+  digitalMarketingIntro,
+  digitalMarketingItems,
+  digitalSectionCollage,
+  resourceLinks,
+  resourcesIntro,
+  resourcesSectionCollage,
+} from "@/content/services";
 
-const SWIPE_THRESHOLD = 52;
+const DECK_STICKY_STEP_PX = 18;
+const DECK_SCALE_STEP = 0.1;
 
-const slides = [
+/** `SiteHeader` h-14 (3.5rem) + 1.25rem gap. Must be a static string for Tailwind to emit it. */
+const STICKY_TOP =
+  "top-[calc(3.5rem+1.25rem+var(--deck-sticky-nudge,0px))]";
+
+const PLATE_HEIGHT =
+  "h-[clamp(44rem,calc(100svh-4rem),52rem)] lg:h-[clamp(34rem,calc(100vh-5.5rem),38rem)]";
+const CARD_SLOT_MIN_HEIGHT =
+  "min-h-[clamp(46.5rem,calc(100svh-1.5rem),54.5rem)] lg:min-h-[clamp(36.5rem,calc(100vh-3rem),40.5rem)]";
+
+/** Deck-only width — not `site-shell` (that forces `--layout-max` 1280px). */
+const DECK_CARD_MAX_W = "max-w-[1120px]";
+const DECK_CARD_SHELL = `mx-auto w-full ${DECK_CARD_MAX_W} px-4 sm:px-6 lg:px-0`;
+
+type PlateVariant = "ink" | "sand" | "paper";
+
+type DeckBlock = {
+  title: string;
+  description: string;
+  bullets?: readonly string[];
+  links?: readonly { label: string; href: string }[];
+  image: string;
+  imageAlt: string;
+  plateVariant: PlateVariant;
+  href?: string;
+  ctaLabel?: string;
+};
+
+const deckBlocks: DeckBlock[] = [
   {
-    kicker: "Digital marketing services",
-    body:
-      "We provide end-to-end digital marketing support, from strategy to execution and everything in between.",
-    image: "/Slider1.avif",
+    title: "Digital Marketing Services",
+    description: digitalMarketingIntro,
+    bullets: digitalMarketingItems,
+    image: digitalSectionCollage.foreground,
+    imageAlt: "Digital marketing and content creation",
+    plateVariant: "ink",
+    href: "/services#digital-marketing",
+    ctaLabel: "Explore digital marketing",
   },
   {
-    kicker: "Consulting",
-    body: "Personalized consultations focused on helping you understand your brand, refine your strategy, and move forward with clarity.",
-    image: "/slider2.avif",
+    title: "Consulting",
+    description: consultingIntro,
+    bullets: consultingBullets,
+    image: consultingSectionCollage.foreground,
+    imageAlt: "Brand strategy consulting session",
+    plateVariant: "sand",
+    href: "/services#consulting",
+    ctaLabel: "Learn about consulting",
   },
   {
-    kicker: "Resources",
-    body:
-      "Access our curated collection of templates, guides, and resources designed to streamline your marketing, improve your execution.",
-    image: "/slider3B.webp",
+    title: "Resources",
+    description: resourcesIntro,
+    links: resourceLinks,
+    image: resourcesSectionCollage.foreground,
+    imageAlt: "Marketing templates and guides",
+    plateVariant: "paper",
+    href: "/resources",
+    ctaLabel: "Browse resources",
   },
-] as const;
+];
 
-function ChevronLeft({ className }: { className?: string }) {
+function clamp01(value: number) {
+  return Math.max(0, Math.min(1, value));
+}
+
+function deckCardVars(index: number): CSSProperties {
+  return {
+    "--deck-sticky-nudge": `${index * DECK_STICKY_STEP_PX}px`,
+    "--deck-scale": "1",
+    "--deck-scrim-opacity": "0",
+    zIndex: index + 1,
+  } as CSSProperties;
+}
+
+function plateClasses(variant: PlateVariant) {
+  switch (variant) {
+    case "ink":
+      return {
+        plate: "bg-[color:var(--ink)] text-[color:var(--brand-white)]",
+        panel: "text-[color:var(--brand-white)]",
+        title: "text-[color:var(--brand-white)]",
+        body: "text-white/75",
+        listBorder: "border-white/10",
+        bullet: "text-sm leading-snug text-white/85",
+        bulletDot: "bg-[color:var(--brand-yellow)]",
+        button:
+          "border-white/25 bg-transparent text-[color:var(--brand-white)] hover:border-white hover:bg-white/10",
+      };
+    case "sand":
+      return {
+        plate: "bg-[color:var(--surface-light-brown)] text-[color:var(--ink)]",
+        panel: "text-[color:var(--ink)]",
+        title: "text-[color:var(--ink)]",
+        body: "text-[color:var(--ink-muted)]",
+        listBorder: "border-[color:var(--ink)]/10",
+        bullet: "text-sm leading-snug text-[color:var(--ink-muted)]",
+        bulletDot: "bg-[color:var(--brand-white)]",
+        button:
+          "border-[color:var(--ink)]/25 bg-transparent text-[color:var(--ink)] hover:border-[color:var(--ink)] hover:bg-[color-mix(in_srgb,var(--ink)_14%,var(--surface-light-brown))]",
+      };
+    default:
+      return {
+        plate:
+          "bg-[color:var(--brand-white)] text-[color:var(--ink)] ring-1 ring-[color:var(--hairline)]",
+        panel: "text-[color:var(--ink)]",
+        title: "text-[color:var(--ink)]",
+        body: "text-[color:var(--ink-muted)]",
+        listBorder: "border-[color:var(--ink)]/10",
+        bullet: "text-sm leading-snug text-[color:var(--ink-muted)]",
+        bulletDot: "bg-[color:var(--brand-yellow)]",
+        button:
+          "border-[color:var(--ink)]/25 bg-transparent text-[color:var(--ink)] hover:border-[color:var(--ink)] hover:bg-[color:var(--surface-subtle)]",
+      };
+  }
+}
+
+function DeckBulletList({
+  items,
+  listClassName,
+  itemClassName,
+  dotClassName,
+}: {
+  items: readonly string[];
+  listClassName: string;
+  itemClassName: string;
+  dotClassName: string;
+}) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
-    >
-      <path d="M15 18l-6-6 6-6" />
-    </svg>
+    <ul className={listClassName}>
+      {items.map((item) => (
+        <li key={item} className={`flex items-start gap-2.5 ${itemClassName}`}>
+          <span
+            className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dotClassName}`}
+            aria-hidden
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-function ChevronRight({ className }: { className?: string }) {
+function LayeredCard({
+  block,
+  priority,
+}: {
+  block: DeckBlock;
+  priority?: boolean;
+}) {
+  const tone = plateClasses(block.plateVariant);
+
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden
+    <div
+      data-deck-plate
+      className={`relative mx-auto w-full ${DECK_CARD_MAX_W} overflow-hidden rounded-2xl lg:rounded-3xl ${PLATE_HEIGHT} ${tone.plate}`}
     >
-      <path d="M9 18l6-6-6-6" />
-    </svg>
+      <div
+        className="deck-card-scrim pointer-events-none absolute inset-0 z-10"
+        aria-hidden
+      />
+      <div className="relative z-[1] flex h-full flex-col lg:grid lg:grid-cols-2">
+        <div
+          className={`order-1 flex shrink-0 flex-col justify-start px-6 py-7 sm:px-8 sm:py-8 lg:order-1 lg:justify-center lg:px-12 lg:py-12 xl:px-14 ${tone.panel}`}
+        >
+          <h3
+            className={`font-title text-[44px] font-bold leading-[1.12] tracking-tight sm:text-[48px] lg:text-[52px] ${tone.title}`}
+          >
+            {block.title}
+          </h3>
+          <p
+            className={`mt-4 text-sm leading-relaxed sm:text-base lg:mt-5 lg:text-base ${tone.body}`}
+          >
+            {block.description}
+          </p>
+
+          {block.bullets ? (
+            <DeckBulletList
+              items={block.bullets}
+              listClassName={`mt-5 space-y-2 border-t pt-5 lg:mt-6 lg:space-y-3 lg:pt-6 ${tone.listBorder}`}
+              itemClassName={tone.bullet}
+              dotClassName={tone.bulletDot}
+            />
+          ) : null}
+
+          {block.links ? (
+            <DeckBulletList
+              items={block.links.map((link) => link.label)}
+              listClassName={`mt-5 space-y-2 border-t pt-5 lg:mt-6 lg:space-y-3 lg:pt-6 ${tone.listBorder}`}
+              itemClassName={tone.bullet}
+              dotClassName={tone.bulletDot}
+            />
+          ) : null}
+
+          {block.href ? (
+            <div className="mt-6 lg:mt-8">
+              <Link
+                href={block.href}
+                className={`inline-flex items-center justify-center border px-8 py-3.5 text-sm font-semibold tracking-tight transition-colors ${tone.button}`}
+              >
+                {block.ctaLabel ?? "Learn more"}
+              </Link>
+            </div>
+          ) : null}
+        </div>
+
+        <div className="relative order-2 min-h-0 w-full flex-1 lg:order-2 lg:h-full">
+          <Image
+            src={block.image}
+            alt={block.imageAlt}
+            fill
+            unoptimized
+            priority={priority}
+            sizes="(max-width: 1023px) 100vw, 50vw"
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
 export function HomeServices() {
-  const n = slides.length;
-  const [[page, direction], setCarousel] = useState<[number, number]>([0, 0]);
-  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-  const reduceMotion = useReducedMotion();
+  const deckRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const slideVariants = useMemo(
-    () => getCarouselSlideVariants(!!reduceMotion),
-    [reduceMotion],
-  );
+  useEffect(() => {
+    const deck = deckRef.current;
+    if (!deck) return;
 
-  const slideTransition = useMemo(
-    () => getCarouselSlideTransition(!!reduceMotion),
-    [reduceMotion],
-  );
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
 
-  const go = useCallback(
-    (dir: -1 | 1) => {
-      setCarousel(([p]) => [(p + dir + n) % n, dir]);
-    },
-    [n],
-  );
+    const updateCards = () => {
+      frame = 0;
+      const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
 
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    const t = e.targetTouches[0];
-    touchStartRef.current = { x: t.clientX, y: t.clientY };
+      if (reduceMotion.matches) {
+        cards.forEach((card) => {
+          card.style.setProperty("--deck-scale", "1");
+          card.style.setProperty("--deck-scrim-opacity", "0");
+        });
+        return;
+      }
+
+      const deckTop = deck.getBoundingClientRect().top;
+
+      const incomingProgress = cards.map((card) => {
+        const plate = card.querySelector<HTMLElement>("[data-deck-plate]");
+        if (!plate) return 0;
+        const stickyTop = Number.parseFloat(getComputedStyle(card).top);
+        const plateHeight = plate.getBoundingClientRect().height;
+        const naturalCardTop = deckTop + card.offsetTop;
+        return clamp01(
+          (stickyTop + plateHeight - naturalCardTop) / plateHeight,
+        );
+      });
+
+      cards.forEach((card, index) => {
+        const depth = incomingProgress
+          .slice(index + 1)
+          .reduce((sum, progress) => sum + progress, 0);
+        const maxDepth = cards.length - 1 - index;
+        const scale = 1 - Math.min(depth, maxDepth) * DECK_SCALE_STEP;
+        card.style.setProperty("--deck-scale", scale.toFixed(4));
+        card.style.setProperty(
+          "--deck-scrim-opacity",
+          Math.min(depth, 1).toFixed(4),
+        );
+      });
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateCards);
+    };
+
+    updateCards();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    reduceMotion.addEventListener("change", requestUpdate);
+    const ro = new ResizeObserver(requestUpdate);
+    ro.observe(deck);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      ro.disconnect();
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      reduceMotion.removeEventListener("change", requestUpdate);
+    };
   }, []);
-
-  const handleTouchEnd = useCallback(
-    (e: TouchEvent) => {
-      if (!touchStartRef.current) return;
-      const start = touchStartRef.current;
-      touchStartRef.current = null;
-
-      const t = e.changedTouches[0];
-      const dx = t.clientX - start.x;
-      const dy = t.clientY - start.y;
-
-      if (Math.abs(dx) < SWIPE_THRESHOLD) return;
-      if (Math.abs(dx) <= Math.abs(dy)) return;
-
-      if (dx < 0) go(1);
-      else go(-1);
-    },
-    [go],
-  );
-
-  const active = slides[page];
-  const progressPct = ((page + 1) / n) * 100;
 
   return (
     <section
       id="our-services"
-      className="relative touch-pan-y bg-[color:var(--surface-subtle)] pb-20 pt-0 sm:pb-28"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
+      className="relative bg-[color:var(--surface-subtle)] pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-24"
     >
-      <Container className="relative pt-16 sm:pt-20">
-        <div className="flex flex-col gap-20 lg:flex-row lg:items-center lg:justify-end lg:gap-24 xl:gap-28">
-          <div className="min-w-0 max-w-xl">
-            <Reveal>
-              <div>
-                <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
-                  Our Services
-                </p>
-                <h2 className="font-title mt-5 max-w-xl text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
-                  What&apos;s In Our Bag?
-                </h2>
-              </div>
-            </Reveal>
+      <Container>
+        <header className="mx-auto max-w-2xl text-center">
+          <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.35em] text-[color:var(--ink-muted)]">
+            Our Services
+          </p>
+          <h2 className="font-title mt-5 text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
+            What&apos;s In Our Bag?
+          </h2>
+        </header>
+      </Container>
 
-            <div className="mt-12 overflow-hidden sm:mt-14">
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={page}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={slideTransition}
-                >
-                  <p className="font-sans text-[0.9375rem] font-bold uppercase leading-snug text-[color:var(--ink)] sm:text-[1.0625rem]">
-                    {active.kicker}
-                  </p>
-
-                  <p className="mt-8 line-clamp-2 font-sans text-[1rem] leading-snug text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
-                    {active.body}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-
-              <Link
-                href="/services"
-                className="group mt-10 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)]"
-              >
-                <span
-                  className="font-sans text-xl font-light leading-none text-[color:var(--ink)]"
-                  aria-hidden
-                >
-                  →
-                </span>
-                <span>View full Services</span>
-              </Link>
-
-              <nav
-                className="mt-8 flex gap-4 sm:mt-10"
-                aria-label="Browse services"
-              >
-                <button
-                  type="button"
-                  aria-label="Previous slide"
-                  onClick={() => go(-1)}
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next slide"
-                  onClick={() => go(1)}
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[color:var(--ink)] bg-transparent text-[color:var(--ink)] transition hover:bg-[color:var(--ink)]/5 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--brand-yellow)] focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--surface-subtle)]"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </nav>
-            </div>
-          </div>
-
-          <div className="flex w-full max-w-[var(--editorial-image-w)] shrink-0 flex-col lg:w-[min(100%,var(--editorial-image-w))]">
-            <div
-              className="relative isolate z-30 aspect-[467/316] w-full overflow-hidden rounded-xl bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:max-h-[min(520px,68vh)] lg:rounded-2xl"
-              aria-roledescription="carousel"
-              aria-label="Service highlights"
-            >
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={page}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={slideTransition}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={active.image}
-                    alt=""
-                    fill
-                    unoptimized
-                    sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), min(50vw - 3rem, 520px)"
-                    className="object-cover object-center"
-                    priority={false}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="relative mt-14 h-1 w-full overflow-hidden rounded-full bg-[color:var(--hairline)] lg:mt-16"
-          role="presentation"
-          aria-hidden
-        >
+      <div
+        ref={deckRef}
+        className="deck-stack deck-stack--exit-lift relative isolate mt-12 pb-2 sm:mt-14 lg:mt-16 lg:pb-5"
+      >
+        {deckBlocks.map((block, index) => (
           <div
-            className="absolute left-0 top-0 h-full rounded-full bg-[color:var(--ink)]"
-            style={{ width: `${progressPct}%` }}
-          />
-        </div>
+            key={block.title}
+            ref={(el) => {
+              cardRefs.current[index] = el;
+            }}
+            className={`deck-card relative sticky ${STICKY_TOP} ${CARD_SLOT_MIN_HEIGHT}`}
+            style={deckCardVars(index)}
+          >
+            <div className={DECK_CARD_SHELL}>
+              <LayeredCard block={block} priority={index === 0} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Container className="mt-12 text-center sm:mt-14">
+        <Link
+          href="/services"
+          className="group inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)]"
+        >
+          <span className="font-sans text-xl font-light leading-none" aria-hidden>
+            →
+          </span>
+          <span>View full Services</span>
+        </Link>
       </Container>
     </section>
   );

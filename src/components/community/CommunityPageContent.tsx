@@ -72,7 +72,7 @@ export function CommunityPageContent() {
               </div>
               <div className="flex flex-col justify-center px-8 py-12 sm:px-12 lg:py-16">
                 <Reveal delay={0.06}>
-                  <p className="font-script text-[clamp(1.5rem,3vw,2rem)] leading-snug text-[color:var(--ink)]">
+                  <p className="font-title text-[clamp(1.35rem,2.6vw,1.85rem)] font-medium leading-snug tracking-tight text-[color:var(--ink)]">
                     See you inside.
                   </p>
                   <Link
@@ -89,9 +89,6 @@ export function CommunityPageContent() {
                       →
                     </span>
                   </Link>
-                  <p className="font-sans mt-6 text-sm text-[color:var(--ink-muted)]">
-                    Opens in a new tab · WhatsApp group invite
-                  </p>
                 </Reveal>
               </div>
             </div>

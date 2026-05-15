@@ -15,6 +15,8 @@
   --nav-bar-bg: var(--brand-white);
   --nav-ink: var(--ink);
   --surface-sand: color-mix(in srgb, var(--brand-sand) 35%, var(--brand-white));
+  /** Warm cream wash (same tint as surface-sand; semantic alias for section fills) */
+  --cream: var(--surface-sand);
   /** Our Approach section band */
   --surface-light-brown: #d8bda0;
   /** Very light section wash (e.g. Our Services) */
@@ -87,4 +89,58 @@
 
 ::selection {
   background: color-mix(in srgb, var(--brand-yellow) 45%, transparent);
+}
+
+/* Sticky scroll deck (Our Services) */
+@property --deck-exit-shift {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.deck-stack {
+  scroll-timeline-name: --deck-stack;
+  scroll-timeline-axis: block;
+}
+
+@supports (animation-timeline: scroll()) {
+  .deck-stack.deck-stack--exit-lift {
+    animation: deck-exit-shift-prop linear both;
+    animation-timeline: --deck-stack;
+    animation-range: 90% 100%;
+  }
+
+  @keyframes deck-exit-shift-prop {
+    from {
+      --deck-exit-shift: 0px;
+    }
+    to {
+      --deck-exit-shift: min(-36vh, -14rem);
+    }
+  }
+}
+
+.deck-card {
+  transform: translateY(var(--deck-exit-shift, 0px)) scale(var(--deck-scale, 1));
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.deck-card-scrim {
+  background: rgba(0, 0, 0, 0.2);
+  opacity: var(--deck-scrim-opacity, 0);
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-stack.deck-stack--exit-lift {
+    animation: none !important;
+    --deck-exit-shift: 0px !important;
+  }
+  .deck-card {
+    transform: none !important;
+  }
+  .deck-card-scrim {
+    opacity: 0 !important;
+  }
 }

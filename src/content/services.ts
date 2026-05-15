@@ -7,7 +7,6 @@ export const servicesEyebrows = {
   consulting: "Guided strategy",
   resources: "Guides & templates",
   bundles: "Content shoot packages",
-  extras: "À la carte",
 } as const;
 
 /** Layered collage (left column): ink panel + framed photo. Change `foreground` to swap the image. */
@@ -32,7 +31,6 @@ export const digitalMarketingItems = [
   "Graphic Design",
   "Branding and Strategy",
   "Email Marketing",
-  "Social Media Management Packages",
 ] as const;
 
 export const consultingIntro =

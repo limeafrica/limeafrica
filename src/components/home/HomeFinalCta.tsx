@@ -4,7 +4,10 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function HomeFinalCta() {
   return (
-    <section className="relative z-10 overflow-hidden bg-gradient-to-b from-[color:var(--surface-sand)] to-[color:var(--brand-white)] py-20 sm:py-28">
+    <section
+      id="book-consultation"
+      className="scroll-mt-28 relative z-10 overflow-hidden bg-gradient-to-b from-[color:var(--surface-sand)] to-[color:var(--brand-white)] py-20 sm:py-28"
+    >
       <Container>
         <div className="overflow-hidden rounded-3xl bg-[color:var(--brand-white)] shadow-[0_30px_90px_-35px_rgba(26,22,18,0.15)]">
           <div className="grid lg:grid-cols-5">

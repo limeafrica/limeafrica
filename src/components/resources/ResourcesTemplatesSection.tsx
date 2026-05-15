@@ -42,7 +42,7 @@ function CheckIcon({ className }: { className?: string }) {
 
 const templateFeaturesLeft = [
   {
-    title: "Profile and Feed Mockup Template",
+    title: "Profile & Feed Mockup Template",
     body:
       "Visual layout preview showing profile structure grid balance and content hierarchy before publishing.",
   },
@@ -199,12 +199,12 @@ export function ResourcesTemplatesSection() {
                 </ul>
               </div>
 
-              <div className="mt-12 flex justify-start sm:mt-14">
+              <div className="mt-7 flex justify-start sm:mt-8">
                 <Link
                   href="/templates"
                   className="inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92"
                 >
-                  View all templates
+                  PURCHASE NOW
                 </Link>
               </div>
             </Reveal>

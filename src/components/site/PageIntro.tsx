@@ -29,12 +29,10 @@ export function PageIntro({
   return (
     <div
       className={
-        "relative overflow-hidden border-b " +
-        (onPhoto
-          ? "border-white/15 bg-[color:var(--ink)]"
-          : solidDark
-            ? "border-white/15 bg-[color:var(--ink)]"
-            : "border-[color:var(--hairline)] bg-[color:var(--paper)]") +
+        "relative overflow-hidden " +
+        (onPhoto || solidDark
+          ? "bg-[color:var(--ink)]"
+          : "bg-[color:var(--paper)]") +
         " " +
         (fullHeight
           ? "flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center py-16 sm:py-24"

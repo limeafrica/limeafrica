@@ -131,7 +131,7 @@ export function HomeTeamMembers() {
                 <h3 className="font-title mt-8 text-xl font-bold text-[color:var(--ink)]">
                   {active.name}
                 </h3>
-                <p className="font-sans mt-3 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
+                <p className="font-sans mt-1 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
                   {active.role}
                 </p>
               </motion.div>
@@ -178,7 +178,7 @@ export function HomeTeamMembers() {
               <h3 className="font-title mt-8 text-xl font-bold text-[color:var(--ink)] sm:text-[1.35rem]">
                 {member.name}
               </h3>
-              <p className="font-sans mt-3 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
+              <p className="font-sans mt-1 max-w-[16rem] text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--ink-muted)]">
                 {member.role}
               </p>
             </article>

@@ -83,7 +83,7 @@ export function TeamMemberPortrait({
             <p className="font-title text-lg font-bold leading-snug text-[color:var(--brand-white)] sm:text-xl">
               {name}
             </p>
-            <p className="font-sans mt-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--brand-yellow)]">
+            <p className="font-sans mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[color:var(--brand-yellow)]">
               {role}
             </p>
             <p className="font-sans mt-4 text-sm leading-relaxed text-[color:var(--brand-white)]/88 sm:text-[0.9375rem]">
