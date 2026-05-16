@@ -55,6 +55,8 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   ::placeholder {
@@ -142,5 +144,59 @@
   }
   .deck-card-scrim {
     opacity: 0 !important;
+  }
+}
+
+/** Community “What you get” — equal cell grid with explicit placement */
+.community-offer-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--brand-white);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "intro"
+    "c01"
+    "c02"
+    "c03"
+    "c04"
+    "c05"
+    "c06";
+  grid-auto-rows: minmax(15rem, auto);
+}
+
+.community-offer-grid__cell {
+  min-height: 15rem;
+}
+
+@media (min-width: 640px) {
+  .community-offer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "intro intro"
+      "c02 c01"
+      "c04 c01"
+      "c03 c06"
+      "c05 c05";
+    grid-auto-rows: minmax(16rem, auto);
+  }
+
+  .community-offer-grid__cell {
+    min-height: 16rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .community-offer-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(18rem, 1fr));
+    grid-template-areas:
+      "intro intro intro c01"
+      "c02 c04 c04 c01"
+      "c03 c06 c05 c05";
+    grid-auto-rows: unset;
+  }
+
+  .community-offer-grid__cell {
+    min-height: 0;
   }
 }

@@ -16,6 +16,7 @@ import {
   resourcesIntro,
   resourcesSectionCollage,
 } from "@/content/services";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 const eyebrow =
   "text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink-muted)]";
@@ -32,20 +33,21 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--ink)]"
           eyebrowTextClassName="text-white/75"
           titleTextClassName="text-white"
-          eyebrow={servicesEyebrows.digitalMarketing}
+          eyebrow={withoutHyphens(servicesEyebrows.digitalMarketing)}
           title="Digital Marketing Services"
           foregroundSrc={digitalSectionCollage.foreground}
+          objectPosition={digitalSectionCollage.objectPosition}
         >
           <Reveal>
             <p className="font-sans max-w-3xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-              {digitalMarketingIntro}
+              {withoutHyphens(digitalMarketingIntro)}
             </p>
           </Reveal>
           <ul className="grid gap-4 sm:grid-cols-2">
             {digitalMarketingItems.map((item, i) => (
               <Reveal key={`${item}-${i}`} delay={0.04 * i}>
                 <li className="border border-[color:var(--hairline)] bg-white/40 px-6 py-5 font-sans text-[0.9375rem] font-medium leading-snug text-[color:var(--ink)] sm:text-base">
-                  {item}
+                  {withoutHyphens(item)}
                 </li>
               </Reveal>
             ))}
@@ -58,6 +60,7 @@ export function ServicesPageContent() {
             <Reveal className="block w-full">
               <DigitalMarketingCollage
                 foregroundSrc={digitalSectionCollage.foreground}
+                objectPosition={digitalSectionCollage.objectPosition}
               />
             </Reveal>
           </div>
@@ -65,12 +68,12 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>{servicesEyebrows.digitalMarketing}</p>
+                <p className={eyebrow}>{withoutHyphens(servicesEyebrows.digitalMarketing)}</p>
                 <h2 className="font-title mt-4 max-w-3xl text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Digital Marketing Services
                 </h2>
                 <p className="font-sans mt-6 max-w-3xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-                  {digitalMarketingIntro}
+                  {withoutHyphens(digitalMarketingIntro)}
                 </p>
               </div>
             </Reveal>
@@ -78,7 +81,7 @@ export function ServicesPageContent() {
               {digitalMarketingItems.map((item, i) => (
                 <Reveal key={item} delay={0.04 * i}>
                   <li className="border border-[color:var(--hairline)] bg-white/40 px-6 py-5 font-sans text-[0.9375rem] font-medium leading-snug text-[color:var(--ink)] sm:text-base">
-                    {item}
+                    {withoutHyphens(item)}
                   </li>
                 </Reveal>
               ))}
@@ -96,13 +99,14 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--surface-light-brown)]"
           eyebrowTextClassName="text-[color:var(--ink)]/65"
           titleTextClassName="text-[color:var(--ink)]"
-          eyebrow={servicesEyebrows.consulting}
+          eyebrow={withoutHyphens(servicesEyebrows.consulting)}
           title="Consulting"
           foregroundSrc={consultingSectionCollage.foreground}
+          objectPosition={consultingSectionCollage.objectPosition}
         >
           <Reveal>
             <p className="font-sans max-w-2xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-              {consultingIntro}
+              {withoutHyphens(consultingIntro)}
             </p>
           </Reveal>
           <ul className="font-sans max-w-2xl space-y-4 text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">
@@ -113,7 +117,7 @@ export function ServicesPageContent() {
                     className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--brand-yellow)]"
                     aria-hidden
                   />
-                  {line}
+                  {withoutHyphens(line)}
                 </li>
               </Reveal>
             ))}
@@ -139,6 +143,7 @@ export function ServicesPageContent() {
             <Reveal className="block w-full">
               <DigitalMarketingCollage
                 foregroundSrc={consultingSectionCollage.foreground}
+                objectPosition={consultingSectionCollage.objectPosition}
                 panelClassName="bg-[color:var(--surface-light-brown)]"
               />
             </Reveal>
@@ -146,12 +151,12 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>{servicesEyebrows.consulting}</p>
+                <p className={eyebrow}>{withoutHyphens(servicesEyebrows.consulting)}</p>
                 <h2 className="font-title mt-4 text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Consulting
                 </h2>
                 <p className="font-sans mt-6 max-w-2xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-                  {consultingIntro}
+                  {withoutHyphens(consultingIntro)}
                 </p>
               </div>
             </Reveal>
@@ -163,7 +168,7 @@ export function ServicesPageContent() {
                       className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--brand-yellow)]"
                       aria-hidden
                     />
-                    {line}
+                    {withoutHyphens(line)}
                   </li>
                 </Reveal>
               ))}
@@ -195,13 +200,14 @@ export function ServicesPageContent() {
           bandClassName="bg-[color:var(--brand-yellow)]"
           eyebrowTextClassName="text-[color:var(--ink)]/65"
           titleTextClassName="text-[color:var(--ink)]"
-          eyebrow={servicesEyebrows.resources}
+          eyebrow={withoutHyphens(servicesEyebrows.resources)}
           title="Resources"
           foregroundSrc={resourcesSectionCollage.foreground}
+          objectPosition={resourcesSectionCollage.objectPosition}
         >
           <Reveal>
             <p className="font-sans max-w-3xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-              {resourcesIntro}
+              {withoutHyphens(resourcesIntro)}
             </p>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -212,7 +218,7 @@ export function ServicesPageContent() {
                   className="group flex h-full flex-col border border-[color:var(--hairline)] bg-white/40 p-6 transition hover:border-[color:var(--ink)]/25 hover:bg-[color:var(--brand-white)]"
                 >
                   <span className="font-title text-xl text-[color:var(--ink)] group-hover:underline group-hover:underline-offset-4">
-                    {item.label}
+                    {withoutHyphens(item.label)}
                   </span>
                   <span className="font-sans mt-3 text-xs uppercase tracking-[0.2em] text-[color:var(--ink-muted)]">
                     View
@@ -228,6 +234,7 @@ export function ServicesPageContent() {
             <Reveal className="block w-full">
               <DigitalMarketingCollage
                 foregroundSrc={resourcesSectionCollage.foreground}
+                objectPosition={resourcesSectionCollage.objectPosition}
                 panelClassName="bg-[color:var(--brand-yellow)]"
               />
             </Reveal>
@@ -235,12 +242,12 @@ export function ServicesPageContent() {
           <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
-                <p className={eyebrow}>{servicesEyebrows.resources}</p>
+                <p className={eyebrow}>{withoutHyphens(servicesEyebrows.resources)}</p>
                 <h2 className="font-title mt-4 max-w-3xl text-3xl tracking-tight text-[color:var(--ink)] sm:text-4xl">
                   Resources
                 </h2>
                 <p className="font-sans mt-6 max-w-3xl text-base leading-relaxed text-[color:var(--ink-muted)]">
-                  {resourcesIntro}
+                  {withoutHyphens(resourcesIntro)}
                 </p>
               </div>
             </Reveal>
@@ -252,7 +259,7 @@ export function ServicesPageContent() {
                     className="group flex h-full flex-col border border-[color:var(--hairline)] bg-white/40 p-6 transition hover:border-[color:var(--ink)]/25 hover:bg-[color:var(--brand-white)]"
                   >
                     <span className="font-title text-xl text-[color:var(--ink)] group-hover:underline group-hover:underline-offset-4">
-                      {item.label}
+                      {withoutHyphens(item.label)}
                     </span>
                     <span className="font-sans mt-3 text-xs uppercase tracking-[0.2em] text-[color:var(--ink-muted)]">
                       View

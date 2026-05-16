@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  WorkCaseGallery,
+  WorkCaseMediaProvider,
+} from "@/components/portfolio/WorkCaseMedia";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { getWorkBySlug, workItems } from "@/content/work";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -36,13 +41,13 @@ export default async function WorkCasePage({ params }: Props) {
           </Link>
           <Reveal>
             <p className="mt-8 text-[10px] font-semibold uppercase tracking-[0.25em] text-[color:var(--brand-yellow)]">
-              {project.category}
+              {withoutHyphens(project.category)}
             </p>
             <h1 className="font-title mt-4 text-4xl tracking-tight sm:text-6xl">
-              {project.title}
+              {withoutHyphens(project.title)}
             </h1>
             <p className="mt-4 text-sm italic text-[color:var(--ink-muted)]">
-              {project.packageLabel}
+              {withoutHyphens(project.packageLabel)}
             </p>
           </Reveal>
         </Container>
@@ -67,28 +72,18 @@ export default async function WorkCasePage({ params }: Props) {
                   key={i}
                   className={i === 0 ? "text-[color:var(--ink)]" : undefined}
                 >
-                  {p}
+                  {withoutHyphens(p)}
                 </p>
               ))}
             </div>
           </Reveal>
           {project.gallerySrcs.length > 0 ? (
-            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {project.gallerySrcs.map((src, i) => (
-                <Reveal key={`${src}-${i}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden bg-[color:var(--hairline)]">
-                    <Image
-                      src={src}
-                      alt=""
-                      fill
-                      unoptimized
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <WorkCaseMediaProvider
+              gallerySrcs={project.gallerySrcs}
+              imageAlt={project.imageAlt}
+            >
+              <WorkCaseGallery />
+            </WorkCaseMediaProvider>
           ) : null}
         </Container>
       </section>

@@ -1,7 +1,9 @@
 import { DigitalMarketingForeground } from "@/components/services/DigitalMarketingForeground";
+import type { CollageObjectPosition } from "@/content/services";
 
 type DigitalMarketingCollageProps = {
   foregroundSrc: string;
+  objectPosition?: CollageObjectPosition;
   /** Left editorial panel fill (default: `--ink`). */
   panelClassName?: string;
 };
@@ -11,6 +13,7 @@ type DigitalMarketingCollageProps = {
  */
 export function DigitalMarketingCollage({
   foregroundSrc,
+  objectPosition,
   panelClassName = "bg-[color:var(--ink)]",
 }: DigitalMarketingCollageProps) {
   return (
@@ -34,7 +37,10 @@ export function DigitalMarketingCollage({
           "absolute bottom-[9%] right-0 z-[1] w-[min(76%,500px)] max-w-[500px] xl:bottom-[10%]"
         }
       >
-        <DigitalMarketingForeground foregroundSrc={foregroundSrc} />
+        <DigitalMarketingForeground
+          foregroundSrc={foregroundSrc}
+          objectPosition={objectPosition}
+        />
       </div>
     </div>
   );

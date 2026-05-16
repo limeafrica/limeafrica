@@ -9,21 +9,42 @@ export const servicesEyebrows = {
   bundles: "Content shoot packages",
 } as const;
 
+/** `object-cover` anchor — `bottom` keeps the lower portion of tall photos in frame. */
+export type CollageObjectPosition = "center" | "bottom";
+
+export type SectionCollage = {
+  foreground: string;
+  objectPosition?: CollageObjectPosition;
+};
+
 /** Layered collage (left column): ink panel + framed photo. Change `foreground` to swap the image. */
-export const digitalSectionCollage = {
-  foreground: "/slider2.avif",
-} as const;
+export const digitalSectionCollage: SectionCollage = {
+  foreground: "/Pictures/1767982390166.webp",
+};
 
-export const consultingSectionCollage = {
-  foreground: "/slider3B.webp",
-} as const;
+export const consultingSectionCollage: SectionCollage = {
+  foreground: "/Pictures/1767984001839.webp",
+  objectPosition: "bottom",
+};
 
-export const resourcesSectionCollage = {
-  foreground: "/Slider1.avif",
-} as const;
+export const resourcesSectionCollage: SectionCollage = {
+  foreground: "/Pictures/1767983863080.webp",
+  objectPosition: "bottom",
+};
+
+export const bundlesSectionCollage: SectionCollage = {
+  foreground: "/Pictures/1767983464841.webp",
+  objectPosition: "bottom",
+};
+
+export function collageObjectPositionClass(
+  position: CollageObjectPosition = "center",
+): string {
+  return position === "bottom" ? "object-bottom" : "object-center";
+}
 
 export const digitalMarketingIntro =
-  "We provide end-to-end digital marketing support, from strategy to execution and everything in between.";
+  "We provide end to end digital marketing support, from strategy to execution and everything in between.";
 
 export const digitalMarketingItems = [
   "Social Media Management",
@@ -38,21 +59,21 @@ export const consultingIntro =
 
 export const consultingBullets = [
   "Tailored strategies to meet your business goals",
-  "One-on-one consultations to boost your marketing experience",
+  "One on one consultations to boost your marketing experience",
 ] as const;
 
 export const resourcesIntro =
   "Access our curated collection of templates, guides, and resources designed to streamline your marketing, improve your execution, and help you achieve more with less effort.";
 
 export const resourceLinks = [
-  { label: "Ebooks", href: "/resources" },
   { label: "Templates", href: "/templates" },
+  { label: "Ebooks", href: "/resources" },
   { label: "Courses", href: "/resources" },
   { label: "Webinars", href: "/resources" },
 ] as const;
 
 export const bundlesIntro =
-  "A one-off content bundle for brands that want strong, reusable content without signing up for full social media management.";
+  "A one off content bundle for brands that want strong, reusable content without signing up for full social media management.";
 
 export type BundleTier = {
   id: string;

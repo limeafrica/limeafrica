@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
     return [
       { source: "/work", destination: "/portfolio", permanent: true },
       { source: "/work/:slug", destination: "/portfolio/:slug", permanent: true },
+      {
+        source: "/blog",
+        destination: "https://substack.com/@socialmediaredefined",
+        permanent: false,
+      },
+      {
+        source: "/blog/:path*",
+        destination: "https://substack.com/@socialmediaredefined",
+        permanent: false,
+      },
     ];
   },
   images: {

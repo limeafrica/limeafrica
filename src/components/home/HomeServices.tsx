@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, type CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
 import {
+  collageObjectPositionClass,
   consultingBullets,
   consultingIntro,
   consultingSectionCollage,
@@ -14,7 +15,9 @@ import {
   resourceLinks,
   resourcesIntro,
   resourcesSectionCollage,
+  type CollageObjectPosition,
 } from "@/content/services";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 const DECK_STICKY_STEP_PX = 18;
 const DECK_SCALE_STEP = 0.1;
@@ -40,6 +43,7 @@ type DeckBlock = {
   bullets?: readonly string[];
   links?: readonly { label: string; href: string }[];
   image: string;
+  imageObjectPosition?: CollageObjectPosition;
   imageAlt: string;
   plateVariant: PlateVariant;
   href?: string;
@@ -52,6 +56,7 @@ const deckBlocks: DeckBlock[] = [
     description: digitalMarketingIntro,
     bullets: digitalMarketingItems,
     image: digitalSectionCollage.foreground,
+    imageObjectPosition: digitalSectionCollage.objectPosition,
     imageAlt: "Digital marketing and content creation",
     plateVariant: "ink",
     href: "/services#digital-marketing",
@@ -62,6 +67,7 @@ const deckBlocks: DeckBlock[] = [
     description: consultingIntro,
     bullets: consultingBullets,
     image: consultingSectionCollage.foreground,
+    imageObjectPosition: consultingSectionCollage.objectPosition,
     imageAlt: "Brand strategy consulting session",
     plateVariant: "sand",
     href: "/services#consulting",
@@ -72,6 +78,7 @@ const deckBlocks: DeckBlock[] = [
     description: resourcesIntro,
     links: resourceLinks,
     image: resourcesSectionCollage.foreground,
+    imageObjectPosition: resourcesSectionCollage.objectPosition,
     imageAlt: "Marketing templates and guides",
     plateVariant: "paper",
     href: "/resources",
@@ -121,7 +128,7 @@ function plateClasses(variant: PlateVariant) {
     default:
       return {
         plate:
-          "bg-[color:var(--brand-white)] text-[color:var(--ink)] ring-1 ring-[color:var(--hairline)]",
+          "bg-[color:var(--brand-white)] text-[color:var(--ink)]",
         panel: "text-[color:var(--ink)]",
         title: "text-[color:var(--ink)]",
         body: "text-[color:var(--ink-muted)]",
@@ -153,7 +160,7 @@ function DeckBulletList({
             className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dotClassName}`}
             aria-hidden
           />
-          <span>{item}</span>
+          <span>{withoutHyphens(item)}</span>
         </li>
       ))}
     </ul>
@@ -185,12 +192,12 @@ function LayeredCard({
           <h3
             className={`font-title text-[44px] font-bold leading-[1.12] tracking-tight sm:text-[48px] lg:text-[52px] ${tone.title}`}
           >
-            {block.title}
+            {withoutHyphens(block.title)}
           </h3>
           <p
             className={`mt-4 text-sm leading-relaxed sm:text-base lg:mt-5 lg:text-base ${tone.body}`}
           >
-            {block.description}
+            {withoutHyphens(block.description)}
           </p>
 
           {block.bullets ? (
@@ -217,7 +224,7 @@ function LayeredCard({
                 href={block.href}
                 className={`inline-flex items-center justify-center border px-8 py-3.5 text-sm font-semibold tracking-tight transition-colors ${tone.button}`}
               >
-                {block.ctaLabel ?? "Learn more"}
+                {withoutHyphens(block.ctaLabel ?? "Learn more")}
               </Link>
             </div>
           ) : null}
@@ -231,7 +238,7 @@ function LayeredCard({
             unoptimized
             priority={priority}
             sizes="(max-width: 1023px) 100vw, 50vw"
-            className="object-cover object-center"
+            className={`object-cover ${collageObjectPositionClass(block.imageObjectPosition)}`}
           />
         </div>
       </div>

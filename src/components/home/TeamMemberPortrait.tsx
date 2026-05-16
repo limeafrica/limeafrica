@@ -66,7 +66,7 @@ export function TeamMemberPortrait({
             transform: showBack ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
         >
-          <div className="absolute inset-0 overflow-hidden rounded-xl bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] [backface-visibility:hidden]">
+          <div className="absolute inset-0 overflow-hidden rounded-xl bg-[color:var(--hairline)] [backface-visibility:hidden]">
             <Image
               src={src}
               alt=""

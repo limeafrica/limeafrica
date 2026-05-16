@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/content/site";
 
-const HERO_FEATURE = "/Slider1.avif";
-const HERO_INSET = "/slider2.avif";
+const HERO_FEATURE = "/Pictures/1767981936651.webp";
+const HERO_INSET = "/Pictures/1767981478579.webp";
 
 export function AboutHero() {
   return (
     <section
-      className="relative z-10 overflow-hidden border-b border-[color:var(--hairline)] bg-[color:var(--brand-white)] lg:min-h-[calc(100dvh-3.5rem)]"
+      className="relative z-10 overflow-hidden bg-[color:var(--brand-white)] lg:min-h-[calc(100dvh-3.5rem)]"
     >
       {/* Below lg: inset matches text column width; pad bottom so copy stays clear of tall card */}
       <div className="relative w-full pb-[max(4rem,calc(520px+2.75rem-min(52vh,420px)+1.5rem))] lg:hidden">
@@ -27,7 +27,7 @@ export function AboutHero() {
         <div
           className="pointer-events-none absolute inset-x-0 top-9 z-10 pl-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] pr-4 sm:top-11"
         >
-          <div className="relative h-[520px] w-full overflow-hidden bg-[color:var(--surface-sand)] ring-1 ring-[color:var(--hairline)]">
+          <div className="relative h-[520px] w-full overflow-hidden bg-[color:var(--surface-sand)]">
             <Image
               src={HERO_INSET}
               alt=""
@@ -83,7 +83,7 @@ export function AboutHero() {
                   <div className="min-w-0 space-y-5 font-sans text-[0.9375rem] leading-[1.75] text-[color:var(--ink-muted)] sm:text-[1.0625rem] sm:leading-[1.8]">
                     <p>
                       We are a digital marketing company built to help premium brands
-                      grow with clear strategy, content, and performance-driven
+                      grow with clear strategy, content, and performance driven
                       marketing.
                     </p>
                     <p>

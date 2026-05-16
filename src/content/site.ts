@@ -15,9 +15,9 @@ export const brandLogoFooter = {
 export const site = {
   name: "LimeAfrica",
   /** Small caps line under the wordmark in the header (matches boutique-studio pattern). */
-  headerTagline: "Pan-African studio",
+  headerTagline: "Pan African studio",
   tagline: "Strategic media for brands built to lead across the continent and beyond.",
-  location: "Pan-African studio",
+  location: "Pan African studio",
   established: "2020",
   email: "hello@limeafrica.com",
   /** Footer Connect - one line per row (edit here or add lines). */
@@ -45,6 +45,13 @@ export const menuSocialLinks = [
 
 export type NavItem = { label: string; href: string };
 
+/** Social Media Redefined on Substack (replaces on-site blog). */
+export const blogUrl = "https://substack.com/@socialmediaredefined";
+
+export function isExternalNavHref(href: string) {
+  return /^https?:\/\//i.test(href);
+}
+
 /** Inline links in the header; `headerCta` is the separate Work With Us control. */
 export const headerNavLinks: NavItem[] = [
   { label: "About Us", href: "/about" },
@@ -52,7 +59,7 @@ export const headerNavLinks: NavItem[] = [
   { label: "Resources", href: "/resources" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Community", href: "/community" },
-  { label: "Blog", href: "/blog" },
+  { label: "Blog", href: blogUrl },
 ];
 
 export const headerCta: NavItem = {
@@ -118,7 +125,7 @@ export const testimonials = [
   },
   {
     quote:
-      "Organic Pinterest became a real channel, not vanity metrics. Traffic to recipes and email sign-ups finally moved in parallel.",
+      "Organic Pinterest became a real channel, not vanity metrics. Traffic to recipes and email sign ups finally moved in parallel.",
     attribution: "Renée M.",
     company: "YMI Jeans contributor network",
   },

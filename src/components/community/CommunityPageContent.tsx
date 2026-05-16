@@ -8,6 +8,7 @@ import {
   communityVision,
   communityWhatsAppUrl,
 } from "@/content/community";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 export function CommunityPageContent() {
   return (
@@ -28,12 +29,12 @@ export function CommunityPageContent() {
                 Vision
               </p>
               <h2 className="font-title mt-5 text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-[1.15] tracking-tight text-[color:var(--brand-white)]">
-                {communityVision.title}
+                {withoutHyphens(communityVision.title)}
               </h2>
             </Reveal>
             <Reveal delay={0.08}>
               <p className="font-sans mx-auto mt-8 max-w-2xl text-base leading-relaxed text-white/78 sm:text-lg sm:leading-relaxed">
-                {communityVision.body}
+                {withoutHyphens(communityVision.body)}
               </p>
             </Reveal>
           </div>

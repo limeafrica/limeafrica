@@ -3,17 +3,20 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 
-const HERO_IMAGE = "/Slider1.avif";
+const HERO_IMAGE = "/slider 2 design.webp";
+
+const fixedLayerClass =
+  "pointer-events-none fixed inset-x-0 top-14 z-0 h-[calc(100dvh-3.5rem)]";
 
 export function ResourcesHero() {
   return (
     <div
       className={
-        "relative flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center overflow-hidden " +
-        "border-b border-white/15 bg-[color:var(--ink)] py-16 sm:py-24"
+        "relative z-10 flex min-h-[calc(100dvh-3.5rem)] flex-col justify-center " +
+        "bg-transparent py-16 sm:py-24"
       }
     >
-      <div className="pointer-events-none absolute inset-0">
+      <div className={fixedLayerClass}>
         <Image
           src={HERO_IMAGE}
           alt=""
@@ -24,10 +27,7 @@ export function ResourcesHero() {
           className="object-cover object-center"
         />
       </div>
-      <div
-        className="pointer-events-none absolute inset-0 bg-black/38"
-        aria-hidden
-      />
+      <div className={`${fixedLayerClass} bg-black/38`} aria-hidden />
       <Container className="relative z-10">
         <Reveal>
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80">

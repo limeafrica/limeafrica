@@ -3,8 +3,8 @@
 import Image from "next/image";
 import { useLayoutEffect, useState } from "react";
 
-/** Same asset as before; only mounted while `#about-next-steps` intersects the viewport. */
-const CTA_BG_IMAGE = "/Slider1.avif";
+/** Next steps fixed backdrop — only mounted while `#about-next-steps` intersects the viewport. */
+const CTA_BG_IMAGE = "/Pictures/1767982618048.webp";
 
 /**
  * Full-viewport fixed photo for Next steps. Hidden whenever that section is off-screen

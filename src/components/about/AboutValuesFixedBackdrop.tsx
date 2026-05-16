@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useLayoutEffect, useState } from "react";
 
 /**
- * Left strip for “What we stand for” only. Hidden as soon as Team or Next steps
+ * Right strip for “What we stand for” only. Hidden as soon as Team or Next steps
  * enters the viewport so it never overlaps those sections (no delayed fade).
  */
-const VALUES_IMAGE = "/slider3B.webp";
+const VALUES_IMAGE = "/Pictures/1767989778746.webp";
 
 export function AboutValuesFixedBackdrop() {
   const [valuesInView, setValuesInView] = useState(false);
@@ -44,7 +44,7 @@ export function AboutValuesFixedBackdrop() {
   return (
     <div
       className={
-        "pointer-events-none fixed left-0 top-14 z-[1] h-[calc(100dvh-3.5rem)] w-[54%] " +
+        "pointer-events-none fixed right-0 top-14 z-[1] h-[calc(100dvh-3.5rem)] w-[54%] " +
         (visible ? "hidden lg:block" : "hidden")
       }
       aria-hidden

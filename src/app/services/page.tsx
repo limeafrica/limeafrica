@@ -15,13 +15,16 @@ export default function ServicesPage() {
     <main className="relative flex-1">
       <PageIntro
         fullHeight
-        backgroundImage="/Slider1.avif"
+        fixedBackground
+        backgroundImage="/Untitled design (4).webp"
         eyebrow={servicesEyebrows.hero}
         title="Strategy, content, and bundles built to scale with you"
-        subtitle="End-to-end digital marketing, one-on-one consulting, curated resources, and The Lime Edit packages when you need strong content without full social management."
+        subtitle="End to end digital marketing, one on one consulting, curated resources, and The Lime Edit packages when you need strong content without full social management."
       />
-      <ServicesPageContent />
-      <HomeFinalCta />
+      <div className="relative z-10">
+        <ServicesPageContent />
+        <HomeFinalCta />
+      </div>
     </main>
   );
 }

@@ -20,9 +20,9 @@ import {
 } from "@/components/motion/carouselSlide";
 
 const slides = [
-  "/Slider1.avif",
-  "/slider2.avif",
-  "/slider3B.webp",
+  "/Pictures/1767468494132.webp",
+  "/Pictures/1767981027696.webp",
+  "/Pictures/1767983464841.webp",
 ] as const;
 
 const INTERVAL_MS = 4000;
@@ -83,7 +83,7 @@ export function HomeApproachSlider() {
 
   return (
     <div
-      className="relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] touch-pan-y overflow-hidden rounded-xl bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
+      className="relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] touch-pan-y overflow-hidden rounded-xl bg-[color:var(--hairline)] lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
       aria-roledescription="carousel"
       aria-label="Approach highlights"
       onTouchStart={handleTouchStart}

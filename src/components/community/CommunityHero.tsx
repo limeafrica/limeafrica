@@ -5,6 +5,7 @@ import {
   communityHero,
   communityWhatsAppUrl,
 } from "@/content/community";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 /** Globe loop: `mix-blend-screen` keeps blacks sunk into `--ink`, highlights read luminous */
 const HERO_GLOBE_VIDEO =
@@ -79,7 +80,8 @@ export function CommunityHero() {
           <Reveal delay={0.1}>
             <div className="mx-auto mt-8 max-w-2xl font-sans text-base leading-relaxed text-white/85 sm:text-lg sm:leading-relaxed">
               <p className="text-pretty">
-                {communityHero.description} {communityHero.supporting}
+                {withoutHyphens(communityHero.description)}{" "}
+                {withoutHyphens(communityHero.supporting)}
               </p>
             </div>
           </Reveal>

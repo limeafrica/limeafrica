@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 
-const HERO_FEATURE = "/Slider1.avif";
+const HERO_FEATURE = "/Pictures/1767981027696.webp";
 
 export function PortfolioHero() {
   return (

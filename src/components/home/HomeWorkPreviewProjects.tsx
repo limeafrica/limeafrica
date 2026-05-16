@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { withoutHyphens } from "@/lib/displayCopy";
 import {
   useCallback,
   useMemo,
@@ -138,7 +139,7 @@ export function HomeWorkPreviewProjects({
                   href={`/portfolio/${active.slug}`}
                   className="group block w-full text-center"
                 >
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 transition duration-500">
                     <Image
                       src={active.imageSrc}
                       alt={active.imageAlt}
@@ -149,11 +150,11 @@ export function HomeWorkPreviewProjects({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
                     <p className="absolute bottom-5 left-1/2 w-[calc(100%-2.5rem)] -translate-x-1/2 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-yellow)]">
-                      {active.category}
+                      {withoutHyphens(active.category)}
                     </p>
                   </div>
                   <p className="font-title mt-5 text-2xl text-[color:var(--brand-white)]">
-                    {active.title}
+                    {withoutHyphens(active.title)}
                   </p>
                   <span className="mt-3 flex items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
                     See more
@@ -187,7 +188,7 @@ export function HomeWorkPreviewProjects({
         {projects.map((project, i) => (
           <Reveal key={project.slug} delay={0.07 * i}>
             <Link href={`/portfolio/${project.slug}`} className="group block">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 ring-2 ring-transparent transition duration-500 group-hover:ring-[color:var(--brand-yellow)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[color:var(--brand-white)]/10 transition duration-500">
                 <Image
                   src={project.imageSrc}
                   alt={project.imageAlt}
@@ -198,11 +199,11 @@ export function HomeWorkPreviewProjects({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--ink)]/80 via-transparent to-transparent opacity-80 transition group-hover:opacity-90" />
                 <p className="absolute bottom-5 left-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-yellow)]">
-                  {project.category}
+                  {withoutHyphens(project.category)}
                 </p>
               </div>
               <p className="font-title mt-5 text-2xl text-[color:var(--brand-white)]">
-                {project.title}
+                {withoutHyphens(project.title)}
               </p>
               <span className="mt-3 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[color:var(--brand-yellow)]">
                 See more

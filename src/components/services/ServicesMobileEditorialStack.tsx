@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { DigitalMarketingForeground } from "@/components/services/DigitalMarketingForeground";
 import { Reveal } from "@/components/motion/Reveal";
+import type { CollageObjectPosition } from "@/content/services";
 
 /** Shared overlap rhythm with Services section hero bands (padding ↔ −mt matched). */
 export const SERVICES_MOBILE_BAND_PB = "pb-[23rem] sm:pb-96";
@@ -14,6 +15,7 @@ type ServicesMobileEditorialStackProps = {
   eyebrow: string;
   title: string;
   foregroundSrc: string;
+  objectPosition?: CollageObjectPosition;
   children: ReactNode;
 };
 
@@ -27,6 +29,7 @@ export function ServicesMobileEditorialStack({
   eyebrow,
   title,
   foregroundSrc,
+  objectPosition,
   children,
 }: ServicesMobileEditorialStackProps) {
   return (
@@ -53,6 +56,7 @@ export function ServicesMobileEditorialStack({
         >
           <DigitalMarketingForeground
             foregroundSrc={foregroundSrc}
+            objectPosition={objectPosition}
             className="w-full max-w-[420px] sm:max-w-[460px]"
           />
         </div>

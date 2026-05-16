@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 
 /** Editorial photo: matches studio imagery used elsewhere on About. */
-const VISION_IMAGE = "/slider2.avif";
+const VISION_IMAGE = "/Untitled design (3).webp";
 
 /** Vision copy: rendered inside `Reveal` + `max-w-xl` like Home Approach text column. */
 export function AboutVisionContent() {
@@ -45,7 +45,7 @@ export function AboutVisionLayout() {
         <div
           className={
             "relative isolate mx-auto aspect-[467/316] w-full max-w-[var(--editorial-image-w)] overflow-hidden rounded-xl " +
-            "bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] " +
+            "bg-[color:var(--hairline)] " +
             "lg:aspect-[467/632] lg:mx-0 lg:max-h-[var(--editorial-image-h)] lg:rounded-2xl"
           }
         >
@@ -54,7 +54,7 @@ export function AboutVisionLayout() {
             alt=""
             fill
             unoptimized
-            className="object-cover object-center"
+            className="object-cover object-bottom"
             sizes="(max-width: 1023px) min(calc(100vw - 2rem), 467px), 467px"
             priority={false}
           />

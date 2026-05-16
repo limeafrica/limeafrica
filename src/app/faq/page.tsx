@@ -10,6 +10,7 @@ import {
   faqPageMeta,
 } from "@/content/faq";
 import { site } from "@/content/site";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 export const metadata: Metadata = {
   title: faqPageMeta.title,
@@ -44,7 +45,7 @@ export default function FaqPage() {
               {faqItems.map((item) => (
                 <details key={item.question} className={detailsClass}>
                   <summary className={summaryClass}>
-                    <span>{item.question}</span>
+                    <span>{withoutHyphens(item.question)}</span>
                     <span
                       className="mt-0.5 shrink-0 text-[color:var(--ink)]/45 transition-transform group-open:rotate-45"
                       aria-hidden
@@ -52,19 +53,19 @@ export default function FaqPage() {
                       +
                     </span>
                   </summary>
-                  <p className={answerClass}>{item.answer}</p>
+                  <p className={answerClass}>{withoutHyphens(item.answer)}</p>
                 </details>
               ))}
               <p className={`${answerClass} mt-10 border-t border-[color:var(--hairline)] pt-10`}>
-                {faqClosing.lead}{" "}
+                {withoutHyphens(faqClosing.lead)}{" "}
                 <Link href={faqClosing.ctaHref} className={inlineLink}>
-                  {faqClosing.ctaLabel}
+                  {withoutHyphens(faqClosing.ctaLabel)}
                 </Link>{" "}
-                {faqClosing.beforeEmail}{" "}
+                {withoutHyphens(faqClosing.beforeEmail)}{" "}
                 <a href={`mailto:${site.email}`} className={inlineLink}>
                   {site.email}
                 </a>
-                {faqClosing.trailing}
+                {withoutHyphens(faqClosing.trailing)}
               </p>
             </div>
           </Reveal>

@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 
 /** In-flow image (mobile). Desktop uses `AboutValuesFixedBackdrop`. */
-const VALUES_IMAGE = "/slider3B.webp";
+const VALUES_IMAGE = "/Pictures/1767989778746.webp";
 
 const values = [
   {
@@ -40,8 +40,8 @@ export function AboutValues() {
       className="relative z-10 overflow-x-clip border-t border-[color:var(--hairline)]"
     >
       {/*
-        Desktop: left column is empty; `AboutValuesFixedBackdrop` is fixed; vision band
-        stays above it via z-10. Mobile: in-flow image below md.
+        Desktop: copy left; `AboutValuesFixedBackdrop` fixed on the right; vision band
+        stays above it via z-10. Mobile: in-flow image on top.
       */}
       <div className="flex flex-col lg:flex-row lg:items-stretch">
         <div className="relative order-1 min-h-[min(42vh,380px)] w-full shrink-0 lg:hidden">
@@ -55,15 +55,11 @@ export function AboutValues() {
             priority={false}
           />
         </div>
-        <div
-          className="order-1 hidden shrink-0 lg:block lg:w-[54%]"
-          aria-hidden
-        />
 
         <div
           className={
-            "order-2 flex min-w-0 flex-col bg-[color:var(--brand-white)] lg:w-[46%] lg:shrink-0 " +
-            "pl-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] pr-6 lg:pl-12 lg:pr-12 xl:pl-16 xl:pr-16"
+            "order-2 flex min-w-0 flex-col bg-[color:var(--brand-white)] lg:order-1 lg:w-[46%] lg:shrink-0 " +
+            "pl-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] pr-6 lg:pr-10 xl:pr-14"
           }
         >
           <div className="flex w-full flex-col justify-center py-12 sm:py-14 lg:min-h-[calc(100dvh-3.5rem)] lg:py-14 xl:py-16 2xl:py-20">
@@ -101,6 +97,11 @@ export function AboutValues() {
             </div>
           </div>
         </div>
+
+        <div
+          className="order-3 hidden shrink-0 lg:order-2 lg:block lg:w-[54%]"
+          aria-hidden
+        />
       </div>
 
       <div

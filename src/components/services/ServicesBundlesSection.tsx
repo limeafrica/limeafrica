@@ -10,9 +10,10 @@ import {
   bundleTiers,
   extrasDisclaimer,
   extrasItems,
-  resourcesSectionCollage,
+  bundlesSectionCollage,
   servicesEyebrows,
 } from "@/content/services";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 function IconCheck({ className }: { className?: string }) {
   return (
@@ -41,7 +42,7 @@ export function ServicesBundlesSection() {
     <>
       <div className="max-w-3xl text-center sm:text-left">
         <Reveal>
-          <p className={eyebrow}>{servicesEyebrows.bundles}</p>
+          <p className={eyebrow}>{withoutHyphens(servicesEyebrows.bundles)}</p>
           <h2
             id="lime-edit-heading"
             className="font-title mt-4 text-[clamp(2rem,4vw,3rem)] font-bold tracking-tight text-[color:var(--ink)]"
@@ -49,7 +50,7 @@ export function ServicesBundlesSection() {
             The Lime Edit
           </h2>
           <p className="font-sans mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[color:var(--ink-muted)] sm:mx-0">
-            {bundlesIntro}
+            {withoutHyphens(bundlesIntro)}
           </p>
         </Reveal>
       </div>
@@ -87,8 +88,8 @@ export function ServicesBundlesSection() {
             className={
               "group relative mt-8 flex h-full flex-col overflow-hidden rounded-none " +
               "bg-[color:var(--brand-white)] shadow-[0_8px_40px_-16px_rgba(26,22,18,0.14)] " +
-              "ring-1 ring-[color:var(--hairline)] transition-all duration-300 " +
-              "hover:-translate-y-1 hover:shadow-[0_28px_56px_-28px_rgba(26,22,18,0.22)] hover:ring-[color:var(--ink)]/18"
+              "transition-all duration-300 " +
+              "hover:-translate-y-1 hover:shadow-[0_28px_56px_-28px_rgba(26,22,18,0.22)]"
             }
           >
             {!showingExtras && activeTier?.id === "voice" ? (
@@ -111,12 +112,12 @@ export function ServicesBundlesSection() {
                     {showingExtras ? "05" : String(activeTabIndex + 1).padStart(2, "0")}
                   </span>
                   <h3 className="font-title mt-2 text-2xl tracking-tight text-[color:var(--ink)] sm:text-[1.65rem]">
-                    {showingExtras ? "Extras" : activeTier?.name}
+                    {showingExtras ? "Extras" : withoutHyphens(activeTier?.name ?? "")}
                   </h3>
                   <p className="font-sans mt-2 max-w-md text-sm leading-snug text-[color:var(--ink-muted)] sm:text-[0.9375rem]">
                     {showingExtras
-                      ? "Add-ons you can include with any Lime Edit package."
-                      : activeTier?.tagline}
+                      ? "Add ons you can include with any Lime Edit package."
+                      : withoutHyphens(activeTier?.tagline ?? "")}
                   </p>
                 </div>
                 <div className="shrink-0 text-right">
@@ -124,7 +125,7 @@ export function ServicesBundlesSection() {
                     {showingExtras ? "Pricing" : "From"}
                   </p>
                   <p className="font-title mt-1 text-2xl tabular-nums tracking-tight text-[color:var(--ink)] sm:text-[1.75rem]">
-                    {showingExtras ? "Per add-on" : activeTier?.priceLabel}
+                    {showingExtras ? "Per add on" : withoutHyphens(activeTier?.priceLabel ?? "")}
                   </p>
                 </div>
               </div>
@@ -133,9 +134,9 @@ export function ServicesBundlesSection() {
                 <ul className="font-sans mt-7 flex-1 space-y-3.5 text-[0.9375rem] leading-relaxed text-[color:var(--ink)] sm:text-base">
                   {extrasItems.map((item) => (
                     <li key={item.label} className="flex items-start justify-between gap-5 border-b border-[color:var(--hairline)]/70 pb-3 last:border-b-0">
-                      <span className="text-[color:var(--ink-muted)]">{item.label}</span>
+                      <span className="text-[color:var(--ink-muted)]">{withoutHyphens(item.label)}</span>
                       <span className="shrink-0 font-medium tabular-nums text-[color:var(--ink)]">
-                        {item.price}
+                        {withoutHyphens(item.price)}
                       </span>
                     </li>
                   ))}
@@ -145,18 +146,18 @@ export function ServicesBundlesSection() {
                   {activeTier?.bullets.map((b) => (
                     <li key={b} className="flex gap-3.5">
                       <IconCheck className="mt-0.5 h-5 w-5 shrink-0" />
-                      <span className="text-[color:var(--ink-muted)]">{b}</span>
+                      <span className="text-[color:var(--ink-muted)]">{withoutHyphens(b)}</span>
                     </li>
                   ))}
                 </ul>
               )}
 
-              <div className="mt-8 rounded-xl bg-[color:var(--surface-subtle)] px-4 py-4 ring-1 ring-[color:var(--hairline)]/80">
+              <div className="mt-8 rounded-xl bg-[color:var(--surface-subtle)] px-4 py-4">
                 <p className="font-sans text-xs leading-relaxed text-[color:var(--ink-muted)] sm:text-[0.8125rem]">
                   <span className="font-semibold text-[color:var(--ink)]">
                     Note:
                   </span>{" "}
-                  {showingExtras ? extrasDisclaimer : activeTier?.note}
+                  {withoutHyphens(showingExtras ? extrasDisclaimer : activeTier?.note ?? "")}
                 </p>
               </div>
             </div>
@@ -197,7 +198,8 @@ export function ServicesBundlesSection() {
         <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
           <Reveal className="block w-full">
             <DigitalMarketingCollage
-              foregroundSrc={resourcesSectionCollage.foreground}
+              foregroundSrc={bundlesSectionCollage.foreground}
+              objectPosition={bundlesSectionCollage.objectPosition}
               panelClassName="bg-[color:var(--brand-yellow)]"
             />
           </Reveal>

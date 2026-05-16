@@ -9,9 +9,11 @@ import { StaggeredMenu, type StaggeredMenuHandle } from "@/components/ui/Stagger
 import {
   headerCta,
   headerNavLinks,
+  isExternalNavHref,
   mainNav,
   menuSocialLinks,
 } from "@/content/site";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 /**
  * Centered inline nav only at this width+ (single row with `flex-nowrap`).
@@ -20,6 +22,7 @@ import {
 const INLINE_NAV_MIN_PX = 1300;
 
 function navHrefActive(pathname: string, href: string) {
+  if (isExternalNavHref(href)) return false;
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -153,15 +156,27 @@ export function SiteHeader() {
             <ul className="flex flex-nowrap items-center justify-center gap-x-3 xl:gap-x-6 2xl:gap-x-10">
               {headerNavLinks.map((item) => {
                 const active = navHrefActive(pathname, item.href);
+                const className = `relative inline-block whitespace-nowrap pb-1 ${inlineNavClasses(active)}`;
                 return (
                   <li key={item.href}>
-                    <Link
-                      ref={setLinkRef(item.href)}
-                      href={item.href}
-                      className={`relative inline-block whitespace-nowrap pb-1 ${inlineNavClasses(active)}`}
-                    >
-                      {item.label.toUpperCase()}
-                    </Link>
+                    {isExternalNavHref(item.href) ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={className}
+                      >
+                        {withoutHyphens(item.label).toUpperCase()}
+                      </a>
+                    ) : (
+                      <Link
+                        ref={setLinkRef(item.href)}
+                        href={item.href}
+                        className={className}
+                      >
+                        {withoutHyphens(item.label).toUpperCase()}
+                      </Link>
+                    )}
                   </li>
                 );
               })}

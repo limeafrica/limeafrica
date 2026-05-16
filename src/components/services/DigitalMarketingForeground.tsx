@@ -1,13 +1,19 @@
 import Image from "next/image";
+import {
+  collageObjectPositionClass,
+  type CollageObjectPosition,
+} from "@/content/services";
 
 type DigitalMarketingForegroundProps = {
   foregroundSrc: string;
+  objectPosition?: CollageObjectPosition;
   className?: string;
 };
 
 /** Framed photo used in the digital marketing collage (desktop + mobile). */
 export function DigitalMarketingForeground({
   foregroundSrc,
+  objectPosition = "center",
   className = "",
 }: DigitalMarketingForegroundProps) {
   return (
@@ -24,7 +30,7 @@ export function DigitalMarketingForeground({
           alt=""
           fill
           unoptimized
-          className="object-cover object-center"
+          className={`object-cover ${collageObjectPositionClass(objectPosition)}`}
           sizes="(max-width: 1023px) 70vw, 28vw"
         />
       </div>

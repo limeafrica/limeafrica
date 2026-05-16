@@ -25,7 +25,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "What does LimeAfrica do?",
     answer:
-      "We are a Pan-African strategic media studio. We help brands clarify narrative and execute across digital channels (social, content, email, design, and campaign consulting) so marketing feels coherent and outcomes are measurable.",
+      "We are a Pan African strategic media studio. We help brands clarify narrative and execute across digital channels (social, content, email, design, and campaign consulting) so marketing feels coherent and outcomes are measurable.",
   },
   {
     question: "Where are you based, and who do you work with?",
@@ -40,7 +40,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "What services do you offer?",
     answer:
-      "Our Services page outlines digital marketing execution (social, content, design, branding and strategy, email, and packages), one-to-one consulting, resource libraries, and content shoot bundles. Final deliverables and fees are always confirmed in writing for your specific brief.",
+      "Our Services page outlines digital marketing execution (social, content, design, branding and strategy, email, and packages), one on one consulting, resource libraries, and content shoot bundles. Final deliverables and fees are always confirmed in writing for your specific brief.",
   },
   {
     question: "What are content bundles (e.g. Snap)?",
@@ -50,12 +50,12 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "Do you handle social media accounts for clients?",
     answer:
-      "Yes, where scope includes management packages: access, scheduling, and channel stewardship are agreed upfront. For bundle-only or production-only work, we typically deliver assets for your team to publish unless we add management separately.",
+      "Yes, where scope includes management packages: access, scheduling, and channel stewardship are agreed upfront. For bundle only or production only work, we typically deliver assets for your team to publish unless we add management separately.",
   },
   {
     question: "What is the Community section about?",
     answer:
-      "Community is where we highlight programmes, conversations, and partnerships that keep audiences connected to our work and to each other, aligned with how we build trust and long-term relationships beyond single campaigns.",
+      "Community is where we highlight programmes, conversations, and partnerships that keep audiences connected to our work and to each other, aligned with how we build trust and long term relationships beyond single campaigns.",
   },
   {
     question: "Are Resources and templates free?",
@@ -65,7 +65,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "How does pricing work?",
     answer:
-      "Public pages may show indicative package pricing (for example in local currency for content bundles). Custom retainers and campaigns are quoted after we understand scope. Taxes and third-party costs are clarified before you approve a proposal.",
+      "Public pages may show indicative package pricing (for example in local currency for content bundles). Custom retainers and campaigns are quoted after we understand scope. Taxes and third party costs are clarified before you approve a proposal.",
   },
   {
     question: "Who owns the creative work?",
@@ -75,7 +75,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "How long does a typical engagement take?",
     answer:
-      "Timelines depend on deliverables: a focused consulting sprint differs from a multi-month retainer. We align milestones in the proposal so you know what ships when.",
+      "Timelines depend on deliverables: a focused consulting sprint differs from a multi month retainer. We align milestones in the proposal so you know what ships when.",
   },
   {
     question: "Where can I read your policies?",

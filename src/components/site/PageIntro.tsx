@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 type PageIntroProps = {
   eyebrow?: string;
@@ -10,6 +11,8 @@ type PageIntroProps = {
   fullHeight?: boolean;
   /** Full-bleed photo; dark scrim + white type (for legibility on full-color imagery). */
   backgroundImage?: string;
+  /** Pin photo to the viewport while the page scrolls (content below should sit above with `relative z-10`). */
+  fixedBackground?: boolean;
   /** Solid `--ink` band + light type (no photo). */
   variant?: "default" | "dark";
 };
@@ -20,18 +23,23 @@ export function PageIntro({
   subtitle,
   fullHeight = false,
   backgroundImage,
+  fixedBackground = false,
   variant = "default",
 }: PageIntroProps) {
   const onPhoto = Boolean(backgroundImage);
   const solidDark = variant === "dark" && !onPhoto;
   const lightOnDark = onPhoto || solidDark;
+  const fixedLayerClass =
+    "pointer-events-none fixed inset-x-0 top-14 z-0 h-[calc(100dvh-3.5rem)]";
 
   return (
     <div
       className={
-        "relative overflow-hidden " +
+        "relative z-10 overflow-hidden " +
         (onPhoto || solidDark
-          ? "bg-[color:var(--ink)]"
+          ? fixedBackground
+            ? "bg-transparent"
+            : "bg-[color:var(--ink)]"
           : "bg-[color:var(--paper)]") +
         " " +
         (fullHeight
@@ -40,23 +48,40 @@ export function PageIntro({
       }
     >
       {backgroundImage ? (
-        <>
-          <div className="pointer-events-none absolute inset-0">
-            <Image
-              src={backgroundImage}
-              alt=""
-              fill
-              priority={fullHeight}
-              sizes="100vw"
-              unoptimized
-              className="object-cover object-center"
+        fixedBackground ? (
+          <>
+            <div className={fixedLayerClass}>
+              <Image
+                src={backgroundImage}
+                alt=""
+                fill
+                priority={fullHeight}
+                sizes="100vw"
+                unoptimized
+                className="object-cover object-bottom"
+              />
+            </div>
+            <div className={`${fixedLayerClass} bg-black/38`} aria-hidden />
+          </>
+        ) : (
+          <>
+            <div className="pointer-events-none absolute inset-0">
+              <Image
+                src={backgroundImage}
+                alt=""
+                fill
+                priority={fullHeight}
+                sizes="100vw"
+                unoptimized
+                className="object-cover object-center"
+              />
+            </div>
+            <div
+              className="pointer-events-none absolute inset-0 bg-black/38"
+              aria-hidden
             />
-          </div>
-          <div
-            className="pointer-events-none absolute inset-0 bg-black/38"
-            aria-hidden
-          />
-        </>
+          </>
+        )
       ) : null}
       <Container className="relative z-10">
         <Reveal>
@@ -71,7 +96,7 @@ export function PageIntro({
                     : "text-[color:var(--ink-muted)]")
               }
             >
-              {eyebrow}
+              {withoutHyphens(eyebrow)}
             </p>
           ) : null}
           <h1
@@ -80,7 +105,7 @@ export function PageIntro({
               (lightOnDark ? "text-white" : "text-[color:var(--ink)]")
             }
           >
-            {title}
+            {withoutHyphens(title)}
           </h1>
           {subtitle ? (
             <p
@@ -89,7 +114,7 @@ export function PageIntro({
                 (lightOnDark ? "text-white/88" : "text-[color:var(--ink-muted)]")
               }
             >
-              {subtitle}
+              {withoutHyphens(subtitle)}
             </p>
           ) : null}
         </Reveal>

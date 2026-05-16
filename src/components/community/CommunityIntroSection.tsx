@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { communityIntro } from "@/content/community";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 export function CommunityIntroSection() {
   const { imageSrc, eyebrow, title, scriptLine, paragraphs } = communityIntro;
@@ -13,13 +14,13 @@ export function CommunityIntroSection() {
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(240px,42%)_minmax(0,1fr)] lg:items-stretch">
         {/* Mobile: boxed image + hairline before copy */}
         <div className="lg:hidden px-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] pt-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))]">
-          <div className="relative aspect-[4/5] max-h-[min(420px,55vh)] w-full overflow-hidden bg-[color:var(--surface-sand)] ring-1 ring-[color:var(--hairline)]">
+          <div className="relative aspect-[4/5] max-h-[min(420px,55vh)] w-full overflow-hidden bg-[color:var(--surface-sand)] ">
             <Image
               src={imageSrc}
               alt=""
               fill
               unoptimized
-              className="object-cover object-center"
+              className="object-cover object-bottom"
               sizes="100vw"
             />
           </div>
@@ -36,7 +37,7 @@ export function CommunityIntroSection() {
             alt=""
             fill
             unoptimized
-            className="object-cover object-center"
+            className="object-cover object-bottom"
             sizes="42vw"
           />
         </div>
@@ -50,14 +51,14 @@ export function CommunityIntroSection() {
           <div className="max-w-3xl">
             <Reveal>
               <p className="text-[13px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink-muted)] sm:text-[14px]">
-                {eyebrow}
+                {withoutHyphens(eyebrow)}
               </p>
               <div className="mt-2 sm:mt-2.5">
                 <h2 className="font-title max-w-3xl text-[clamp(2.125rem,4.5vw,3.15rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
-                  {title}
+                  {withoutHyphens(title)}
                 </h2>
                 <p className="font-script mt-2.5 text-[clamp(1.6rem,3.5vw,2.35rem)] leading-snug text-[color:var(--ink)] sm:mt-3">
-                  {scriptLine}
+                  {withoutHyphens(scriptLine)}
                 </p>
               </div>
             </Reveal>
@@ -65,7 +66,7 @@ export function CommunityIntroSection() {
             <div className="mt-12 max-w-3xl space-y-8 font-sans text-[1rem] leading-[1.75] text-[color:var(--ink-muted)] sm:mt-14 sm:text-[1.0625rem]">
               {paragraphs.map((p, i) => (
                 <Reveal key={i} delay={0.06 + i * 0.04}>
-                  <p>{p}</p>
+                  <p>{withoutHyphens(p)}</p>
                 </Reveal>
               ))}
             </div>

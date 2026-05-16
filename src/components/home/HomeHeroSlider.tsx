@@ -17,6 +17,7 @@ import {
   type Transition,
   type Variants,
 } from "framer-motion";
+import { withoutHyphens } from "@/lib/displayCopy";
 import { Container } from "@/components/ui/Container";
 import { heroOutlineCtaClassName } from "@/components/ui/heroOutlineCta";
 
@@ -49,7 +50,7 @@ const heroCtaClassName =
 
 const slides = [
   {
-    src: "/Slider1.avif",
+    src: "/slider%201%20design.webp",
     title: "You've Found Lime",
     subtitle:
       "We’re not just a digital marketing agency; we’re your partner in growth.",
@@ -58,19 +59,19 @@ const slides = [
     ctaHref: "/about",
   },
   {
-    src: "/slider2.avif",
+    src: "/slider%202%20design.webp",
     title: "Struggling To Keep Up?",
     subtitle:
-      "Let’s take social media off your to-do list.",
+      "Let’s take social media off your to do list.",
     kicker: "Built for your brand",
     ctaLabel: "Book a Consultation",
     ctaHref: "https://paystack.shop/pay/discoverycalls",
   },
   {
-    src: "/slider3B.webp",
+    src: "/slider%203%20design.webp",
     title: "We Turn Content Into Revenue",
     subtitle:
-      "With over ₦300M in profit generated for 16 brands.",
+      "With over ₦400M in profit generated for 16 brands.",
     kicker: "Results that speak",
     ctaLabel: "Showcase your work with Lime",
     ctaHref: "/templates",
@@ -301,19 +302,19 @@ export function HomeHeroSlider() {
                     className="h-px w-10 bg-[color:var(--brand-yellow)]"
                     aria-hidden
                   />
-                  {slides[page].kicker}
+                  {withoutHyphens(slides[page].kicker)}
                 </p>
                 <h2 className="font-title mt-4 text-balance text-[clamp(2.125rem,5.2vw+0.65rem,4.5rem)] font-medium leading-[1.07] tracking-[-0.02em] text-[color:var(--brand-white)] sm:mt-5 sm:leading-[1.1] lg:leading-[1.12]">
-                  {slides[page].title}
+                  {withoutHyphens(slides[page].title)}
                 </h2>
                 <p className="mt-4 max-w-xl text-pretty text-[0.9375rem] leading-relaxed text-[color:var(--brand-white)]/85 sm:mt-5 sm:text-base md:mt-6 md:text-lg md:leading-relaxed">
-                  {slides[page].subtitle}
+                  {withoutHyphens(slides[page].subtitle)}
                 </p>
                 <Link
                   href={slides[page].ctaHref}
                   className={heroCtaClassName}
                 >
-                  {slides[page].ctaLabel}
+                  {withoutHyphens(slides[page].ctaLabel)}
                 </Link>
               </motion.div>
             </AnimatePresence>

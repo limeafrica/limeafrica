@@ -6,6 +6,7 @@ import { PortfolioSuccessStories } from "@/components/portfolio/PortfolioSuccess
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { workItems } from "@/content/work";
+import { withoutHyphens } from "@/lib/displayCopy";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -47,7 +48,7 @@ export default function WorkIndexPage() {
                 <Link href={`/portfolio/${project.slug}`} className="group block">
                   <div
                     className={
-                      "relative aspect-[16/11] overflow-hidden bg-[color:var(--hairline)] ring-1 ring-[color:var(--hairline)] " +
+                      "relative aspect-[16/11] overflow-hidden bg-[color:var(--hairline)] " +
                       (i === 0
                         ? "z-20 -mt-16 shadow-[0_20px_50px_-12px_rgba(26,22,18,0.35)] sm:-mt-24 md:-mt-[7.5rem]"
                         : i === 1
@@ -65,13 +66,13 @@ export default function WorkIndexPage() {
                     />
                   </div>
                   <p className="mt-5 text-[10px] font-semibold uppercase tracking-[0.25em] text-[color:var(--brand-yellow)]">
-                    {project.category}
+                    {withoutHyphens(project.category)}
                   </p>
                   <h3 className="font-title mt-2 text-3xl text-[color:var(--ink)]">
-                    {project.title}
+                    {withoutHyphens(project.title)}
                   </h3>
                   <p className="font-sans mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">
-                    {project.excerpt}
+                    {withoutHyphens(project.excerpt)}
                   </p>
                   <span className="mt-6 inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[color:var(--ink)] transition">
                     <span

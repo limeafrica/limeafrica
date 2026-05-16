@@ -13,8 +13,10 @@ export default function ResourcesPage() {
   return (
     <main className="relative flex-1">
       <ResourcesHero />
-      <ResourcesTemplatesSection />
-      <HomeFinalCta />
+      <div className="relative z-10">
+        <ResourcesTemplatesSection />
+        <HomeFinalCta />
+      </div>
     </main>
   );
 }

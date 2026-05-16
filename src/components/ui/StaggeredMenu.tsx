@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { withoutHyphens } from "@/lib/displayCopy";
 import React, {
   forwardRef,
   useCallback,
@@ -519,7 +520,7 @@ export const StaggeredMenu = forwardRef<StaggeredMenuHandle, StaggeredMenuProps>
               items.map((it, idx) => {
                 const content = (
                   <>
-                    <span className="sm-panel-itemLabel">{it.label}</span>
+                    <span className="sm-panel-itemLabel">{withoutHyphens(it.label)}</span>
                   </>
                 );
                 const classNameItem = "sm-panel-item";
@@ -541,6 +542,8 @@ export const StaggeredMenu = forwardRef<StaggeredMenuHandle, StaggeredMenuProps>
                       <a
                         className={classNameItem}
                         href={it.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={it.ariaLabel}
                         {...dataIdx}
                         onClick={closeMenu}

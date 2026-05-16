@@ -3,7 +3,8 @@ import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 import { FaSquarePinterest, FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { SiteLogo } from "@/components/site/SiteLogo";
-import { mainNav, menuSocialLinks, site } from "@/content/site";
+import { withoutHyphens } from "@/lib/displayCopy";
+import { isExternalNavHref, mainNav, menuSocialLinks, site } from "@/content/site";
 
 type SocialLabel = (typeof menuSocialLinks)[number]["label"];
 
@@ -81,7 +82,7 @@ export function SiteFooter() {
           <div className="lg:col-span-5 xl:col-span-4">
             <SiteLogo variant="footer" />
             <p className="font-sans mt-6 max-w-md text-[0.9375rem] leading-[1.65] text-[color:var(--ink)]/88">
-              {site.tagline}
+              {withoutHyphens(site.tagline)}
             </p>
             <ul
               className="mt-6 flex flex-wrap gap-3"
@@ -113,17 +114,29 @@ export function SiteFooter() {
           >
             <p className={eyebrow}>Navigate</p>
             <ul className="mt-6 space-y-1">
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={`group inline-flex items-center gap-2 leading-snug ${footerLink}`}
-                  >
-                    <IconArrowUpRight className="h-5 w-5 shrink-0 text-[color:var(--ink)]/55 transition-colors group-hover:text-[color:var(--ink)]/85" />
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              {mainNav.map((item) => {
+                const className = `group inline-flex items-center gap-2 leading-snug ${footerLink}`;
+                return (
+                  <li key={item.href}>
+                    {isExternalNavHref(item.href) ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={className}
+                      >
+                        <IconArrowUpRight className="h-5 w-5 shrink-0 text-[color:var(--ink)]/55 transition-colors group-hover:text-[color:var(--ink)]/85" />
+                        {withoutHyphens(item.label)}
+                      </a>
+                    ) : (
+                      <Link href={item.href} className={className}>
+                        <IconArrowUpRight className="h-5 w-5 shrink-0 text-[color:var(--ink)]/55 transition-colors group-hover:text-[color:var(--ink)]/85" />
+                        {withoutHyphens(item.label)}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -147,7 +160,7 @@ export function SiteFooter() {
               <address className="font-sans not-italic text-[0.9375rem] leading-relaxed text-[color:var(--ink)]/78">
                 {site.officeAddressLines.map((line, i) => (
                   <span key={i} className="block">
-                    {line}
+                    {withoutHyphens(line)}
                   </span>
                 ))}
               </address>

@@ -4,12 +4,12 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/content/site";
 
-const ETHOS_IMAGE = "/Slider1.avif";
+const ETHOS_IMAGE = "/Pictures/1767981821044.webp";
 
 export function HomeEthos() {
   return (
     <section
-      id="our-ethos"
+      id="our-core"
       className="relative z-0 bg-[color:var(--brand-white)] pb-24 pt-16 sm:pb-28 sm:pt-20 lg:pb-36 lg:pt-28"
     >
       <Container>
@@ -34,7 +34,7 @@ export function HomeEthos() {
             <div className="flex min-w-0 flex-col justify-center lg:min-h-[min(100%,36rem)]">
               <div className="flex min-w-0 items-center gap-4">
                 <span className="font-script shrink-0 text-[clamp(1.85rem,4vw,2.65rem)] leading-none text-[color:var(--ink)]">
-                  Our Ethos
+                  Our Core
                 </span>
                 <span
                   className="h-px min-w-[3rem] max-w-[38%] flex-1 bg-[color:var(--hairline)] sm:max-w-[33%]"
@@ -49,7 +49,7 @@ export function HomeEthos() {
               <div className="mt-8 max-w-xl space-y-6 font-sans text-[1rem] leading-[1.75] text-[color:var(--ink-muted)] sm:text-[1.0625rem]">
                 <p>
                   We are a digital marketing company built to help premium brands
-                  grow with clear strategy, content, and performance-driven
+                  grow with clear strategy, content, and performance driven
                   marketing. Rather than chasing visibility alone, we focus on
                   positioning brands to attract the right audience, build trust,
                   and convert attention into measurable income.
