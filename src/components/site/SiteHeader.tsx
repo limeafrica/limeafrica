@@ -268,7 +268,7 @@ export function SiteHeader() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={2.25}
             strokeLinecap="round"
             className="h-6 w-6 sm:h-7 sm:w-7"
             aria-hidden
@@ -278,11 +278,15 @@ export function SiteHeader() {
         ) : (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            className="h-6 w-6 fill-current sm:h-7 sm:w-7"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.25}
+            strokeLinecap="round"
+            className="h-6 w-6 sm:h-7 sm:w-7"
             aria-hidden
           >
-            <path d="M80 304h352v16H80zM80 248h352v16H80zM80 192h352v16H80z" />
+            <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         )}
       </button>
