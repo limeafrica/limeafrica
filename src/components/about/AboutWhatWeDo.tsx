@@ -46,10 +46,7 @@ export function AboutWhatWeDo() {
         >
           <div className="max-w-xl lg:max-w-lg xl:max-w-xl">
             <Reveal>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink-muted)] sm:text-[14px]">
-                The Studio
-              </p>
-              <div className="lowercase mt-2 sm:mt-2.5">
+              <div className="lowercase">
                 <h2 className="font-title text-[clamp(2.125rem,4.5vw,3.15rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
                   what we do
                 </h2>

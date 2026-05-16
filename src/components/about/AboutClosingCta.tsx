@@ -19,7 +19,7 @@ export function AboutClosingCta() {
               Next steps
             </p>
             <p className="font-title mt-5 max-w-lg text-[clamp(1.5rem,3.5vw,2rem)] font-bold leading-snug tracking-tight text-[color:var(--brand-white)]">
-              Ready to grow with clarity and execution that holds up?
+              Ready To Scale?
             </p>
 
             <div className="mt-10 flex w-full max-w-xl flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">

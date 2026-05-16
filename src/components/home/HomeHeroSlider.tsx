@@ -71,7 +71,7 @@ const slides = [
     src: "/slider%203%20design.webp",
     title: "We Turn Content Into Revenue",
     subtitle:
-      "With over ₦400M in profit generated for 16 brands.",
+      "With over ₦400M in profit generated for 20 brands.",
     kicker: "Results that speak",
     ctaLabel: "Showcase your work with Lime",
     ctaHref: "/templates",

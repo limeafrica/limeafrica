@@ -58,25 +58,27 @@ export function ServicesBundlesSection() {
       <div className="mt-10 lg:mt-14">
         <div className="overflow-x-auto pb-2">
           <div className="inline-flex min-w-full border-b border-[color:var(--hairline)]">
-            {[...bundleTiers.map((tier) => tier.id), "extras"].map((tabId, i) => {
+            {[
+              ...bundleTiers.map((tier) => ({
+                id: tier.id,
+                label: tier.name,
+              })),
+              { id: "extras", label: "Extras" },
+            ].map((tab, i) => {
               const active = i === activeTabIndex;
-              const label =
-                tabId === "extras"
-                  ? "Extras"
-                  : `Package ${String(i + 1).padStart(2, "0")}`;
               return (
                 <button
-                  key={tabId}
+                  key={tab.id}
                   type="button"
                   onClick={() => setActiveTabIndex(i)}
                   className={
-                    "shrink-0 border-b px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition sm:px-6 " +
+                    "shrink-0 border-b px-4 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition sm:px-6 " +
                     (active
                       ? "border-[color:var(--brand-yellow)] bg-[color:var(--brand-yellow)]/90 text-[color:var(--ink)]"
                       : "border-transparent text-[color:var(--ink-muted)] hover:text-[color:var(--ink)]")
                   }
                 >
-                  {label}
+                  {tab.label}
                 </button>
               );
             })}
@@ -111,7 +113,7 @@ export function ServicesBundlesSection() {
                   <span className="font-mono text-[11px] font-medium tabular-nums tracking-[0.12em] text-[color:var(--ink-muted)]">
                     {showingExtras ? "05" : String(activeTabIndex + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-title mt-2 text-2xl tracking-tight text-[color:var(--ink)] sm:text-[1.65rem]">
+                  <h3 className="font-title mt-2 text-2xl font-bold tracking-tight text-[color:var(--ink)] sm:text-[1.65rem]">
                     {showingExtras ? "Extras" : withoutHyphens(activeTier?.name ?? "")}
                   </h3>
                   <p className="font-sans mt-2 max-w-md text-sm leading-snug text-[color:var(--ink-muted)] sm:text-[0.9375rem]">
@@ -124,7 +126,7 @@ export function ServicesBundlesSection() {
                   <p className="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--ink-muted)]">
                     {showingExtras ? "Pricing" : "From"}
                   </p>
-                  <p className="font-title mt-1 text-2xl tabular-nums tracking-tight text-[color:var(--ink)] sm:text-[1.75rem]">
+                  <p className="font-title mt-1 text-2xl font-bold tabular-nums tracking-tight text-[color:var(--ink)] sm:text-[1.75rem]">
                     {showingExtras ? "Per add on" : withoutHyphens(activeTier?.priceLabel ?? "")}
                   </p>
                 </div>
