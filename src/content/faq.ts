@@ -40,7 +40,7 @@ export const faqItems: readonly FaqItem[] = [
   {
     question: "What services do you offer?",
     answer:
-      "Our Services page outlines digital marketing execution (social, content, design, branding and strategy, email, and packages), one on one consulting, resource libraries, and content shoot bundles. Final deliverables and fees are always confirmed in writing for your specific brief.",
+      "Our Services page outlines branding and strategy (including graphic design), digital marketing execution (social, content, and email), one on one consulting, resource libraries, and content shoot bundles. Final deliverables and fees are always confirmed in writing for your specific brief.",
   },
   {
     question: "What are content bundles (e.g. Snap)?",

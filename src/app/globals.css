@@ -151,7 +151,7 @@
 .community-offer-grid {
   display: grid;
   gap: 1px;
-  background: var(--brand-white);
+  background: rgb(26 22 18 / 80%);
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
     "intro"

@@ -115,7 +115,7 @@ function OfferTileCard({ tile }: { tile: CommunityOfferTile }) {
         className={
           `${gridCell} group transition-shadow duration-300 ` +
           "hover:shadow-[0_22px_44px_-18px_rgba(26,22,18,0.18)] " +
-          "focus-visible:shadow-[0_22px_44px_-18px_rgba(26,22,18,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[color:var(--brand-yellow)] " +
+          "focus-visible:shadow-[0_22px_44px_-18px_rgba(26,22,18,0.18)] " +
           "scroll-mt-28 sm:scroll-mt-32 " +
           plate.panel
         }

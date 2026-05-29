@@ -110,23 +110,47 @@ export const team: TeamMember[] = [
   },
 ];
 
-export const testimonials = [
+export type Testimonial = {
+  quote: string;
+  attribution: string;
+  company?: string;
+};
+
+export const testimonials: Testimonial[] = [
   {
     quote:
-      "LimeAfrica tightened our story and our funnel in the same quarter. Engagement is up and inquiries are finally the right fit.",
-    attribution: "Leila H.",
-    company: "Gathered Nutrition",
+      "Lime's a fast growing and evolving workplace with a comfortable environment and a strong team spirit. The perfect place for those who want to grow their social media career. I highly recommend as both a workplace and a service provider.",
+    attribution: "Lilian Leonard",
   },
   {
     quote:
-      "The site finally matches the calm professionalism of our studio. Bookings are smoother and people comment on how ‘complete’ the brand feels.",
-    attribution: "Marcus T.",
-    company: "The Yoga Space",
+      "Lime delivers excellent service with great attention to detail. The process was smooth, communication was clear, and the results met expectations. I'd definitely recommend them.",
+    attribution: "Pearl Atigolo",
   },
   {
     quote:
-      "Organic Pinterest became a real channel, not vanity metrics. Traffic to recipes and email sign ups finally moved in parallel.",
-    attribution: "Renée M.",
-    company: "YMI Jeans contributor network",
+      "I will say Limes 🍋 community is amazing 🤩. It's a creative place and definitely good for connecting with other creatives plus getting jobs. But one thing I would love to see is more organization when it comes to members dropping their work. And more checking in with groups before and after group projects to get details on how each member communicated and performed.",
+    attribution: "Yusuf Oyebolarinwa",
+  },
+  {
+    quote:
+      "Lime is a reliable and well-structured agency that delivers quality work. Their approach to content, digital strategy and social media management is thoughtful and results-focused. Communication is clear, timelines are respected, and deliverables are handled professionally. They pay attention to detail and take time to understand brand goals before executing. Overall, Lime is a solid choice for businesses looking for consistent and strategic digital support.",
+    attribution: "Lisa Udumorugbo",
+  },
+  {
+    quote:
+      "I always have an excellent time working with Lime Africa. I'll be back again.",
+    attribution: "Akinyan Fuad",
+  },
+  {
+    quote:
+      "I am continually impressed by the transformative impact of Lime Africa, which offers unparalleled resources and support for businesses looking to upscale. As an Automation Specialist, I can attest to the exceptional guidance and expertise they've provided, empowering me to take my business to new heights. Lime Africa's commitment to excellence in service delivery and support is truly admirable. Their dedication to driving success is unwavering, and I wholeheartedly endorse their services. If you're looking for a partner to elevate your business, look no further than Lime Africa. Their support is unmatched. Anything above a 5-star is what you deserve, thank you.",
+    attribution: "Confidence Chibueze",
+    company: "Automation Specialist",
+  },
+  {
+    quote:
+      "I have worked with Lime for over 4 years now and it has been a smooth ride. Great team led by a true creative Lisa. And together we've built my brand. Top Social media agency!",
+    attribution: "Nick Dunu",
   },
 ];

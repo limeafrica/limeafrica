@@ -6,6 +6,9 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
 import {
   collageObjectPositionClass,
+  brandingAndStrategyBullets,
+  brandingAndStrategyIntro,
+  brandingSectionCollage,
   consultingBullets,
   consultingIntro,
   consultingSectionCollage,
@@ -35,7 +38,7 @@ const CARD_SLOT_MIN_HEIGHT =
 const DECK_CARD_MAX_W = "max-w-[1120px]";
 const DECK_CARD_SHELL = `mx-auto w-full ${DECK_CARD_MAX_W} px-4 sm:px-6 lg:px-0`;
 
-type PlateVariant = "ink" | "sand" | "paper";
+type PlateVariant = "ink" | "sand" | "paper" | "yellow";
 
 type DeckBlock = {
   title: string;
@@ -61,6 +64,17 @@ const deckBlocks: DeckBlock[] = [
     plateVariant: "ink",
     href: "/services#digital-marketing",
     ctaLabel: "Explore digital marketing",
+  },
+  {
+    title: "Branding and Strategy",
+    description: brandingAndStrategyIntro,
+    bullets: brandingAndStrategyBullets,
+    image: brandingSectionCollage.foreground,
+    imageObjectPosition: brandingSectionCollage.objectPosition,
+    imageAlt: "Brand identity and strategic direction",
+    plateVariant: "yellow",
+    href: "/services#branding-and-strategy",
+    ctaLabel: "Explore branding and strategy",
   },
   {
     title: "Consulting",
@@ -124,6 +138,18 @@ function plateClasses(variant: PlateVariant) {
         bulletDot: "bg-[color:var(--brand-white)]",
         button:
           "border-[color:var(--ink)]/25 bg-transparent text-[color:var(--ink)] hover:border-[color:var(--ink)] hover:bg-[color-mix(in_srgb,var(--ink)_14%,var(--surface-light-brown))]",
+      };
+    case "yellow":
+      return {
+        plate: "bg-[color:var(--brand-yellow)] text-[color:var(--ink)]",
+        panel: "text-[color:var(--ink)]",
+        title: "text-[color:var(--ink)]",
+        body: "text-[color:var(--ink)]/75",
+        listBorder: "border-[color:var(--ink)]/10",
+        bullet: "text-sm leading-snug text-[color:var(--ink)]/85",
+        bulletDot: "bg-[color:var(--brand-white)]",
+        button:
+          "border-[color:var(--ink)]/25 bg-transparent text-[color:var(--ink)] hover:border-[color:var(--ink)] hover:bg-[color-mix(in_srgb,var(--ink)_10%,var(--brand-yellow))]",
       };
     default:
       return {

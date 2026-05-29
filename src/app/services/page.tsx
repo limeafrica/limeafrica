@@ -7,7 +7,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: `${site.name}: digital marketing, consulting, resources, and The Lime Edit content bundles. Strategy through execution.`,
+  description: `${site.name}: digital marketing, branding and strategy, consulting, resources, and The Lime Edit content bundles. Strategy through execution.`,
 };
 
 export default function ServicesPage() {
@@ -19,7 +19,7 @@ export default function ServicesPage() {
         backgroundImage="/Untitled design (4).webp"
         eyebrow={servicesEyebrows.hero}
         title="Strategy, content, and bundles built to scale with you"
-        subtitle="End to end digital marketing, one on one consulting, curated resources, and The Lime Edit packages when you need strong content without full social management."
+        subtitle="End to end digital marketing, branding and strategy, one on one consulting, curated resources, and The Lime Edit packages when you need strong content without full social management."
       />
       <div className="relative z-10">
         <ServicesPageContent />

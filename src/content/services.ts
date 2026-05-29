@@ -4,9 +4,11 @@
 export const servicesEyebrows = {
   hero: "What we offer",
   digitalMarketing: "Channels & execution",
+  brandingAndStrategy: "Identity & direction",
   consulting: "Guided strategy",
   resources: "Guides & templates",
   bundles: "Content shoot packages",
+  rateCard: "Monthly packages",
 } as const;
 
 /** `object-cover` anchor — `bottom` keeps the lower portion of tall photos in frame. */
@@ -20,6 +22,11 @@ export type SectionCollage = {
 /** Layered collage (left column): ink panel + framed photo. Change `foreground` to swap the image. */
 export const digitalSectionCollage: SectionCollage = {
   foreground: "/Pictures/1767982390166.webp",
+};
+
+export const brandingSectionCollage: SectionCollage = {
+  foreground: "/Pictures/branding.webp",
+  objectPosition: "bottom",
 };
 
 export const consultingSectionCollage: SectionCollage = {
@@ -37,6 +44,11 @@ export const bundlesSectionCollage: SectionCollage = {
   objectPosition: "bottom",
 };
 
+export const rateCardSectionCollage: SectionCollage = {
+  foreground: "/Pictures/1767982239718.webp",
+  objectPosition: "bottom",
+};
+
 export function collageObjectPositionClass(
   position: CollageObjectPosition = "center",
 ): string {
@@ -44,15 +56,28 @@ export function collageObjectPositionClass(
 }
 
 export const digitalMarketingIntro =
-  "We provide end to end digital marketing support, from strategy to execution and everything in between.";
+  "We provide end to end digital marketing support across social, content, and email, with execution that stays on brand and on brief.";
 
 export const digitalMarketingItems = [
   "Social Media Management",
   "Content Creation",
-  "Graphic Design",
-  "Branding and Strategy",
   "Email Marketing",
 ] as const;
+
+export const brandingAndStrategyIntro =
+  "We help premium brands define who they are, how they show up, and where they are going, with clear positioning, visual identity, and strategic direction that guides every touchpoint.";
+
+export const brandingAndStrategyBullets = [
+  "Brand identity and visual systems",
+  "Graphic Design",
+  "Positioning, messaging, and tone of voice",
+] as const;
+
+export const brandingAndStrategyCta = {
+  prompt:
+    "Ready to sharpen your brand story and build a strategy that scales with you?",
+  label: "Book a consultation",
+} as const;
 
 export const consultingIntro =
   "Personalized consultations focused on helping you understand your brand, refine your strategy, and move forward with clarity.";
@@ -163,3 +188,139 @@ export const extrasItems = [
 
 export const extrasDisclaimer =
   "Logistics, venue booking, products, props, models, makeup artist, wardrobe and any other production costs are not included and will be billed separately.";
+
+export type RateCardFeature = {
+  label: string;
+  description: string;
+};
+
+export type RateCardTier = {
+  id: string;
+  name: string;
+  priceLabel: string;
+  features: readonly RateCardFeature[];
+};
+
+export const rateCardIntro =
+  "Let's help you connect with your clients. Our packages include full social, content, and design support handled by the Lime team.";
+
+export const rateCardDisclaimer =
+  "Additional services such as models, influencer marketing, paid advertising, special shoot locations, props and third party production costs attract separate charges.";
+
+export const rateCardTiers: RateCardTier[] = [
+  {
+    id: "basic",
+    name: "Basic",
+    priceLabel: "₦650,000",
+    features: [
+      {
+        label: "Social Media Management",
+        description:
+          "3 posts weekly across Instagram. Story uploads and community management.",
+      },
+      {
+        label: "Content Creation",
+        description:
+          "Creative direction, content planning, shoot coordination and content production handled by the Lime team.",
+      },
+      {
+        label: "Graphic Design",
+        description:
+          "Campaign flyers, promotional graphics and social media design assets.",
+      },
+    ],
+  },
+  {
+    id: "silver",
+    name: "Silver",
+    priceLabel: "₦750,000",
+    features: [
+      {
+        label: "Social Media Management",
+        description:
+          "4 posts weekly across Instagram. Story uploads and community management.",
+      },
+      {
+        label: "Content Creation",
+        description:
+          "Creative direction, content planning, shoot coordination and content production handled by the Lime team.",
+      },
+      {
+        label: "Graphic Design",
+        description:
+          "Campaign flyers, promotional graphics and social media design assets.",
+      },
+      {
+        label: "Page Revamp and Setup",
+        description: "Profile optimization and brand page refinement.",
+      },
+    ],
+  },
+  {
+    id: "gold",
+    name: "Gold",
+    priceLabel: "₦950,000",
+    features: [
+      {
+        label: "Social Media Management",
+        description:
+          "3 posts weekly across Instagram and TikTok. Story uploads, engagement and community management.",
+      },
+      {
+        label: "Content Creation",
+        description:
+          "Creative direction, content planning, shoot coordination and content production handled by the Lime team.",
+      },
+      {
+        label: "Graphic Design",
+        description:
+          "Campaign flyers, promotional graphics and social media design assets.",
+      },
+      {
+        label: "Page Revamp and Setup",
+        description: "Profile optimization and brand page refinement.",
+      },
+      {
+        label: "Social Media Monitoring",
+        description:
+          "Audience insights, performance tracking and brand listening.",
+      },
+    ],
+  },
+  {
+    id: "lime",
+    name: "Lime",
+    priceLabel: "₦1,150,000",
+    features: [
+      {
+        label: "Social Media Management",
+        description:
+          "4 posts weekly across Instagram and TikTok. Story uploads, engagement and community management.",
+      },
+      {
+        label: "Content Creation",
+        description:
+          "Creative direction, content planning, shoot coordination and premium content production handled by the Lime team.",
+      },
+      {
+        label: "Graphic Design",
+        description:
+          "Campaign flyers, promotional graphics and social media design assets.",
+      },
+      {
+        label: "Page Revamp and Setup",
+        description: "Profile optimization and brand page refinement.",
+      },
+      {
+        label: "Social Media Monitoring and Reporting",
+        description:
+          "Audience insights, monthly reporting and performance tracking.",
+      },
+      {
+        label: "Strategic Brand Support",
+        description:
+          "Campaign planning, content strategy and brand growth support.",
+      },
+    ],
+  },
+];

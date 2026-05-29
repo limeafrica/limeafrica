@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PortfolioHero } from "@/components/portfolio/PortfolioHero";
+import { PortfolioClients } from "@/components/portfolio/PortfolioClients";
 import { PortfolioSuccessStories } from "@/components/portfolio/PortfolioSuccessStories";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
@@ -89,6 +90,8 @@ export default function WorkIndexPage() {
           </div>
         </Container>
       </section>
+
+      <PortfolioClients />
 
       <PortfolioSuccessStories />
     </main>

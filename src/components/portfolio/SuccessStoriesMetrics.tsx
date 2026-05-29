@@ -4,9 +4,9 @@ import { animate, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const METRICS = [
-  { target: 20, suffix: "+", label: "BRANDS" },
-  { target: 400, suffix: "+", label: "CAMPAIGNS" },
-  { target: 8000, suffix: "+", label: "LEADS GENERATED" },
+  { target: 20, suffix: "+", label: "Brands partnered" },
+  { target: 400, suffix: "+", label: "Campaigns delivered" },
+  { target: 8000, suffix: "+", label: "Leads generated" },
 ] as const;
 
 function formatFigure(n: number) {
@@ -47,7 +47,7 @@ function MetricFigure({
   return (
     <p
       ref={ref}
-      className="font-title text-[clamp(2.5rem,6vw,3.75rem)] font-bold leading-none tracking-tight text-[color:var(--brand-yellow)] tabular-nums"
+      className="font-title text-[clamp(2.75rem,6vw,4rem)] font-bold leading-none tracking-tight text-[color:var(--brand-yellow)] tabular-nums"
     >
       {formatFigure(value)}
       {suffix}
@@ -57,15 +57,29 @@ function MetricFigure({
 
 export function SuccessStoriesMetrics() {
   return (
-    <div className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8 md:mt-16">
+    <ul className="grid grid-cols-1 sm:grid-cols-3 sm:divide-x sm:divide-white/10">
       {METRICS.map((m, i) => (
-        <div key={m.label} className="text-center">
-          <MetricFigure target={m.target} suffix={m.suffix} delay={i * 0.09} />
-          <p className="mt-3 font-sans text-[10px] font-semibold uppercase tracking-[0.28em] text-[color:var(--brand-white)]">
+        <li
+          key={m.label}
+          className={
+            "relative px-8 py-10 text-center sm:py-12 sm:text-left " +
+            (i > 0 ? "border-t border-white/10 sm:border-t-0" : "")
+          }
+        >
+          <span
+            className="font-sans text-[10px] font-semibold uppercase tracking-[0.32em] text-[color:var(--brand-sand)]"
+            aria-hidden
+          >
+            {String(i + 1).padStart(2, "0")}
+          </span>
+          <div className="mt-4 sm:mt-5">
+            <MetricFigure target={m.target} suffix={m.suffix} delay={i * 0.09} />
+          </div>
+          <p className="mt-3 font-sans text-sm font-medium leading-snug text-[color:var(--brand-white)]/80 sm:mt-4">
             {m.label}
           </p>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

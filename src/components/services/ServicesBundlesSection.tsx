@@ -74,7 +74,7 @@ export function ServicesBundlesSection() {
                   className={
                     "shrink-0 border-b px-4 py-3 text-[11px] font-bold uppercase tracking-[0.18em] transition sm:px-6 " +
                     (active
-                      ? "border-[color:var(--brand-yellow)] bg-[color:var(--brand-yellow)]/90 text-[color:var(--ink)]"
+                      ? "border-[color:var(--surface-light-brown)] bg-[color:var(--surface-light-brown)]/90 text-[color:var(--ink)]"
                       : "border-transparent text-[color:var(--ink-muted)] hover:text-[color:var(--ink)]")
                   }
                 >
@@ -96,14 +96,14 @@ export function ServicesBundlesSection() {
           >
             {!showingExtras && activeTier?.id === "voice" ? (
               <div className="absolute right-5 top-5 z-[1]">
-                <span className="inline-flex rounded-full bg-[color:var(--brand-yellow)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--ink)] shadow-sm">
+                <span className="inline-flex rounded-full bg-[color:var(--surface-light-brown)] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--ink)] shadow-sm">
                   Popular
                 </span>
               </div>
             ) : null}
 
             <div
-              className="h-1.5 w-full bg-gradient-to-r from-[color:var(--brand-yellow)] via-[color:var(--brand-yellow)] to-[color:var(--brand-yellow)]/35"
+              className="h-1.5 w-full bg-gradient-to-r from-[color:var(--surface-light-brown)] via-[color:var(--surface-light-brown)] to-[color:var(--surface-light-brown)]/35"
               aria-hidden
             />
 
@@ -175,7 +175,7 @@ export function ServicesBundlesSection() {
           </p>
           <Link
             href="#book-consultation"
-            className="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-[color:var(--brand-yellow)] px-12 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ink)] no-underline transition hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--ink)]"
+            className="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-[color:var(--surface-light-brown)] px-12 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--ink)] no-underline transition hover:brightness-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[color:var(--surface-light-brown)]"
           >
             Discuss a bundle
           </Link>
@@ -188,7 +188,7 @@ export function ServicesBundlesSection() {
     <section
       id="bundles"
       className={
-        "scroll-mt-28 overflow-x-hidden " +
+        "scroll-mt-28 overflow-x-hidden border-t border-[color:var(--hairline)] " +
         "bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] " +
         "py-20 sm:py-28 lg:py-32"
       }
@@ -202,7 +202,7 @@ export function ServicesBundlesSection() {
             <DigitalMarketingCollage
               foregroundSrc={bundlesSectionCollage.foreground}
               objectPosition={bundlesSectionCollage.objectPosition}
-              panelClassName="bg-[color:var(--brand-yellow)]"
+              panelClassName="bg-[color:var(--surface-light-brown)]"
             />
           </Reveal>
         </div>

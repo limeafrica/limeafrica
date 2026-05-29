@@ -35,7 +35,7 @@ export function PortfolioHero() {
                   Portfolio
                 </span>
                 <span
-                  className="h-px min-w-[2rem] flex-1 bg-[color:var(--ink)]/18"
+                  className="h-px min-w-[2rem] flex-1 bg-[color:var(--ink)]/18 mr-[calc(50%-50vw)]"
                   aria-hidden
                 />
               </div>
@@ -87,7 +87,7 @@ export function PortfolioHero() {
                   Portfolio
                 </span>
                 <span
-                  className="h-px min-w-[2rem] flex-1 bg-[color:var(--ink)]/18"
+                  className="h-px min-w-[2rem] flex-1 bg-[color:var(--ink)]/18 mr-[calc(50%-50vw)]"
                   aria-hidden
                 />
               </div>
