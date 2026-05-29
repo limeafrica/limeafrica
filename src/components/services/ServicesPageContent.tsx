@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DigitalMarketingCollage } from "@/components/services/DigitalMarketingCollage";
 import { ServicesBundlesSection } from "@/components/services/ServicesBundlesSection";
 import { ServicesRateCardSection } from "@/components/services/ServicesRateCardSection";
+import { ServicesStickyStack } from "@/components/services/ServicesStickyStack";
 import { ServicesMobileEditorialStack } from "@/components/services/ServicesMobileEditorialStack";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
@@ -28,11 +29,11 @@ const eyebrow =
 
 export function ServicesPageContent() {
   return (
-    <>
+    <ServicesStickyStack>
       {/* Digital marketing: mobile full-bleed ink + title + overlap image; lg: collage + copy */}
       <section
         id="digital-marketing"
-        className="scroll-mt-28 overflow-x-hidden bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className="scroll-mt-28 bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--ink)]"
@@ -107,7 +108,7 @@ export function ServicesPageContent() {
       <section
         id="branding-and-strategy"
         className={
-          "scroll-mt-28 overflow-x-hidden bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+          "scroll-mt-28 bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
         }
       >
         <ServicesMobileEditorialStack
@@ -209,7 +210,7 @@ export function ServicesPageContent() {
       {/* Consulting: light brown band (mobile) + desktop collage */}
       <section
         id="consulting"
-        className="scroll-mt-28 overflow-x-hidden bg-[color:var(--surface-subtle)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className="scroll-mt-28 bg-[color:var(--surface-subtle)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--surface-light-brown)]"
@@ -310,7 +311,7 @@ export function ServicesPageContent() {
       {/* Resources: ink band (mobile) + desktop collage */}
       <section
         id="resources"
-        className="scroll-mt-28 overflow-x-hidden bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className="scroll-mt-28 bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--ink)]"
@@ -390,6 +391,6 @@ export function ServicesPageContent() {
 
       <ServicesRateCardSection />
       <ServicesBundlesSection />
-    </>
+    </ServicesStickyStack>
   );
 }

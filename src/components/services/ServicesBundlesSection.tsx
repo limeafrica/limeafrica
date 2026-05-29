@@ -188,7 +188,7 @@ export function ServicesBundlesSection() {
     <section
       id="bundles"
       className={
-        "scroll-mt-28 overflow-x-hidden border-t border-[color:var(--hairline)] " +
+        "scroll-mt-28 border-t border-[color:var(--hairline)] " +
         "bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] " +
         "py-20 sm:py-28 lg:py-32"
       }

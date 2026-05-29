@@ -158,7 +158,7 @@ export function ServicesRateCardSection() {
     <section
       id="rate-card"
       className={
-        "scroll-mt-28 overflow-x-hidden border-t border-white/10 " +
+        "scroll-mt-28 border-t border-white/10 " +
         "bg-[color:var(--ink)] py-20 sm:py-28 lg:py-32"
       }
       aria-labelledby="lime-rate-card-heading"
