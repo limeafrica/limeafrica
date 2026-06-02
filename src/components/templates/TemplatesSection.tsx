@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useState } from "react";
 import { TemplateFeaturesCarousel } from "@/components/templates/TemplateFeaturesCarousel";
 import { TemplatePreviewCarousel } from "@/components/templates/TemplatePreviewCarousel";
@@ -52,12 +51,14 @@ export function TemplatesSection() {
             <h2 className="font-title max-w-xl text-left text-[clamp(1.85rem,4vw,2.75rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--ink)]">
               {withoutHyphens(templatesSectionCopy.title)}
             </h2>
-            <Link
+            <a
               href={templatesSectionCopy.ctaHref}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex shrink-0 items-center justify-center rounded-full bg-[color:var(--ink)] px-7 py-3.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--brand-white)] transition hover:opacity-92 sm:ml-auto"
             >
               {withoutHyphens(templatesSectionCopy.ctaLabel)}
-            </Link>
+            </a>
           </div>
 
           <div

@@ -1,5 +1,7 @@
 /** Site copy for the services page: single source for bundles and lists. */
 
+import { TEMPLATE_PURCHASE_URL } from "@/content/templates";
+
 /** Small caps labels above section titles, scoped to each block’s topic. */
 export const servicesEyebrows = {
   hero: "What we offer",
@@ -91,7 +93,7 @@ export const resourcesIntro =
   "Access our curated collection of templates, guides, and resources designed to streamline your marketing, improve your execution, and help you achieve more with less effort.";
 
 export const resourceLinks = [
-  { label: "Templates", href: "/templates" },
+  { label: "Templates", href: TEMPLATE_PURCHASE_URL },
   { label: "Ebooks", href: "/resources" },
   { label: "Courses", href: "/resources" },
   { label: "Webinars", href: "/resources" },

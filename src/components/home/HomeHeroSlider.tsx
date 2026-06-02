@@ -74,7 +74,7 @@ const slides = [
       "With over ₦400M in profit generated for 20 brands.",
     kicker: "Results that speak",
     ctaLabel: "Showcase your work with Lime",
-    ctaHref: "/templates",
+    ctaHref: "/portfolio",
   },
 ] as const;
 

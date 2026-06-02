@@ -64,9 +64,13 @@ export const templateFeaturesPerPage = 4;
 
 export const templatePreviewIntervalMs = 4500;
 
+/** Paystack checkout for Lime Canva templates */
+export const TEMPLATE_PURCHASE_URL =
+  "https://paystack.shop/pay/limecanvatemplate" as const;
+
 export const templatesSectionCopy = {
   eyebrow: "Customize it yourself",
   title: "Templates",
   ctaLabel: "PURCHASE NOW",
-  ctaHref: "/templates",
+  ctaHref: TEMPLATE_PURCHASE_URL,
 } as const;
