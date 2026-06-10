@@ -170,7 +170,7 @@ export function ServicesBundlesSection() {
       <Reveal delay={0.12}>
         <div className="mt-14 flex flex-col items-center justify-between gap-6 border-t border-[color:var(--hairline)] pt-12 sm:flex-row sm:pt-14">
           <p className="font-sans max-w-md text-center text-sm leading-relaxed text-[color:var(--ink-muted)] sm:text-left">
-            Not sure which tier fits? Tell us your timeline and platforms—we&apos;ll
+            Not sure which tier fits? Tell us your timeline and platforms. We&apos;ll
             help you choose.
           </p>
           <Link

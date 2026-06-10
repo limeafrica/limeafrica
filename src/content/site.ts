@@ -21,7 +21,7 @@ export const site = {
   established: "2020",
   email: "hello@limeafrica.com",
   /** Paystack checkout for Book A Consultation (Book Now). */
-  consultationPaystackUrl: "https://paystack.shop/pay/limecanvatemplate",
+  consultationPaystackUrl: "https://paystack.shop/pay/discoverycalls",
   /** Footer Connect - one line per row (edit here or add lines). */
   officeAddressLines: ["Lagos, Nigeria"] as const,
   /** Public handles (URLs may use different slug per platform). */
