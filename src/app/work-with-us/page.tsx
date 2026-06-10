@@ -3,6 +3,7 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { site } from "@/content/site";
 import { createPageMetadata, pageSeo } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata(pageSeo.workWithUs);
@@ -30,7 +31,11 @@ export default function WorkWithUsPage() {
                   <li>Budget range, so we can propose the right engagement</li>
                 </ul>
               </div>
-              <LeadForm variant="full" submitLabel="Send form" />
+              <LeadForm
+                variant="full"
+                submitLabel="Send form"
+                redirectUrl={site.consultationPaystackUrl}
+              />
             </div>
           </Reveal>
         </Container>
