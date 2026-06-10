@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FaqJsonLd } from "@/components/seo/FaqJsonLd";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
-import {
-  faqClosing,
-  faqHero,
-  faqItems,
-  faqPageMeta,
-} from "@/content/faq";
+import { faqClosing, faqHero, faqItems } from "@/content/faq";
 import { site } from "@/content/site";
 import { withoutHyphens } from "@/lib/displayCopy";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: faqPageMeta.title,
-  description: faqPageMeta.description,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.faq);
 
 const detailsClass =
   "group border-b border-[color:var(--hairline)] py-2 first:pt-0 last:border-b-0";
@@ -32,6 +26,7 @@ const inlineLink =
 export default function FaqPage() {
   return (
     <main className="relative flex-1">
+      <FaqJsonLd />
       <PageIntro
         variant="dark"
         eyebrow={faqHero.eyebrow}

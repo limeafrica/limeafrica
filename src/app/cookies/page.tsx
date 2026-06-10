@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { LegalDocument } from "@/components/legal/LegalDocument";
 import { Container } from "@/components/ui/Container";
 import { cookiesSections } from "@/content/legal";
-import { site } from "@/content/site";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Cookies policy",
-  description: `Cookies policy | ${site.name}`,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.cookies);
 
 export default function CookiesPolicyPage() {
   return (

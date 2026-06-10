@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { CommunityHero } from "@/components/community/CommunityHero";
 import { CommunityPageContent } from "@/components/community/CommunityPageContent";
-import { site } from "@/content/site";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Community",
-  description: `${site.name}. Join the Lime Townhall: webinars, mentorship, and a community for digital marketing creatives.`,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.community);
 
 export default function CommunityPage() {
   return (

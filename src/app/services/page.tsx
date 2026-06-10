@@ -3,12 +3,9 @@ import { HomeFinalCta } from "@/components/home/HomeFinalCta";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ServicesPageContent } from "@/components/services/ServicesPageContent";
 import { servicesEyebrows } from "@/content/services";
-import { site } from "@/content/site";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: `${site.name}: digital marketing, branding and strategy, consulting, resources, and The Lime Edit content bundles. Strategy through execution.`,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.services);
 
 export default function ServicesPage() {
   return (

@@ -3,10 +3,9 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Work With Us",
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.workWithUs);
 
 export default function WorkWithUsPage() {
   return (

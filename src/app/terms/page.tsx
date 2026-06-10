@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { LegalDocument } from "@/components/legal/LegalDocument";
 import { Container } from "@/components/ui/Container";
 import { termsSections } from "@/content/legal";
-import { site } from "@/content/site";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms and conditions",
-  description: `Terms and conditions | ${site.name}`,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.terms);
 
 export default function TermsPage() {
   return (

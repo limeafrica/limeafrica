@@ -6,12 +6,9 @@ import { AboutValues } from "@/components/about/AboutValues";
 import { AboutValuesFixedBackdrop } from "@/components/about/AboutValuesFixedBackdrop";
 import { AboutWhatWeDo } from "@/components/about/AboutWhatWeDo";
 import { HomeFinalCta } from "@/components/home/HomeFinalCta";
-import { site } from "@/content/site";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: `${site.name}. ${site.tagline} Learn how we work, what we stand for, and who’s on the team.`,
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.about);
 
 export default function AboutPage() {
   return (

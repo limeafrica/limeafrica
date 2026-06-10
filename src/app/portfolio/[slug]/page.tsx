@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { getWorkBySlug, workItems } from "@/content/work";
 import { withoutHyphens } from "@/lib/displayCopy";
+import { createPortfolioMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getWorkBySlug(slug);
   if (!project) return {};
-  return { title: project.title };
+  return createPortfolioMetadata(project);
 }
 
 export default async function WorkCasePage({ params }: Props) {

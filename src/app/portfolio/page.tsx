@@ -8,10 +8,9 @@ import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { workItems } from "@/content/work";
 import { withoutHyphens } from "@/lib/displayCopy";
+import { createPageMetadata, pageSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-};
+export const metadata: Metadata = createPageMetadata(pageSeo.portfolio);
 
 export default function WorkIndexPage() {
   return (
