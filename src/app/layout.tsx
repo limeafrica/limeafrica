@@ -31,8 +31,8 @@ const scriptAccent = Mrs_Saint_Delafield({
 export const metadata: Metadata = {
   applicationName: site.name,
   title: {
-    default: `${site.name} · Media & brand studio`,
-    template: `%s · ${site.name}`,
+    default: `${site.name} — Media & brand studio`,
+    template: `%s — ${site.name}`,
   },
   description: site.tagline,
 };
