@@ -1,6 +1,7 @@
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { site } from "@/content/site";
 
 export function HomeFinalCta() {
   return (
@@ -35,7 +36,11 @@ export function HomeFinalCta() {
             </div>
             <div className="px-8 py-12 sm:px-12 lg:col-span-3 lg:py-16">
               <Reveal delay={0.08}>
-                <LeadForm variant="full" submitLabel="Book Now" />
+                <LeadForm
+                  variant="full"
+                  submitLabel="Book Now"
+                  redirectUrl={site.consultationPaystackUrl}
+                />
               </Reveal>
             </div>
           </div>
