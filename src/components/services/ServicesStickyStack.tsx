@@ -14,9 +14,10 @@ import {
   type RefObject,
   type ReactNode,
 } from "react";
+import { SERVICES_STICKY_SECTION_MIN_H } from "@/components/services/servicesSectionLayout";
 
 /** Matches `SiteHeader` h-14 — sections stick below the nav (desktop only). */
-const STICKY_TOP = "lg:sticky lg:top-14";
+const STICKY_TOP = `lg:sticky lg:top-14 ${SERVICES_STICKY_SECTION_MIN_H}`;
 
 /** Light darken as the next section scrolls in (guide default is 0.5). */
 const OVERLAY_MAX_OPACITY = 0.28;

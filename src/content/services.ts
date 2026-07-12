@@ -67,19 +67,70 @@ export const digitalMarketingItems = [
 ] as const;
 
 export const brandingAndStrategyIntro =
-  "We help premium brands define who they are, how they show up, and where they are going, with clear positioning, visual identity, and strategic direction that guides every touchpoint.";
+  "We help premium brands define who they are, how they show up, and where they are going. Our work spans brand identity and visual systems, graphic design, positioning, messaging, and tone of voice, with strategic direction that guides every touchpoint.";
 
-export const brandingAndStrategyBullets = [
-  "Brand identity and visual systems",
-  "Graphic Design",
-  "Positioning, messaging, and tone of voice",
-] as const;
+export type LogoRateCardTier = {
+  id: string;
+  name: string;
+  priceLabel: string;
+  features: readonly string[];
+};
 
-export const brandingAndStrategyCta = {
-  prompt:
-    "Ready to sharpen your brand story and build a strategy that scales with you?",
-  label: "Book a consultation",
-} as const;
+export const logoRateCardHeading = "Brand Logo Design";
+
+export const logoRateCardDisclaimer =
+  "Additional services such as models, influencer marketing, paid advertising, special shoot locations, props and third party production costs attract separate charges.";
+
+export const logoRateCardTiers: LogoRateCardTier[] = [
+  {
+    id: "basic",
+    name: "Basic",
+    priceLabel: "₦60,000",
+    features: [
+      "2 Logo concepts",
+      "Final logo in PNG & JPEG",
+      "Transparent PNG & PDF",
+      "Black & White version",
+      "1 Visual Application",
+    ],
+  },
+  {
+    id: "silver",
+    name: "Silver",
+    priceLabel: "₦100,000",
+    features: [
+      "2 Logo concepts",
+      "Final logo in PNG & JPEG",
+      "Transparent PNG & PDF",
+      "Black & White version",
+      "1 Visual Application",
+      "3D version",
+      "Business Card (Incl. Mockup)",
+    ],
+  },
+  {
+    id: "gold",
+    name: "Gold",
+    priceLabel: "₦150,000",
+    features: [
+      "Everything in SILVER",
+      "LetterHead (Replaceable)",
+      "3 branded mockups",
+      "Mini brand guide (colors, fonts, logo usage)",
+    ],
+  },
+  {
+    id: "lime",
+    name: "Lime",
+    priceLabel: "₦200,000",
+    features: [
+      "Everything in GOLD",
+      "3 logo concepts",
+      "Full Brand Assets (Branded mockups, Packaging, Icons.)",
+      "Complete Brand Guide",
+    ],
+  },
+];
 
 export const consultingIntro =
   "Personalized consultations focused on helping you understand your brand, refine your strategy, and move forward with clarity.";

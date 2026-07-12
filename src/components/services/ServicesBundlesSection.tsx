@@ -5,6 +5,7 @@ import { useState } from "react";
 import { DigitalMarketingCollage } from "@/components/services/DigitalMarketingCollage";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
+import { SERVICES_TABBED_SECTION_SHELL } from "@/components/services/servicesSectionLayout";
 import {
   bundlesIntro,
   bundleTiers,
@@ -188,15 +189,14 @@ export function ServicesBundlesSection() {
     <section
       id="bundles"
       className={
-        "scroll-mt-28 border-t border-[color:var(--hairline)] " +
-        "bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] " +
-        "py-20 sm:py-28 lg:py-32"
+        `${SERVICES_TABBED_SECTION_SHELL} border-t border-[color:var(--hairline)] ` +
+        "bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)]"
       }
       aria-labelledby="lime-edit-heading"
     >
       <Container className="lg:hidden">{bundlesContent}</Container>
 
-      <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-row lg:items-start lg:gap-10 xl:gap-14">
+      <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-1 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
         <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
           <Reveal className="block w-full">
             <DigitalMarketingCollage

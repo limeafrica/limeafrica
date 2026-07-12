@@ -6,7 +6,6 @@ import { useEffect, useRef, type CSSProperties } from "react";
 import { Container } from "@/components/ui/Container";
 import {
   collageObjectPositionClass,
-  brandingAndStrategyBullets,
   brandingAndStrategyIntro,
   brandingSectionCollage,
   consultingBullets,
@@ -68,7 +67,6 @@ const deckBlocks: DeckBlock[] = [
   {
     title: "Branding and Strategy",
     description: brandingAndStrategyIntro,
-    bullets: brandingAndStrategyBullets,
     image: brandingSectionCollage.foreground,
     imageObjectPosition: brandingSectionCollage.objectPosition,
     imageAlt: "Brand identity and strategic direction",

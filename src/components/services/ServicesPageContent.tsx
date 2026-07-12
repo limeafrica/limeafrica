@@ -1,14 +1,14 @@
 import Link from "next/link";
+import { BrandingLogoRateCard } from "@/components/services/BrandingLogoRateCard";
 import { DigitalMarketingCollage } from "@/components/services/DigitalMarketingCollage";
 import { ServicesBundlesSection } from "@/components/services/ServicesBundlesSection";
 import { ServicesRateCardSection } from "@/components/services/ServicesRateCardSection";
 import { ServicesStickyStack } from "@/components/services/ServicesStickyStack";
 import { ServicesMobileEditorialStack } from "@/components/services/ServicesMobileEditorialStack";
+import { SERVICES_EDITORIAL_SECTION_SHELL } from "@/components/services/servicesSectionLayout";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import {
-  brandingAndStrategyBullets,
-  brandingAndStrategyCta,
   brandingAndStrategyIntro,
   brandingSectionCollage,
   consultingBullets,
@@ -33,7 +33,7 @@ export function ServicesPageContent() {
       {/* Digital marketing: mobile full-bleed ink + title + overlap image; lg: collage + copy */}
       <section
         id="digital-marketing"
-        className="scroll-mt-28 bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className={`${SERVICES_EDITORIAL_SECTION_SHELL} bg-[color:var(--paper)]`}
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--ink)]"
@@ -65,7 +65,7 @@ export function ServicesPageContent() {
         </ServicesMobileEditorialStack>
 
         {/* Desktop */}
-        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
+        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-1 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
           <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
             <Reveal className="block w-full">
               <DigitalMarketingCollage
@@ -108,7 +108,8 @@ export function ServicesPageContent() {
       <section
         id="branding-and-strategy"
         className={
-          "scroll-mt-28 bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+          `${SERVICES_EDITORIAL_SECTION_SHELL} ` +
+          "bg-gradient-to-b from-[color:var(--surface-subtle)] via-[color:var(--surface-subtle)] to-[color:var(--paper)]"
         }
       >
         <ServicesMobileEditorialStack
@@ -125,35 +126,10 @@ export function ServicesPageContent() {
               {withoutHyphens(brandingAndStrategyIntro)}
             </p>
           </Reveal>
-          <ul className="font-sans max-w-2xl space-y-4 text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">
-            {brandingAndStrategyBullets.map((line, i) => (
-              <Reveal key={line} delay={0.06 + i * 0.04}>
-                <li className="flex gap-3">
-                  <span
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--brand-yellow)]"
-                    aria-hidden
-                  />
-                  {withoutHyphens(line)}
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal delay={0.1}>
-            <div className="border border-[color:var(--hairline)] bg-[color:var(--brand-white)] p-8">
-              <p className="font-sans text-sm leading-relaxed text-[color:var(--ink-muted)]">
-                {withoutHyphens(brandingAndStrategyCta.prompt)}
-              </p>
-              <Link
-                href="/work-with-us"
-                className="mt-8 inline-flex w-full items-center justify-center border border-[color:var(--ink)] px-8 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink)] transition hover:bg-[color:var(--ink)] hover:text-[color:var(--paper)] sm:w-auto"
-              >
-                {withoutHyphens(brandingAndStrategyCta.label)}
-              </Link>
-            </div>
-          </Reveal>
+          <BrandingLogoRateCard />
         </ServicesMobileEditorialStack>
 
-        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
+        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-1 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
           <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
             <Reveal className="block w-full">
               <DigitalMarketingCollage
@@ -163,7 +139,7 @@ export function ServicesPageContent() {
               />
             </Reveal>
           </div>
-          <div className="min-w-0 flex-1 space-y-10 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
+          <div className="min-w-0 flex-1 space-y-8 lg:pl-4 lg:pr-[max(1.5rem,calc((100vw-var(--layout-max))/2+1.5rem))] xl:pl-8">
             <Reveal>
               <div>
                 <p className={eyebrow}>
@@ -177,32 +153,7 @@ export function ServicesPageContent() {
                 </p>
               </div>
             </Reveal>
-            <ul className="font-sans max-w-2xl space-y-4 text-[0.9375rem] leading-relaxed text-[color:var(--ink-muted)] sm:text-base">
-              {brandingAndStrategyBullets.map((line, i) => (
-                <Reveal key={line} delay={0.06 + i * 0.04}>
-                  <li className="flex gap-3">
-                    <span
-                      className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--brand-yellow)]"
-                      aria-hidden
-                    />
-                    {withoutHyphens(line)}
-                  </li>
-                </Reveal>
-              ))}
-            </ul>
-            <Reveal delay={0.1}>
-              <div className="max-w-[340px] border border-[color:var(--hairline)] bg-[color:var(--brand-white)] p-8">
-                <p className="font-sans text-sm leading-relaxed text-[color:var(--ink-muted)]">
-                  {withoutHyphens(brandingAndStrategyCta.prompt)}
-                </p>
-                <Link
-                  href="/work-with-us"
-                  className="mt-8 inline-flex w-full items-center justify-center border border-[color:var(--ink)] px-8 py-3.5 text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-[color:var(--ink)] transition hover:bg-[color:var(--ink)] hover:text-[color:var(--paper)] sm:w-auto"
-                >
-                  {withoutHyphens(brandingAndStrategyCta.label)}
-                </Link>
-              </div>
-            </Reveal>
+            <BrandingLogoRateCard />
           </div>
         </div>
       </section>
@@ -210,7 +161,7 @@ export function ServicesPageContent() {
       {/* Consulting: light brown band (mobile) + desktop collage */}
       <section
         id="consulting"
-        className="scroll-mt-28 bg-[color:var(--surface-subtle)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className={`${SERVICES_EDITORIAL_SECTION_SHELL} bg-[color:var(--surface-subtle)]`}
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--surface-light-brown)]"
@@ -255,7 +206,7 @@ export function ServicesPageContent() {
           </Reveal>
         </ServicesMobileEditorialStack>
 
-        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
+        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-1 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
           <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
             <Reveal className="block w-full">
               <DigitalMarketingCollage
@@ -311,7 +262,7 @@ export function ServicesPageContent() {
       {/* Resources: ink band (mobile) + desktop collage */}
       <section
         id="resources"
-        className="scroll-mt-28 bg-[color:var(--paper)] pt-0 pb-20 sm:pb-28 lg:py-24 xl:py-28"
+        className={`${SERVICES_EDITORIAL_SECTION_SHELL} bg-[color:var(--paper)]`}
       >
         <ServicesMobileEditorialStack
           bandClassName="bg-[color:var(--ink)]"
@@ -346,7 +297,7 @@ export function ServicesPageContent() {
           </div>
         </ServicesMobileEditorialStack>
 
-        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
+        <div className="hidden w-full flex-col gap-14 lg:flex lg:flex-1 lg:flex-row lg:items-center lg:gap-10 xl:gap-14">
           <div className="w-full shrink-0 lg:w-[min(48vw,600px)] lg:max-w-[620px]">
             <Reveal className="block w-full">
               <DigitalMarketingCollage
