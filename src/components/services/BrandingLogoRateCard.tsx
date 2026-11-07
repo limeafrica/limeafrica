@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import {
-  logoRateCardDisclaimer,
   logoRateCardHeading,
   logoRateCardTiers,
 } from "@/content/services";
@@ -101,15 +100,6 @@ export function BrandingLogoRateCard() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-5 rounded-xl bg-[color:var(--surface-subtle)] px-4 py-3">
-                <p className="font-sans text-xs leading-relaxed text-[color:var(--ink-muted)] sm:text-[0.8125rem]">
-                  <span className="font-semibold text-[color:var(--ink)]">
-                    Note:
-                  </span>{" "}
-                  {withoutHyphens(logoRateCardDisclaimer)}
-                </p>
-              </div>
             </div>
           </article>
         </Reveal>

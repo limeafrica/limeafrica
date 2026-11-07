@@ -6,7 +6,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { SERVICES_TABBED_SECTION_SHELL } from "@/components/services/servicesSectionLayout";
 import {
-  rateCardDisclaimer,
   rateCardIntro,
   rateCardSectionCollage,
   rateCardTiers,
@@ -118,15 +117,6 @@ export function ServicesRateCardSection() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-8 rounded-xl bg-[color:var(--surface-subtle)] px-4 py-4">
-                <p className="font-sans text-xs leading-relaxed text-[color:var(--ink-muted)] sm:text-[0.8125rem]">
-                  <span className="font-semibold text-[color:var(--ink)]">
-                    Note:
-                  </span>{" "}
-                  {withoutHyphens(rateCardDisclaimer)}
-                </p>
-              </div>
             </div>
           </article>
         </Reveal>

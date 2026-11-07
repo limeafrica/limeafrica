@@ -78,14 +78,11 @@ export type LogoRateCardTier = {
 
 export const logoRateCardHeading = "Brand Logo Design";
 
-export const logoRateCardDisclaimer =
-  "Additional services such as models, influencer marketing, paid advertising, special shoot locations, props and third party production costs attract separate charges.";
-
 export const logoRateCardTiers: LogoRateCardTier[] = [
   {
     id: "basic",
     name: "Basic",
-    priceLabel: "₦60,000",
+    priceLabel: "₦120,000",
     features: [
       "2 Logo concepts",
       "Final logo in PNG & JPEG",
@@ -97,7 +94,7 @@ export const logoRateCardTiers: LogoRateCardTier[] = [
   {
     id: "silver",
     name: "Silver",
-    priceLabel: "₦100,000",
+    priceLabel: "₦210,000",
     features: [
       "2 Logo concepts",
       "Final logo in PNG & JPEG",
@@ -111,7 +108,7 @@ export const logoRateCardTiers: LogoRateCardTier[] = [
   {
     id: "gold",
     name: "Gold",
-    priceLabel: "₦150,000",
+    priceLabel: "₦350,000",
     features: [
       "Everything in SILVER",
       "LetterHead (Replaceable)",
@@ -122,12 +119,13 @@ export const logoRateCardTiers: LogoRateCardTier[] = [
   {
     id: "lime",
     name: "Lime",
-    priceLabel: "₦200,000",
+    priceLabel: "₦480,000",
     features: [
       "Everything in GOLD",
       "3 logo concepts",
       "Full Brand Assets (Branded mockups, Packaging, Icons.)",
       "Complete Brand Guide",
+      "Consultation",
     ],
   },
 ];
@@ -160,7 +158,6 @@ export type BundleTier = {
   tagline: string;
   priceLabel: string;
   bullets: readonly string[];
-  note: string;
 };
 
 export const bundleTiers: BundleTier[] = [
@@ -174,7 +171,6 @@ export const bundleTiers: BundleTier[] = [
       "Creative direction on set",
       "Raw videos (and photos as add on) delivered in an online drive",
     ],
-    note: "We do not post and we do not log into your social media accounts",
   },
   {
     id: "polish",
@@ -187,7 +183,6 @@ export const bundleTiers: BundleTier[] = [
       "6 Edited videos (and photos as add on.)",
       "Raw files plus edited content delivered in a drive",
     ],
-    note: "We do not post and we do not log into your social media accounts",
   },
   {
     id: "voice",
@@ -200,7 +195,6 @@ export const bundleTiers: BundleTier[] = [
       "Caption copies provided",
       "All content delivered in a drive",
     ],
-    note: "We do not post and we do not log into your social media accounts",
   },
   {
     id: "playbook",
@@ -215,7 +209,6 @@ export const bundleTiers: BundleTier[] = [
       "Footage if used well and repurposed correctly can be used for up to 3 months",
       "All content delivered in a drive",
     ],
-    note: "We do not post and we do not log into your social media accounts",
   },
 ];
 
@@ -239,8 +232,6 @@ export const extrasItems = [
   },
 ] as const;
 
-export const extrasDisclaimer =
-  "Logistics, venue booking, products, props, models, makeup artist, wardrobe and any other production costs are not included and will be billed separately.";
 
 export type RateCardFeature = {
   label: string;
@@ -256,9 +247,6 @@ export type RateCardTier = {
 
 export const rateCardIntro =
   "Let's help you connect with your clients. Our packages include full social, content, and design support handled by the Lime team.";
-
-export const rateCardDisclaimer =
-  "Additional services such as models, influencer marketing, paid advertising, special shoot locations, props and third party production costs attract separate charges.";
 
 export const rateCardTiers: RateCardTier[] = [
   {

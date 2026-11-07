@@ -9,7 +9,6 @@ import { SERVICES_TABBED_SECTION_SHELL } from "@/components/services/servicesSec
 import {
   bundlesIntro,
   bundleTiers,
-  extrasDisclaimer,
   extrasItems,
   bundlesSectionCollage,
   servicesEyebrows,
@@ -154,15 +153,6 @@ export function ServicesBundlesSection() {
                   ))}
                 </ul>
               )}
-
-              <div className="mt-8 rounded-xl bg-[color:var(--surface-subtle)] px-4 py-4">
-                <p className="font-sans text-xs leading-relaxed text-[color:var(--ink-muted)] sm:text-[0.8125rem]">
-                  <span className="font-semibold text-[color:var(--ink)]">
-                    Note:
-                  </span>{" "}
-                  {withoutHyphens(showingExtras ? extrasDisclaimer : activeTier?.note ?? "")}
-                </p>
-              </div>
             </div>
           </article>
         </Reveal>
